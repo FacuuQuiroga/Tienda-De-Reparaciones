@@ -1,4 +1,4 @@
-package tiendareparaciones;
+package principal;
 
 public class Principal {
 
