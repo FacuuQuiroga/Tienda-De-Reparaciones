@@ -4,8 +4,9 @@ public class Principal {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.printf("holas q tssales");
-		System.out.printf("holas q tssales");
+		System.out.println ("holas q tssales");
+		System.out.println ("holas q tssales");
+		System.out.println ("askljdlaskjd");
 
 	}
 
