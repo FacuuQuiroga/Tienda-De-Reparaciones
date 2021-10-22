@@ -7,7 +7,7 @@ public class Principal {
 		System.out.println ("holas q tssales");
 		System.out.println ("holas q tssales");
 		System.out.println ("askljdlaskjd");
-		System.out.println ("askljdlaskjd");
+	
 
 
 	}
