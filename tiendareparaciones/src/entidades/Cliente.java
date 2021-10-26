@@ -1,6 +1,6 @@
 //Facundo Quiroga
 
-package clases;
+package entidades;
 
 public class Cliente {
 // todo a modo de ejemplo, hay que revisarlo

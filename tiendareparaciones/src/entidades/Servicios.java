@@ -1,5 +1,5 @@
 //Facundo Quiroga
-package clases;
+package entidades;
 
 public class Servicios {
 	private long idServicios = 0;
