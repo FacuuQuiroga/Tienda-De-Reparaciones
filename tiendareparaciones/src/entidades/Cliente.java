@@ -1,18 +1,17 @@
-//Facundo Quiroga
-
+//Facu
 package entidades;
 
 public class Cliente {
-// todo a modo de ejemplo, hay que revisarlo
+
 	private long identificadorCliente = 0;
-	private long nifCliente = 0;
-	private String direccionCliete = "Sin direccion";
-	private long telefonoCliente = 0;
 	private String nombreCliente = "Sin nombre";
-	private long nroTarjetaCredito = 0;
-	private long nroCuentaBanco = 0;
-	
-	/////////////////////////////////////////////////////
+	private String nifCliente;
+	private String direccionCliete = "Sin direccion";
+	private String telefonoCliente = "Sin telefono disponible";
+	private String nroTarjetaCredito;
+	private String nroCuentaBanco;
+
+	// Getters and setters
 
 	public long getIdentificadorCliente() {
 		return identificadorCliente;
@@ -22,11 +21,11 @@ public class Cliente {
 		this.identificadorCliente = identificadorCliente;
 	}
 
-	public long getNifCliente() {
+	public String getNifCliente() {
 		return nifCliente;
 	}
 
-	public void setNifCliente(long nifCliente) {
+	public void setNifCliente(String nifCliente) {
 		this.nifCliente = nifCliente;
 	}
 
@@ -38,11 +37,11 @@ public class Cliente {
 		this.direccionCliete = direccionCliete;
 	}
 
-	public long getTelefonoCliente() {
+	public String getTelefonoCliente() {
 		return telefonoCliente;
 	}
 
-	public void setTelefonoCliente(long telefonoCliente) {
+	public void setTelefonoCliente(String telefonoCliente) {
 		this.telefonoCliente = telefonoCliente;
 	}
 
@@ -54,25 +53,26 @@ public class Cliente {
 		this.nombreCliente = nombreCliente;
 	}
 
-	public long getNroTarjetaCredito() {
+	public String getNroTarjetaCredito() {
 		return nroTarjetaCredito;
 	}
 
-	public void setNroTarjetaCredito(long nroTarjetaCredito) {
+	public void setNroTarjetaCredito(String nroTarjetaCredito) {
 		this.nroTarjetaCredito = nroTarjetaCredito;
 	}
 
-	public long getNroCuentaBanco() {
+	public String getNroCuentaBanco() {
 		return nroCuentaBanco;
 	}
 
-	public void setNroCuentaBanco(long nroCuentaBanco) {
+	public void setNroCuentaBanco(String nroCuentaBanco) {
 		this.nroCuentaBanco = nroCuentaBanco;
 	}
 
+//ToString
 	@Override
 	public String toString() {
-		return "Cliente [identificadorCliente=" + identificadorCliente + ", nifCliente=" + nifCliente
+		return "El Cliente [identificadorCliente=" + identificadorCliente + ", nifCliente=" + nifCliente
 				+ ", direccionCliete=" + direccionCliete + ", telefonoCliente=" + telefonoCliente + ", nombreCliente="
 				+ nombreCliente + ", nroTarjetaCredito=" + nroTarjetaCredito + ", nroCuentaBanco=" + nroCuentaBanco
 				+ "]";
