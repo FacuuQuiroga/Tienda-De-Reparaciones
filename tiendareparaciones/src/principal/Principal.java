@@ -3,11 +3,8 @@ package principal;
 public class Principal {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println ("holas q tssales");
-		System.out.println ("holas q tssales");
-		System.out.println ("askljdlaskjd");
-	
+		System.out.println ("Programa de gestion de servicios de una tienda de reparaciones");
+		System.out.println("Que desea hacer?");
 
 
 	}
