@@ -1,4 +1,4 @@
-//Facu
+//Facu: ville termino las relaciones de esta clase, yo la empece 
 package entidades;
 
 public class Empleado {

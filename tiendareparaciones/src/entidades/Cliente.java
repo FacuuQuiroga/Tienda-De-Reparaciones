@@ -1,4 +1,4 @@
-//Facu
+// hace Facu
 package entidades;
 
 public class Cliente {
