@@ -2,7 +2,7 @@
 package entidades;
 
 public class Empleado {
-	private long idEmpleado = 0;
+	private long idEmpleado;
 	private String nombre;
 	private String apellido;
 	private String direccion;

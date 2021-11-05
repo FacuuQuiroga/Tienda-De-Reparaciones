@@ -3,78 +3,75 @@ package entidades;
 
 public class Cliente {
 
-	private long identificadorCliente = 0;
-	private String nombreCliente = "Sin nombre";
-	private String nifCliente;
-	private String direccionCliete = "Sin direccion";
-	private String telefonoCliente = "Sin telefono disponible";
-	private String nroTarjetaCredito;
-	private String nroCuentaBanco;
+	private long idCliente = 0;
+	private String nombre = "Sin nombre";
+	private String nif;
+	private String direccion = "Sin direccion";
+	private String telefono = "Sin telefono disponible";
+	private String numeroTarjeta;
+	private String Cuentacorriente;
 
-	// Getters and setters
-
-	public long getIdentificadorCliente() {
-		return identificadorCliente;
+	// Getters , setters and to string
+	public long getIdCliente() {
+		return idCliente;
 	}
 
-	public void setIdentificadorCliente(long identificadorCliente) {
-		this.identificadorCliente = identificadorCliente;
+	public void setIdCliente(long idCliente) {
+		this.idCliente = idCliente;
 	}
 
-	public String getNifCliente() {
-		return nifCliente;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setNifCliente(String nifCliente) {
-		this.nifCliente = nifCliente;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getDireccionCliete() {
-		return direccionCliete;
+	public String getNif() {
+		return nif;
 	}
 
-	public void setDireccionCliete(String direccionCliete) {
-		this.direccionCliete = direccionCliete;
+	public void setNif(String nif) {
+		this.nif = nif;
 	}
 
-	public String getTelefonoCliente() {
-		return telefonoCliente;
+	public String getDireccion() {
+		return direccion;
 	}
 
-	public void setTelefonoCliente(String telefonoCliente) {
-		this.telefonoCliente = telefonoCliente;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
-	public String getNombreCliente() {
-		return nombreCliente;
+	public String getTelefono() {
+		return telefono;
 	}
 
-	public void setNombreCliente(String nombreCliente) {
-		this.nombreCliente = nombreCliente;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
-	public String getNroTarjetaCredito() {
-		return nroTarjetaCredito;
+	public String getNumeroTarjeta() {
+		return numeroTarjeta;
 	}
 
-	public void setNroTarjetaCredito(String nroTarjetaCredito) {
-		this.nroTarjetaCredito = nroTarjetaCredito;
+	public void setNumeroTarjeta(String numeroTarjeta) {
+		this.numeroTarjeta = numeroTarjeta;
 	}
 
-	public String getNroCuentaBanco() {
-		return nroCuentaBanco;
+	public String getCuentacorriente() {
+		return Cuentacorriente;
 	}
 
-	public void setNroCuentaBanco(String nroCuentaBanco) {
-		this.nroCuentaBanco = nroCuentaBanco;
+	public void setCuentacorriente(String cuentacorriente) {
+		Cuentacorriente = cuentacorriente;
 	}
 
-//ToString
 	@Override
 	public String toString() {
-		return "El Cliente [identificadorCliente=" + identificadorCliente + ", nifCliente=" + nifCliente
-				+ ", direccionCliete=" + direccionCliete + ", telefonoCliente=" + telefonoCliente + ", nombreCliente="
-				+ nombreCliente + ", nroTarjetaCredito=" + nroTarjetaCredito + ", nroCuentaBanco=" + nroCuentaBanco
+		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", nif=" + nif + ", direccion=" + direccion
+				+ ", telefono=" + telefono + ", numeroTarjeta=" + numeroTarjeta + ", Cuentacorriente=" + Cuentacorriente
 				+ "]";
 	}
 

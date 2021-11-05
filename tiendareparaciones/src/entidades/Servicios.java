@@ -1,11 +1,12 @@
 //Facu
 package entidades;
 
+import java.time.LocalDate;
+
 public class Servicios {
 	private long idServicios = 0;
 	private String notas = "Sin notas";
-	private String fecha; // Hay que ver como se usa el LocalDate
-	private boolean envio;
+	private LocalDate fecha;  
 	private double precioTotal;
 
 	// Getters and setters
@@ -25,20 +26,12 @@ public class Servicios {
 		this.notas = notas;
 	}
 
-	public String getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
-	}
-
-	public boolean isEnvio() {
-		return envio;
-	}
-
-	public void setEnvio(boolean envio) {
-		this.envio = envio;
 	}
 
 	public double getPrecioTotal() {
@@ -52,8 +45,7 @@ public class Servicios {
 	// To String
 	@Override
 	public String toString() {
-		return "Servicios [idServicios=" + idServicios + ", notas=" + notas + ", fecha=" + fecha + ", envio=" + envio
-				+ ", precioTotal=" + precioTotal + "]";
+		return "Servicios [idServicios=" + idServicios + ", notas=" + notas + ", fecha=" + fecha + ", precioTotal=" + precioTotal + "]";
 	}
 
 }
