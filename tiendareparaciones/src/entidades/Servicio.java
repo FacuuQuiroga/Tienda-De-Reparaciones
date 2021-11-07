@@ -11,40 +11,46 @@ public class Servicio {
 	private String notas;	
 	private LocalDate fecha;
 	protected double precioTotal;
-	private Mantenimiento mantenimiento;
-	// constructor por defecto y de nuevo servicio
 	
+	// constructor por defecto y de nuevo servicio
 	public Servicio() {
+		super();
 	}
 
-
-	public static Servicio nuevoServicio() {
-		Servicio ret = new Servicio();
-		Scanner teclado = new Scanner(System.in);
-
-		System.out.println("id: ");
-		long idServ = 0;
-		idServ = teclado.nextLong();
-		ret.setIdServicios(idServ);
-
-		System.out.println("Notas: ");
-		String notasServ = " ";
-		notasServ = teclado.nextLine();
-		ret.setNotas(notasServ);
-
-		// hay que introducir el precio del servicio ya que por ejemplo un mantenimiento
-		// no se puede calcular el precio.
-		System.out.println("Precio Total: ");
-		double precioTotal = 0.0;
-		precioTotal = teclado.nextDouble();
-		ret.setPrecioTotal(precioTotal);
-		
-
-		// ret.getFecha(); // hay que esperar a que luis explique como se inicializa,
-		// ahora mismo devuelve null con o sin esta linea
-
-		return ret;
+	public Servicio (long idServicio, String notas, LocalDate fecha, double precioTotal) {
+		this.idServicio = idServicio;
+		this.notas = notas;
+		this.fecha = fecha;
+		this.precioTotal = precioTotal;
 	}
+//
+//	public static Servicio nuevoServicio() {
+//		Servicio ret = new Servicio();
+//		Scanner teclado = new Scanner(System.in);
+//
+//		System.out.println("id: ");
+//		long idServ = 0;
+//		idServ = teclado.nextLong();
+//		ret.setIdServicios(idServ);
+//
+//		System.out.println("Notas: ");
+//		String notasServ = " ";
+//		notasServ = teclado.nextLine();
+//		ret.setNotas(notasServ);
+//
+//		// hay que introducir el precio del servicio ya que por ejemplo un mantenimiento
+//		// no se puede calcular el precio.
+//		System.out.println("Precio Total: ");
+//		double precioTotal = 0.0;
+//		precioTotal = teclado.nextDouble();
+//		ret.setPrecioTotal(precioTotal);
+//		
+//
+//		// ret.getFecha(); // hay que esperar a que luis explique como se inicializa,
+//		// ahora mismo devuelve null con o sin esta linea
+//
+//		return ret;
+//	}
 //	public static Servicio nuevoServicioConMantenimiento() {
 //		Servicio ret = new Servicio();
 //		Scanner teclado = new Scanner(System.in);
@@ -71,16 +77,6 @@ public class Servicio {
 //		mantenimiento = ;
 //		return ret.setMantenimiento(mantenimiento); 
 //	}
-
-	public Mantenimiento getMantenimiento() {
-		return mantenimiento;
-	}
-
-
-	public void setMantenimiento(Mantenimiento mantenimiento) {
-		this.mantenimiento = mantenimiento;
-	}
-
 
 	// Getters and setters
 	public long getIdServicios() {
@@ -115,10 +111,9 @@ public class Servicio {
 		this.precioTotal = precioTotal;
 	}
 
-	// To String
 	@Override
 	public String toString() {
-		return "Servicios [idServicios=" + idServicio + ", notas=" + notas + ", fecha=" + fecha + ", precioTotal="
+		return "Servicio [idServicio=" + idServicio + ", notas=" + notas + ", fecha=" + fecha + ", precioTotal="
 				+ precioTotal + "]";
 	}
 

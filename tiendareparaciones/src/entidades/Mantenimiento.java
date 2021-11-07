@@ -2,24 +2,27 @@
 package entidades;
 import java.util.Scanner;
 
-public class Mantenimiento extends Servicio {
+public class Mantenimiento extends Servicio{
 	private double horasTrabajadas;
 	
 	// constructores 	
 	public Mantenimiento() {
 		super();
 	}
-	public Mantenimiento(long idServicio, double precioTotal){
-		super(idServicio, precioTotal);
+	
+	public Mantenimiento(double horasTrabajadas) {
+		this.horasTrabajadas = horasTrabajadas;
 	}
+	
 	public static Mantenimiento nuevoMantenimiento() {
-		Mantenimiento ret = new Mantenimiento();
 		Scanner teclado = new Scanner(System.in);
+		
+		Mantenimiento ret = new Mantenimiento();
 		System.out.println("Cuantas horas duro el mantenimiento?");
 		double horasServ = 0.0;
 		horasServ = teclado.nextDouble();
 		ret.setHorasTrabajadas(horasServ);
-
+				
 		return ret;
 	}
 

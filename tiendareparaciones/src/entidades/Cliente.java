@@ -17,8 +17,10 @@ public class Cliente {
 
 	// Constructores, uno por defecto, uno para registrar un nuevo cliente
 	private Cliente() {
+		super();
 	}
 
+	
 	public static Cliente nuevoCliente() {
 		Cliente ret = new Cliente();
 		Scanner teclado = new Scanner(System.in);
