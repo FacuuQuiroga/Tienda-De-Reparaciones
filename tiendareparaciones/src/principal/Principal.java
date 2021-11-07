@@ -12,12 +12,6 @@ public class Principal {
 		Scanner teclado;/// IMPORTATE PAL TECLADO
 		teclado = new Scanner(System.in);/// IMPORTANTE PAL TECLADO
 		//////////////////////////////////////////////////////////////
-		Servicio caca = Servicio.nuevoServicio();
-		System.out.println(caca);
-		
-		Mantenimiento cacacas= Mantenimiento.nuevoMantenimiento(caca.getIdServicios(), caca.getPrecioTotal());
-		System.out.println(cacacas);
-		
 //	
 //		System.out.println ("Programa de gestion de servicios de una tienda de reparaciones");
 //		System.out.println("Que desea hacer? \n");
