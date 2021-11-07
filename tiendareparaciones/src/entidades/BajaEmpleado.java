@@ -14,6 +14,7 @@ public class BajaEmpleado {
 	public BajaEmpleado() {
 	}
 
+	
 	public BajaEmpleado(long idBaja, LocalDate fechaFin, String motivoBaja) {
 		this.idBaja = idBaja;
 		this.fechaFin = fechaFin;
