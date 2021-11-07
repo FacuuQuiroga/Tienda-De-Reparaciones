@@ -38,4 +38,19 @@ public class Mantenimiento extends Servicio {
 				+ precioTotal + "]";
 	}
 
+	// Getters and setters
+	public double getHorasTrabajadas() {
+		return horasTrabajadas;
+	}
+
+	public void setHorasTrabajadas(double horasTrabajadas) {
+		this.horasTrabajadas = horasTrabajadas;
+	}
+
+	@Override
+	public String toString() {
+		return "Mantenimiento [horasTrabajadas=" + horasTrabajadas + ", idServicio=" + idServicio + ", precioTotal="
+				+ precioTotal + "]";
+	}
+
 }

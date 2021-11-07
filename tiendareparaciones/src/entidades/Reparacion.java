@@ -45,4 +45,27 @@ public class Reparacion {
 		return "Reparacion [idReparacion=" + idReparacion + ", duraciontotal=" + duraciontotal + "]";
 	}
 
+	// getters and setters
+	public long getIdReparacion() {
+		return idReparacion;
+	}
+
+	public void setIdReparacion(long idReparacion) {
+		this.idReparacion = idReparacion;
+	}
+
+	public String getDuraciontotal() {
+		return duraciontotal;
+	}
+
+	public void setDuraciontotal(String duraciontotal) {
+		this.duraciontotal = duraciontotal;
+	}
+
+	// to string
+	@Override
+	public String toString() {
+		return "Reparacion [idReparacion=" + idReparacion + ", duraciontotal=" + duraciontotal + "]";
+	}
+
 }
