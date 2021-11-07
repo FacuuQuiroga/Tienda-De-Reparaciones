@@ -1,5 +1,9 @@
-// hace Facu
+//Facu
 package entidades;
+
+import java.util.Scanner;
+
+import Utils.Utilidades;
 
 public class Cliente {
 
@@ -9,7 +13,49 @@ public class Cliente {
 	private String direccion = "Sin direccion";
 	private String telefono = "Sin telefono disponible";
 	private String numeroTarjeta;
-	private String Cuentacorriente;
+	private String cuentaCorriente;
+
+	// Constructores, uno por defecto, uno para registrar un nuevo cliente
+	private Cliente() {
+	}
+
+	public static Cliente nuevoCliente() {
+		Cliente ret = new Cliente();
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("Introduce los siguientes datos para registrar un Cliente nuevo: ");
+
+		System.out.println("Nombre del cliente");
+		String nombreCl = "";
+		nombreCl = teclado.nextLine();
+		ret.setNombre(nombreCl);
+
+		System.out.println("nif del cliente");
+		String nifCl = "";
+		nifCl = teclado.nextLine();
+		ret.setNif(nifCl);
+
+		System.out.println("direccion del cliente");
+		String dirCl = "";
+		dirCl = teclado.nextLine();
+		ret.setDireccion(dirCl);
+
+		System.out.println("telefono del cliente");
+		String telCl = "";
+		telCl = teclado.nextLine();
+		ret.setTelefono(telCl);
+
+		System.out.println("Numero de tarjeta del cliente");
+		String numTarjCl = "";
+		numTarjCl = teclado.nextLine();
+		ret.setNumeroTarjeta(numTarjCl);
+
+		System.out.println("numero de cuenta del cliente");
+		String cuentaCl = "";
+		cuentaCl = teclado.nextLine();
+		ret.setCuentacorriente(cuentaCl);
+
+		return ret;
+	}
 
 	// Getters , setters and to string
 	public long getIdCliente() {
@@ -61,17 +107,17 @@ public class Cliente {
 	}
 
 	public String getCuentacorriente() {
-		return Cuentacorriente;
+		return cuentaCorriente;
 	}
 
 	public void setCuentacorriente(String cuentacorriente) {
-		Cuentacorriente = cuentacorriente;
+		cuentaCorriente = cuentacorriente;
 	}
 
 	@Override
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", nif=" + nif + ", direccion=" + direccion
-				+ ", telefono=" + telefono + ", numeroTarjeta=" + numeroTarjeta + ", Cuentacorriente=" + Cuentacorriente
+				+ ", telefono=" + telefono + ", numeroTarjeta=" + numeroTarjeta + ", Cuentacorriente=" + cuentaCorriente
 				+ "]";
 	}
 

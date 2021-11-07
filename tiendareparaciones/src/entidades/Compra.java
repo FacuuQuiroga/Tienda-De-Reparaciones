@@ -14,7 +14,8 @@ public class Compra {
 	//indica el computo total del precio de equipo
 	//expresado en numero reales con simbolos de puntuacion
 
-////Getters , setters and to string
+	
+	////Getters , setters and to string
 	public long getIdEquipo() {
 		return idCompra;
 	}
