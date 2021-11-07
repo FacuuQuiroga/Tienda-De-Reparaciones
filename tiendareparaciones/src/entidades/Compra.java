@@ -16,11 +16,11 @@ public class Compra {
 
 ////Getters , setters and to string
 	public long getIdEquipo() {
-		return idEquipo;
+		return idCompra;
 	}
 
 	public void setIdEquipo(long idEquipo) {
-		this.idEquipo = idEquipo;
+		this.idCompra = idEquipo;
 	}
 
 	public char getMetodoDePago() {
@@ -42,7 +42,7 @@ public class Compra {
 	// to string
 	@Override
 	public String toString() {
-		return "Compra [idEquipo=" + idEquipo + ", metodoDePago=" + metodoDePago + ", precioTotal=" + precioTotal + "]";
+		return "Compra [idCompra=" + idCompra + ", metodoDePago=" + metodoDePago + ", precioTotal=" + precioTotal + "]";
 	}
 
 }
