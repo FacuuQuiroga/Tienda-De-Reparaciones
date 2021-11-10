@@ -49,6 +49,14 @@ public class Grupo {
 		this.nombreGrupo = nombreGrupo;
 	}
 
+	public EmpleadoTaller[] getEmpleadosTaller() {
+		return empleadosTaller;
+	}
+
+	public void setEmpleadosTaller(EmpleadoTaller[] empleadosTaller) {
+		this.empleadosTaller = empleadosTaller;
+	}
+
 	@Override
 	public String toString() {
 		return "Grupo [nombreGrupo=" + nombreGrupo + ", empleadosTaller=" + Arrays.toString(empleadosTaller) + "]";

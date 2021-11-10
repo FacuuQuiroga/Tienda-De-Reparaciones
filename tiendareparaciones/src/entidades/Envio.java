@@ -119,6 +119,14 @@ public class Envio extends Servicio {
 		this.destino = destino;
 	}
 
+	public long getIdEmpleadoRepartidor() {
+		return idEmpleadoRepartidor;
+	}
+
+	public void setIdEmpleadoRepartidor(long idEmpleadoRepartidor) {
+		this.idEmpleadoRepartidor = idEmpleadoRepartidor;
+	}
+
 	@Override
 	public String toString() {
 		return "Envio [idEnvio=" + idEnvio + ", fechaEnvio=" + fechaEnvio + ", gratuito=" + gratuito + ", destino="

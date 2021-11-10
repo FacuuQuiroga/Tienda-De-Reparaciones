@@ -55,6 +55,14 @@ public class EmpleadoTaller extends Empleado {
 		this.senior = senior;
 	}
 
+	public Grupo[] getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(Grupo[] grupos) {
+		this.grupos = grupos;
+	}
+
 	@Override
 	public String toString() {
 		return "EmpleadoTaller [senior=" + senior + ", grupos=" + Arrays.toString(grupos) + "]";
