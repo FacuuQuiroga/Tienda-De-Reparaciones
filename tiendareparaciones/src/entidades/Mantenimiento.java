@@ -1,17 +1,20 @@
 //Facu
 package entidades;
+
 import java.util.Scanner;
 
 public class Mantenimiento extends Servicio {
 	private double horasTrabajadas;
-	
-	// constructores 	
+
+	// constructores
 	public Mantenimiento() {
 		super();
 	}
-	public Mantenimiento(long idServicio, double precioTotal){
+
+	public Mantenimiento(long idServicio, double precioTotal) {
 		super(idServicio, precioTotal);
 	}
+
 	public static Mantenimiento nuevoMantenimiento() {
 		Mantenimiento ret = new Mantenimiento();
 		Scanner teclado = new Scanner(System.in);
@@ -21,21 +24,6 @@ public class Mantenimiento extends Servicio {
 		ret.setHorasTrabajadas(horasServ);
 
 		return ret;
-	}
-
-	// Getters and setters
-	public double getHorasTrabajadas() {
-		return horasTrabajadas;
-	}
-
-	public void setHorasTrabajadas(double horasTrabajadas) {
-		this.horasTrabajadas = horasTrabajadas;
-	}
-
-	@Override
-	public String toString() {
-		return "Mantenimiento [horasTrabajadas=" + horasTrabajadas + ", idServicio=" + idServicio + ", precioTotal="
-				+ precioTotal + "]";
 	}
 
 	// Getters and setters
