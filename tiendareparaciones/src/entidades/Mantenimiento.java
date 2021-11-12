@@ -1,12 +1,17 @@
-//Facu
+/*Facu*/
 package entidades;
 
 import java.util.Scanner;
 
 public class Mantenimiento extends Servicio {
+	/*
+	 * no podran ser mas de 24 horas, se contaran unicamente las horas de trabajo
+	 * real, no las de espera de un repuesto por ejemplo, ni del tiempo en el que se
+	 * tiene el dispositivo a reparar
+	 */
 	private double horasTrabajadas;
 
-	// constructores
+	/* constructores */
 	public Mantenimiento() {
 		super();
 	}
@@ -26,7 +31,7 @@ public class Mantenimiento extends Servicio {
 		return ret;
 	}
 
-	// Getters and setters
+	/* Getters and setters */
 	public double getHorasTrabajadas() {
 		return horasTrabajadas;
 	}
