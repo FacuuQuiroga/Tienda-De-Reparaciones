@@ -11,6 +11,9 @@ public class Servicio {
 	private String notas;
 	private LocalDate fecha;
 	protected double precioTotal;
+	
+	/* Para el autocalculo del id */
+	long numServicio = 0;
 
 	/* constructores */
 	// por defecto
@@ -20,7 +23,6 @@ public class Servicio {
 	// para heredar a Mantenimiento
 	public Servicio(long idServicio, double precioTotal) {
 		/* autocalculo del id */
-		long numServicio = 0;
 		numServicio++;
 		this.idServicio = numServicio;
 		this.precioTotal = precioTotal;

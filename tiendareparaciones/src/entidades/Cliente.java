@@ -22,12 +22,14 @@ public class Cliente {
 	private String telefono = "Sin telefono disponible";
 	private String numeroTarjeta;
 	private String cuentaCorriente;
+	
+	/* Para el autocalculo del id */
+	long numPersona = 0;
 
 	/* Constructores */
 	// por defecto
 	private Cliente() {
 		/* para autocalculo del idCliente */
-		long numPersona = 0;
 		numPersona++;
 		this.idCliente = numPersona;
 	}
