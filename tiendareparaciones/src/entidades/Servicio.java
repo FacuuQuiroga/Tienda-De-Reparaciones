@@ -1,4 +1,4 @@
-//Facu
+/*Facu*/
 package entidades;
 
 import java.time.LocalDate;
@@ -12,29 +12,25 @@ public class Servicio {
 	private LocalDate fecha;
 	protected double precioTotal;
 
-	/* constructor por defecto y de nuevo servicio */
-	public Servicio(long idServicio, double precioTotal) {
-		super();
-		/* autocalculo del id */
-		long numServicio = 0;
-		numServicio++;
-		this.idServicio = numServicio;
+	/* constructores */
+	// por defecto
+	public Servicio() {
 	}
 
-	public Servicio() {
-		this.idServicio = idServicio;
-		this.notas = notas;
-		this.fecha = fecha;
-		this.precioTotal = precioTotal;
+	// para heredar a Mantenimiento
+	public Servicio(long idServicio, double precioTotal) {
 		/* autocalculo del id */
 		long numServicio = 0;
 		numServicio++;
 		this.idServicio = numServicio;
+		this.precioTotal = precioTotal;
 	}
 
 	public static Servicio nuevoServicio() {
-		Servicio ret = new Servicio(0, 0);
+		/* instancia del teclado */
 		Scanner teclado = new Scanner(System.in);
+		/* nueva instancia de Servicio */
+		Servicio ret = new Servicio(0, 0);
 
 		System.out.println("Notas: ");
 		String notasServ = " ";
@@ -59,32 +55,6 @@ public class Servicio {
 
 		return ret;
 	}
-//	public static Servicio nuevoServicioDeMantenimiento() {
-//		Servicio ret = new Servicio();
-//		Scanner teclado = new Scanner(System.in);
-//
-//		System.out.println("id: ");
-//		long idServ = 0;
-//		idServ = teclado.nextLong();
-//		ret.setIdServicios(idServ);
-//
-//		System.out.println("Notas: ");
-//		String notasServ = " ";
-//		notasServ = teclado.nextLine();
-//		ret.setNotas(notasServ);
-//
-//		// hay que introducir el precio del servicio ya que por ejemplo un mantenimiento
-//		// no se puede calcular el precio.
-//		System.out.println("Precio Total: ");
-//		double precioTotal = 0.0;
-//		precioTotal = teclado.nextDouble();
-//		ret.setPrecioTotal(precioTotal);
-//
-//		System.out.println("introduzca nuevo mant");
-//		String mantenimiento. = null;
-//		mantenimiento = ;
-//		return ret.setMantenimiento(mantenimiento); 
-//	}
 
 	/* Getters, setters y to string */
 	public long getIdServicios() {
