@@ -11,13 +11,17 @@ public class Servicio {
 	private String notas;
 	private LocalDate fecha;
 	protected double precioTotal;
-	
+	/* Para relacion 1-N con Cliente */
+	private Cliente cliente;
+
 	/* Para el autocalculo del id */
 	long numServicio = 0;
 
 	/* constructores */
 	// por defecto
 	public Servicio() {
+		numServicio++;
+		this.idServicio = numServicio;
 	}
 
 	// para heredar a Mantenimiento
@@ -32,7 +36,7 @@ public class Servicio {
 		/* instancia del teclado */
 		Scanner teclado = new Scanner(System.in);
 		/* nueva instancia de Servicio */
-		Servicio ret = new Servicio(0, 0);
+		Servicio ret = new Servicio();
 
 		System.out.println("Notas: ");
 		String notasServ = " ";
@@ -97,6 +101,30 @@ public class Servicio {
 
 	public void setPrecioTotal(double precioTotal) {
 		this.precioTotal = precioTotal;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public long getNumServicio() {
+		return numServicio;
+	}
+
+	public void setNumServicio(long numServicio) {
+		this.numServicio = numServicio;
 	}
 
 	@Override
