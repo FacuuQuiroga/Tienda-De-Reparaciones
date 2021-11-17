@@ -23,20 +23,35 @@ public class Cliente {
 	private String numeroTarjeta;
 	private String cuentaCorriente;
 
-	/* Constructores, uno por defecto, uno para registrar un nuevo cliente */
+	/* Constructores */
+	// por defecto
 	private Cliente() {
-		super();
 		/* para autocalculo del idCliente */
 		long numPersona = 0;
 		numPersona++;
 		this.idCliente = numPersona;
 	}
 
+	// Para heredar cliente con servicio
+	private Cliente(long idCliente, String nombre, String nif, String direccion, String telefono, String numeroTarjeta,
+			String cuentaCorriente) {
+		long numPersona = 0;
+		numPersona++;
+		this.idCliente = numPersona;
+		this.nombre = nombre;
+		this.nif = nif;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.numeroTarjeta = numeroTarjeta;
+		this.cuentaCorriente = cuentaCorriente;
+
+	}
+
+	// Para registrar un nuevo Cliente
 	public static Cliente nuevoCliente() {
 		/* instancia para el teclado */
 		Cliente ret = new Cliente();
 		Scanner teclado = new Scanner(System.in);
-		
 
 //		boolean idClienteValido = false;
 //		long idValidado = idCliente;
@@ -98,7 +113,7 @@ public class Cliente {
 			System.out.println("Numero de cuenta del cliente: ");
 			cuentaCorrienteCl = teclado.nextLine();
 			cuentaCorrienteValida = Validador.ValidarCuentaCorriente(cuentaCorrienteCl);
-		}while(!cuentaCorrienteValida);		
+		} while (!cuentaCorrienteValida);
 		ret.setCuentacorriente(cuentaCorrienteCl);
 
 		return ret;
