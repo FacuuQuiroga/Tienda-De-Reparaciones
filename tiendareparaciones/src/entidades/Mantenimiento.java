@@ -12,13 +12,14 @@ public class Mantenimiento extends Servicio {
 	private double horasTrabajadas;
 
 	/* constructores */
-	// por defecto
+	// por defecto con super para que herede
 	public Mantenimiento() {
+		super();
 	}
 
 	// para herencia de Servicio
-	public Mantenimiento(long idServicio, double precioTotal) {
-		super(idServicio, precioTotal);
+	public Mantenimiento(Mantenimiento mantServ, double horasTrabajadas) {
+		super(mantServ);
 		this.horasTrabajadas = horasTrabajadas;
 	}
 

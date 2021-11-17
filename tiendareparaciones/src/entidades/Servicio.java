@@ -18,14 +18,22 @@ public class Servicio {
 	long numServicio = 0;
 
 	/* constructores */
-	// por defecto
 	public Servicio() {
 		numServicio++;
 		this.idServicio = numServicio;
 	}
 
-	// para heredar a Mantenimiento
-	public Servicio(long idServicio, double precioTotal) {
+	public Servicio(long idServicio, String notas, LocalDate fecha, double precioTotal) {
+		/* autocalculo del id */
+		numServicio++;
+		this.notas = notas;
+		this.fecha = fecha;
+		this.precioTotal = precioTotal;
+		this.idServicio = numServicio;
+	}
+
+	/* Para heredar a mantenimiento */
+	public Servicio(Mantenimiento mantServ) {
 		/* autocalculo del id */
 		numServicio++;
 		this.idServicio = numServicio;
