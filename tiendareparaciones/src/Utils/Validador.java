@@ -74,7 +74,7 @@ public class Validador {
 
 	public static boolean validarTarjeta(String tarjeta) {
 		/* 1.Condicion: contara con 16 caracteres obligatoriamente */
-		if (tarjeta.length() == 16)
+		if (tarjeta.length() == 17)// si pongo 16 solamente se puede poner 15 caracteres
 			return false;
 		return true;
 	}
