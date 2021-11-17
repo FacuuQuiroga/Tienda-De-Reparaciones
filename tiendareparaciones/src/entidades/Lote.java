@@ -13,8 +13,16 @@ public class Lote {
 	protected double precioTotal = 0;
 	//indica el computo total del calcula entre descuento y precio de equipo
 	//expresado en numero reales con simbolos de puntuacion
-
-////Getters , setters and to string
+	
+	
+	public Envio(long idLote, double descuento, double precioTotal) {
+		super(idLote, descuento, precioTotal);
+		this.idLote = idLote;
+		this.descuento = descuento;
+		this.precioTotal = precioTotal;
+		
+	
+	////Getters , setters and to string
 	public long getIdLote() {
 		return idLote;
 	}
