@@ -12,17 +12,27 @@ public class Mantenimiento extends Servicio {
 	private double horasTrabajadas;
 
 	/* constructores */
+	// por defecto
 	public Mantenimiento() {
-		super();
 	}
 
+	// para herencia de Servicio
 	public Mantenimiento(long idServicio, double precioTotal) {
 		super(idServicio, precioTotal);
+		this.horasTrabajadas = horasTrabajadas;
+	}
+
+	// para heredar a Reparacion
+	public Mantenimiento(double horasTrabajadas) {
+		this.horasTrabajadas = horasTrabajadas;
 	}
 
 	public static Mantenimiento nuevoMantenimiento() {
-		Mantenimiento ret = new Mantenimiento();
+		/* instancia del teclado */
 		Scanner teclado = new Scanner(System.in);
+		/* nueva instancia de Mantenimiento */
+		Mantenimiento ret = new Mantenimiento();
+
 		System.out.println("Cuantas horas duro el mantenimiento?");
 		double horasServ = 0.0;
 		horasServ = teclado.nextDouble();
