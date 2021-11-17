@@ -4,25 +4,24 @@ package entidades;
 import java.util.Scanner;
 
 public class Reparacion extends Mantenimiento {
+	/* id reparacion se autocalcula solo */
 	private long idReparacion;
 	private String duraciontotal;
 
 	/* Constructores */
+	// por defecto
 	public Reparacion() {
+	}
+
+	// Para herencia de Mantenimiento
+	public Reparacion(double horasTrabajadas) {
+		super(horasTrabajadas);
 		long numReparacion = 0;
 		numReparacion++;
 		this.idReparacion = numReparacion;
 	}
 
-	public Reparacion(long idReparaciones, String duracionTotal) {
-		this.idReparacion = idReparaciones;
-		this.duraciontotal = duracionTotal;
-		long numReparacion = 0;
-		numReparacion++;
-		this.idReparacion = numReparacion;
-		
-	}
-
+	/*Para crear un nuevo registro de reparacion*/
 	public static Reparacion nuevaReparacion() {
 		Reparacion ret = new Reparacion();
 		Scanner teclado = new Scanner(System.in);
@@ -32,7 +31,7 @@ public class Reparacion extends Mantenimiento {
 		ret.setDuraciontotal(duracionRep);
 
 		return ret;
-	}
+ 	}
 
 	// getters, setters y to string*/
 	public long getIdReparacion() {
