@@ -1,65 +1,127 @@
-//Facu
+/*Facu*/
 package entidades;
 
 import java.util.Scanner;
-
-import Utils.Utilidades;
+import Utils.Validador;
 
 public class Cliente {
 
+	/* id de cliente, sirve para identificarlo, se autocalcula. */
 	private long idCliente = 0;
+	/*
+	 * nombre representa el nombre de el nuevo cliente, no acepta numeros ni
+	 * caracteres especiales, max 25 caracteres.
+	 */
 	private String nombre = "Sin nombre";
+	/*
+	 * nif del cliente, no puede repetirse entre clientes, podria ser clave
+	 * secundaria, es obligatorio
+	 */
 	private String nif;
 	private String direccion = "Sin direccion";
 	private String telefono = "Sin telefono disponible";
 	private String numeroTarjeta;
 	private String cuentaCorriente;
+	
+	/* Para el autocalculo del id */
+	long numPersona = 0;
 
-	// Constructores, uno por defecto, uno para registrar un nuevo cliente
+	/* Constructores */
+	// por defecto
 	private Cliente() {
-		super();
+		/* para autocalculo del idCliente */
+		numPersona++;
+		this.idCliente = numPersona;
 	}
 
-	
+	// Para heredar cliente con servicio
+	private Cliente(long idCliente, String nombre, String nif, String direccion, String telefono, String numeroTarjeta,
+			String cuentaCorriente) {
+		long numPersona = 0;
+		numPersona++;
+		this.idCliente = numPersona;
+		this.nombre = nombre;
+		this.nif = nif;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.numeroTarjeta = numeroTarjeta;
+		this.cuentaCorriente = cuentaCorriente;
+
+	}
+
+	// Para registrar un nuevo Cliente
 	public static Cliente nuevoCliente() {
+		/* instancia para el teclado */
 		Cliente ret = new Cliente();
 		Scanner teclado = new Scanner(System.in);
-		System.out.println("Introduce los siguientes datos para registrar un Cliente nuevo: ");
 
-		System.out.println("Nombre del cliente");
+//		boolean idClienteValido = false;
+//		long idValidado = idCliente;
+//		do {
+//			idClienteValido = Validador.validarId(idValidado);
+//		}while (!idClienteValido);
+
+		System.out.println("Introduce los siguientes datos para registrar un Cliente nuevo:" + "\n");
 		String nombreCl = "";
-		nombreCl = teclado.nextLine();
+		/* para validar el nombre sea correcto, declarado en la clase Validador */
+		boolean nombreValido = false;
+		do {
+			System.out.println(
+					"Nombre del cliente: (la primera letra en mayuscula y separando los nombres y apellidos con espacios)");
+			nombreCl = teclado.nextLine();
+			nombreValido = Validador.validarNombre(nombreCl);
+		} while (!nombreValido);
 		ret.setNombre(nombreCl);
 
-		System.out.println("nif del cliente");
 		String nifCl = "";
-		nifCl = teclado.nextLine();
+		boolean nifValido = false;
+		do {
+			System.out.println("Nif del cliente: (unicamente 8 numeros y 1 letra)");
+			nifCl = teclado.nextLine();
+			nifValido = Validador.validarNif(nifCl);
+		} while (!nifValido);
 		ret.setNif(nifCl);
 
-		System.out.println("direccion del cliente");
-		String dirCl = "";
-		dirCl = teclado.nextLine();
-		ret.setDireccion(dirCl);
+		String direccionCl = null;
+		boolean direccionClValido = false;
+		do {
+			System.out.println("direccion del cliente: (maximo 40 caracteres y minimo 5)");
+			direccionCl = teclado.nextLine();
+			direccionClValido = Validador.validarDir(direccionCl);
+		} while (!direccionClValido);
+		ret.setDireccion(direccionCl);
 
-		System.out.println("telefono del cliente");
-		String telCl = "";
-		telCl = teclado.nextLine();
+		String telCl = null;
+		boolean telClValido = false;
+		do {
+			System.out.println("telefono del cliente: (maximo 9 numeros: xxx xx xx xx");
+			telCl = teclado.nextLine();
+			telClValido = Validador.validarTel(telCl);
+		} while (!telClValido);
 		ret.setTelefono(telCl);
 
-		System.out.println("Numero de tarjeta del cliente");
-		String numTarjCl = "";
-		numTarjCl = teclado.nextLine();
+		String numTarjCl = null;
+		boolean numTarjValido = false;
+		do {
+			System.out.println("Numero de tarjeta del cliente: (16 caracteres incluido el codigo del pais)");
+			numTarjCl = teclado.nextLine();
+			numTarjValido = Validador.validarTarjeta(numTarjCl);
+		} while (!numTarjValido);
 		ret.setNumeroTarjeta(numTarjCl);
 
-		System.out.println("numero de cuenta del cliente");
-		String cuentaCl = "";
-		cuentaCl = teclado.nextLine();
-		ret.setCuentacorriente(cuentaCl);
+		String cuentaCorrienteCl = null;
+		boolean cuentaCorrienteValida = false;
+		do {
+			System.out.println("Numero de cuenta del cliente: ");
+			cuentaCorrienteCl = teclado.nextLine();
+			cuentaCorrienteValida = Validador.ValidarCuentaCorriente(cuentaCorrienteCl);
+		} while (!cuentaCorrienteValida);
+		ret.setCuentacorriente(cuentaCorrienteCl);
 
 		return ret;
 	}
 
-	// Getters , setters and to string
+	/* Getters , setters y to string */
 	public long getIdCliente() {
 		return idCliente;
 	}

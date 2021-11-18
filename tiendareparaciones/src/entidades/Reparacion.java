@@ -1,36 +1,42 @@
-//Facu
+/*Facu*/
 package entidades;
 
 import java.util.Scanner;
 
 public class Reparacion extends Mantenimiento {
+	/* id reparacion se autocalcula solo */
 	private long idReparacion;
 	private String duraciontotal;
-			
-	// Constructor
-	public Reparacion() {
-	}
-	
-	public Reparacion(long idReparaciones, String duracionTotal){
-		this.idReparacion = idReparaciones;
-		this.duraciontotal = duracionTotal;
-		super.nuevoMantenimiento();
-	}
-	
 
+	/* Para el autocalculo del id */
+	long numReparacion = 0;
+
+	/* Constructores */
+	// por defecto
+	public Reparacion() {
+		numReparacion++;
+		this.idReparacion = numReparacion;
+	}
+
+	// Para herencia de Mantenimiento
+	public Reparacion(double horasTrabajadas) {
+		super(horasTrabajadas);
+
+	}
+
+	/* Para crear un nuevo registro de reparacion */
 	public static Reparacion nuevaReparacion() {
 		Reparacion ret = new Reparacion();
 		Scanner teclado = new Scanner(System.in);
 
 		System.out.println("duracion total de la reparacion: ");
-		// String duracionRep2 = "";
 		String duracionRep = teclado.nextLine();
 		ret.setDuraciontotal(duracionRep);
 
 		return ret;
 	}
 
-	// getters and setters
+	// getters, setters y to string*/
 	public long getIdReparacion() {
 		return idReparacion;
 	}
@@ -47,7 +53,6 @@ public class Reparacion extends Mantenimiento {
 		this.duraciontotal = duraciontotal;
 	}
 
-	// to string
 	@Override
 	public String toString() {
 		return "Reparacion [idReparacion=" + idReparacion + ", duraciontotal=" + duraciontotal + "]";

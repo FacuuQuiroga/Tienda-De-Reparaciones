@@ -1,23 +1,38 @@
-//Facu
+/*Facu*/
 package entidades;
 
 import java.util.Scanner;
 
 public class Mantenimiento extends Servicio {
+	/*
+	 * no podran ser mas de 24 horas, se contaran unicamente las horas de trabajo
+	 * real, no las de espera de un repuesto por ejemplo, ni del tiempo en el que se
+	 * tiene el dispositivo a reparar
+	 */
 	private double horasTrabajadas;
 
-	// constructores
+	/* constructores */
+	// por defecto
 	public Mantenimiento() {
-		super();
 	}
 
+	// para herencia de Servicio
 	public Mantenimiento(long idServicio, double precioTotal) {
 		super(idServicio, precioTotal);
+		this.horasTrabajadas = horasTrabajadas;
+	}
+
+	// para heredar a Reparacion
+	public Mantenimiento(double horasTrabajadas) {
+		this.horasTrabajadas = horasTrabajadas;
 	}
 
 	public static Mantenimiento nuevoMantenimiento() {
-		Mantenimiento ret = new Mantenimiento();
+		/* instancia del teclado */
 		Scanner teclado = new Scanner(System.in);
+		/* nueva instancia de Mantenimiento */
+		Mantenimiento ret = new Mantenimiento();
+
 		System.out.println("Cuantas horas duro el mantenimiento?");
 		double horasServ = 0.0;
 		horasServ = teclado.nextDouble();
@@ -26,7 +41,7 @@ public class Mantenimiento extends Servicio {
 		return ret;
 	}
 
-	// Getters and setters
+	/* Getters and setters */
 	public double getHorasTrabajadas() {
 		return horasTrabajadas;
 	}
