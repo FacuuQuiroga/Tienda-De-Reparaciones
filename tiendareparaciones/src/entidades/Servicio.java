@@ -33,11 +33,26 @@ public class Servicio {
 	}
 
 	/* Para heredar a mantenimiento */
-	public Servicio(Mantenimiento mantServ) {
+	public Servicio(Mantenimiento servMantenimiento) {
 		/* autocalculo del id */
 		numServicio++;
 		this.idServicio = numServicio;
 		this.precioTotal = precioTotal;
+	}
+
+	/* Para heredar a Compra */
+	public Servicio(Compra servCompra) {
+		/* autocalculo del id */
+		numServicio++;
+		this.idServicio = numServicio;
+		this.precioTotal = precioTotal;
+	}
+	
+	/* Para heredar a Envio */
+	public Servicio(Envio servEnvio) {
+		/* autocalculo del id */
+		numServicio++;
+		this.idServicio = numServicio;
 	}
 
 	public static Servicio nuevoServicio() {
