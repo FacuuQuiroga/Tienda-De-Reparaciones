@@ -4,17 +4,16 @@ package entidades;
 public class Lote {
 
 	private long idLote = 0;
-	//idEquipo es el identificador del elemento lote
-	//valor entero > 0
-	//y valor por defecto 0
+	// idEquipo es el identificador del elemento lote
+	// valor entero > 0
+	// y valor por defecto 0
 	private double descuento = 0;
-	//indica el computo que se calcula de un porcentaje de lote
-	//expresado en numero reales con simbolos de puntuacion
+	// indica el computo que se calcula de un porcentaje de lote
+	// expresado en numero reales con simbolos de puntuacion
 	protected double precioTotal = 0;
-	//indica el computo total del calcula entre descuento y precio de equipo
-	//expresado en numero reales con simbolos de puntuacion
-	
-	
+	// indica el computo total del calcula entre descuento y precio de equipo
+	// expresado en numero reales con simbolos de puntuacion
+
 	public Envio(long idLote, double descuento, double precioTotal) {
 		super(idLote, descuento, precioTotal);
 		this.idLote = idLote;

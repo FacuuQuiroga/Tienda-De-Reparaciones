@@ -4,17 +4,16 @@ package entidades;
 public class Compra {
 
 	private long idCompra = 0;
-	//idEquipo es el identificador del elemento compra
-	//valor entero > 0
-	//y valor por defecto 0
+	// idEquipo es el identificador del elemento compra
+	// valor entero > 0
+	// y valor por defecto 0
 	private char metodoDePago = 'A';
-	//metodoDePago expresa la modalidad de dicho pago
-	//se expresa en caracteres
+	// metodoDePago expresa la modalidad de dicho pago
+	// se expresa en caracteres
 	protected double precioTotal = 0;
-	//indica el computo total del precio de equipo
-	//expresado en numero reales con simbolos de puntuacion
-	
-	
+	// indica el computo total del precio de equipo
+	// expresado en numero reales con simbolos de puntuacion
+
 	private Compra(long idCompra, char metodoDePago, double precioTotal) {
 		long idCompra = 0;
 		numCompra++;
@@ -41,8 +40,7 @@ public class Compra {
 		/* para validar el nombre sea correcto, declarado en la clase Validador */
 		boolean nombreValido = false;
 		do {
-			System.out.println(
-					"Compra: (secuencia en numeros)");
+			System.out.println("Compra: (secuencia en numeros)");
 			compraCl = teclado.nextLine();
 			nombreValido = Validador.validarNombre(nombreCl);
 		} while (!compraValida);
@@ -66,12 +64,9 @@ public class Compra {
 		} while (!precioTotalClValido);
 		ret.setPrecioTotaln(PrecioTotalCl);
 
-		
 	}
 
-
-	
-	////Getters , setters and to string
+	//// Getters , setters and to string
 	public long getIdEquipo() {
 		return idCompra;
 	}
@@ -103,5 +98,3 @@ public class Compra {
 	}
 
 }
-
-

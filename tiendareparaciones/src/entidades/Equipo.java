@@ -4,28 +4,25 @@ package entidades;
 public class Equipo {
 
 	private long idEquipo = 0;
-	//idEquipo es el identificador del elemento equipo
-	//valor entero > 0
-	//y valor por defecto 0
+	// idEquipo es el identificador del elemento equipo
+	// valor entero > 0
+	// y valor por defecto 0
 	private double precio = 0;
-	//precio expresado en numeros reales
+	// precio expresado en numeros reales
 	private String modelo = "Sin modelo disponible";
-	//modelo es la expresion que identifica el modelo de equipo
-	//expresado en cadenas de caracteres
+	// modelo es la expresion que identifica el modelo de equipo
+	// expresado en cadenas de caracteres
 
-	
 	public Equipo(long idEquipo, double precio, String modelo) {
 		this.idEquipo = idEquipo;
 		this.precio = precio;
 		this.modelo = modelo;
-		
+
 	}
-	
-	
-	
+
 	public static Equipo nuevoClase() {
 		equipo Equipo = new equipo();
-		
+
 		Scanner teclado = new Scanner(System.in);
 
 		System.out.println("id: ");
@@ -37,21 +34,17 @@ public class Equipo {
 		double precio = " 0 ";
 		precio = teclado.nextLine();
 		precio.setPrecio(calculoPrecio);
-		
+
 		System.out.println("nombre de modelo: ");
 		String modelo = " ";
 		modelo = teclado.nextLine();
 		modelo.setModelo(modelo);
-		
-		
+
 		System.out.println(Equipo.toString());
-		
+
 		return Equipo;
 	}
-	
-	
-	
-	
+
 ////Getters , setters and to string
 	public long getIdEquipo() {
 		return idEquipo;
