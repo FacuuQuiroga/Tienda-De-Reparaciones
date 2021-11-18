@@ -13,6 +13,45 @@ public class Equipo {
 	//modelo es la expresion que identifica el modelo de equipo
 	//expresado en cadenas de caracteres
 
+	
+	public Equipo(long idEquipo, double precio, String modelo) {
+		this.idEquipo = idEquipo;
+		this.precio = precio;
+		this.modelo = modelo;
+		
+	}
+	
+	
+	
+	public static Equipo nuevoClase() {
+		equipo Equipo = new equipo();
+		
+		Scanner teclado = new Scanner(System.in);
+
+		System.out.println("id: ");
+		long idEquipo = 0;
+		idEmpl = teclado.nextLong();
+		equipo.setidEquipo(idEmpl);
+
+		System.out.println("precio: ");
+		double precio = " 0 ";
+		precio = teclado.nextLine();
+		precio.setPrecio(calculoPrecio);
+		
+		System.out.println("nombre de modelo: ");
+		String modelo = " ";
+		modelo = teclado.nextLine();
+		modelo.setModelo(modelo);
+		
+		
+		System.out.println(Equipo.toString());
+		
+		return Equipo;
+	}
+	
+	
+	
+	
 ////Getters , setters and to string
 	public long getIdEquipo() {
 		return idEquipo;
