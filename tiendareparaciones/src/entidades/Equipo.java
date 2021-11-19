@@ -13,6 +13,10 @@ public class Equipo {
 	// modelo es la expresion que identifica el modelo de equipo
 	// expresado en cadenas de caracteres
 
+	public Equipo() {
+		
+	}
+	
 	public Equipo(long idEquipo, double precio, String modelo) {
 		this.idEquipo = idEquipo;
 		this.precio = precio;

@@ -13,6 +13,10 @@ public class Compra {
 	protected double precioTotal = 0;
 	// indica el computo total del precio de equipo
 	// expresado en numero reales con simbolos de puntuacion
+	
+	public Compra() {
+		
+	}
 
 	private Compra(long idCompra, char metodoDePago, double precioTotal) {
 		long idCompra = 0;
@@ -23,7 +27,7 @@ public class Compra {
 
 	}
 
-	// Para registrar un nuevo Compra
+	// Para registrar una nueva Compra
 	public static Compra nuevaCompra() {
 		/* instancia para el teclado */
 		Compra ret = new Compra();
