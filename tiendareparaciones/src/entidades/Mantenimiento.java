@@ -2,6 +2,7 @@
 package entidades;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Mantenimiento extends Servicio {
 	/*
@@ -10,15 +11,26 @@ public class Mantenimiento extends Servicio {
 	 * tiene el dispositivo a reparar
 	 */
 	private double horasTrabajadas;
+	/* para relacion de Mantenimiento y Reparacion */
+	private ArrayList<Reparacion> reparacion = new ArrayList<Reparacion>();
 
 	/* constructores */
-	// por defecto
+	// por defecto con super para que herede
 	public Mantenimiento() {
+		super();
+	}
+
+	public ArrayList<Reparacion> getReparacion() {
+		return reparacion;
+	}
+
+	public void setReparacion(ArrayList<Reparacion> reparacion) {
+		this.reparacion = reparacion;
 	}
 
 	// para herencia de Servicio
-	public Mantenimiento(long idServicio, double precioTotal) {
-		super(idServicio, precioTotal);
+	public Mantenimiento(Mantenimiento servMantenimiento, double horasTrabajadas) {
+		super(servMantenimiento);
 		this.horasTrabajadas = horasTrabajadas;
 	}
 

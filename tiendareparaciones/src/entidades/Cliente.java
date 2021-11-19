@@ -22,7 +22,7 @@ public class Cliente {
 	private String telefono = "Sin telefono disponible";
 	private String numeroTarjeta;
 	private String cuentaCorriente;
-	
+
 	/* Para el autocalculo del id */
 	long numPersona = 0;
 
@@ -35,17 +35,27 @@ public class Cliente {
 	}
 
 	// Para heredar cliente con servicio
-	private Cliente(long idCliente, String nombre, String nif, String direccion, String telefono, String numeroTarjeta,
-			String cuentaCorriente) {
-		long numPersona = 0;
+	public Cliente(String numeroTarjeta, String cuentaCorriente) {
+		this.numeroTarjeta = numeroTarjeta;
+		this.cuentaCorriente = cuentaCorriente;
+	}
+
+	// Para utilizar con la clase Datos
+	public Cliente(String nombre, String nif, String direccion, String telefono) {
 		numPersona++;
 		this.idCliente = numPersona;
 		this.nombre = nombre;
 		this.nif = nif;
 		this.direccion = direccion;
 		this.telefono = telefono;
-		this.numeroTarjeta = numeroTarjeta;
-		this.cuentaCorriente = cuentaCorriente;
+	}
+
+	/* Para relacion 1-N con Servicio */
+	public Servicio nuevoServicio() {
+		Servicio s = new Servicio();
+		s.setCliente(this);
+		s = Servicio.nuevoServicio();
+		return s;
 
 	}
 
@@ -54,12 +64,6 @@ public class Cliente {
 		/* instancia para el teclado */
 		Cliente ret = new Cliente();
 		Scanner teclado = new Scanner(System.in);
-
-//		boolean idClienteValido = false;
-//		long idValidado = idCliente;
-//		do {
-//			idClienteValido = Validador.validarId(idValidado);
-//		}while (!idClienteValido);
 
 		System.out.println("Introduce los siguientes datos para registrar un Cliente nuevo:" + "\n");
 		String nombreCl = "";
@@ -176,6 +180,22 @@ public class Cliente {
 
 	public void setCuentacorriente(String cuentacorriente) {
 		cuentaCorriente = cuentacorriente;
+	}
+
+	public String getCuentaCorriente() {
+		return cuentaCorriente;
+	}
+
+	public void setCuentaCorriente(String cuentaCorriente) {
+		this.cuentaCorriente = cuentaCorriente;
+	}
+
+	public long getNumPersona() {
+		return numPersona;
+	}
+
+	public void setNumPersona(long numPersona) {
+		this.numPersona = numPersona;
 	}
 
 	@Override
