@@ -11,28 +11,55 @@ public class Servicio {
 	private String notas;
 	private LocalDate fecha;
 	protected double precioTotal;
-	
+	/* Para relacion 1-N con Cliente */
+	private Cliente cliente;
+
 	/* Para el autocalculo del id */
 	long numServicio = 0;
 
 	/* constructores */
-	// por defecto
 	public Servicio() {
+		numServicio++;
+		this.idServicio = numServicio;
 	}
 
-	// para heredar a Mantenimiento
-	public Servicio(long idServicio, double precioTotal) {
+	public Servicio(long idServicio, String notas, LocalDate fecha, double precioTotal) {
+		/* autocalculo del id */
+		numServicio++;
+		this.notas = notas;
+		this.fecha = fecha;
+		this.precioTotal = precioTotal;
+		this.idServicio = numServicio;
+	}
+
+	/* Para heredar a mantenimiento */
+	public Servicio(Mantenimiento servMantenimiento) {
 		/* autocalculo del id */
 		numServicio++;
 		this.idServicio = numServicio;
 		this.precioTotal = precioTotal;
 	}
 
+	/* Para heredar a Compra */
+	public Servicio(Compra servCompra) {
+		/* autocalculo del id */
+		numServicio++;
+		this.idServicio = numServicio;
+		this.precioTotal = precioTotal;
+	}
+	
+	/* Para heredar a Envio */
+	public Servicio(Envio servEnvio) {
+		/* autocalculo del id */
+		numServicio++;
+		this.idServicio = numServicio;
+	}
+
 	public static Servicio nuevoServicio() {
 		/* instancia del teclado */
 		Scanner teclado = new Scanner(System.in);
 		/* nueva instancia de Servicio */
-		Servicio ret = new Servicio(0, 0);
+		Servicio ret = new Servicio();
 
 		System.out.println("Notas: ");
 		String notasServ = " ";
@@ -97,6 +124,30 @@ public class Servicio {
 
 	public void setPrecioTotal(double precioTotal) {
 		this.precioTotal = precioTotal;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public long getNumServicio() {
+		return numServicio;
+	}
+
+	public void setNumServicio(long numServicio) {
+		this.numServicio = numServicio;
 	}
 
 	@Override
