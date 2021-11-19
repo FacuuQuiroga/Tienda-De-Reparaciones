@@ -10,7 +10,7 @@ public class Compra {
 	private char metodoDePago = 'A';
 	// metodoDePago expresa la modalidad de dicho pago
 	// se expresa en caracteres
-	protected double precioTotal = 0; //martin
+	protected double precioTotal = 0;
 	// indica el computo total del precio de equipo
 	// expresado en numero reales con simbolos de puntuacion
 	
