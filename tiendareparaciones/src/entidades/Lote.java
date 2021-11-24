@@ -24,7 +24,7 @@ public class Lote {
 		this.descuento = descuento;
 		this.precioTotal = precioTotal;
 		
-	/////Nueva clase
+	//Nueva Clase
 		
 		public static Lote nuevoClase() {
 			lote Loteo = new lote();

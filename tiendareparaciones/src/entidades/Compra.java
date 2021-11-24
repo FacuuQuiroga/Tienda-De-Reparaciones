@@ -35,9 +35,7 @@ public class Compra {
 
 //		boolean idCompraValido = false;
 //		long idValidado = idCompra;
-//		do {
-//			idClienteValido = Validador.validarId(idValidado);
-//		}while (!idCompraValida);
+
 
 		System.out.println("Introduce los siguientes datos para registrar una nueva Compra:" + "\n");
 		String compraCl = "";
