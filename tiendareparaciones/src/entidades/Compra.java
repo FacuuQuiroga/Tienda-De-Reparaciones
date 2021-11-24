@@ -1,31 +1,33 @@
 //hace martins
 package entidades;
 
+import Utils.Validador;
+
 public class Compra {
 
 	private long idCompra;
 	// idEquipo es el identificador del elemento compra
 	// valor entero > 0
 	// y valor por defecto 0
-	private char metodoDePago = null;
+	private char metodoDePago;
 	// metodoDePago expresa la modalidad de dicho pago
-	// se expresa en caracteres// se puede introducir "e" para efectivo y "t" para tarjeta
+	// se expresa en caracteres// se puede introducir "e" para efectivo y "t" para
+	// tarjeta
 	protected double precioTotal;
 	// indica el computo total del precio de equipo
 	// expresado en numero reales con simbolos de puntuacion
-	
+
 	long numeroIdCompra;
-	
+
 	public Compra() {
-		
+
 	}
 
 	private Compra(long idCompra, char metodoDePago, double precioTotal) {
-		numeroIdCompra++
+		numeroIdCompra++;
 		this.idCompra = numeroIdCompra;
-		this.metodoDePago = ;
-		this.precioTotal = 0;
-		
+		this.metodoDePago = metodoDePago;
+		this.precioTotal = precioTotal;
 
 	}
 
@@ -33,11 +35,10 @@ public class Compra {
 	public static Compra nuevaCompra() {
 		/* instancia para el teclado */
 		Compra ret = new Compra();
-		Scanner teclado = new Scanner(System.in);
+		Scanner teclado = new Scanner(System.in);// revisar Scanner error
 
 //		boolean idCompraValido = false;
 //		long idValidado = idCompra;
-
 
 		System.out.println("Introduce los siguientes datos para registrar una nueva Compra:" + "\n");
 
@@ -57,7 +58,7 @@ public class Compra {
 			precioTotal = teclado.nextLine();
 			precioTotalValido = Validador.validarPrecioTotal(precioTotal);
 		} while (!precioTotalValido);
-		ret.setPrecioTotaln(PrecioTotal);
+		ret.setPrecioTotal(precioTotal);
 
 	}
 
