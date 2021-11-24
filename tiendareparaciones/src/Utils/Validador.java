@@ -89,4 +89,20 @@ public class Validador {
 
 		return true;
 	}
+	//marto
+	public static boolean validarMetodoDePago (String metodoPago) {
+		if (metodoPago == e )
+			return false;
+		if (metodoPago == t)
+			return false;
+		return true
+	}
+	
+	//marto
+	public static boolean validarPrecioTotal(String precioTotal) {
+		if (precioTotal >0 )
+			return false;
+		
+		return true
+	}
 }
