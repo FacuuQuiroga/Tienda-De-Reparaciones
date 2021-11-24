@@ -13,10 +13,11 @@ public class EmpleadoSustituto extends Empleado {
 	}
 
 	public EmpleadoSustituto(long idEmpleado, String nombre, String apellido, String direccion, String telefono,
-			String nif, String edad, boolean colectivo) {
+			String nif, String edad, boolean colectivo, BajaEmpleado baja) { 
 		super(idEmpleado, nombre, apellido, direccion, telefono, nif);
 		this.edad = edad;
 		this.colectivo = colectivo;
+		this.baja = baja;
 	}
 
 	// método nuevoClase

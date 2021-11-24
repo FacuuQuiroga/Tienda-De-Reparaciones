@@ -11,7 +11,7 @@ public class Empleado {
 	private String direccion;
 	private String telefono;
 	private String nif;
-	private String[] bajas; //colección de elementos
+	private String[] bajas; // colección de elementos
 
 	public Empleado() {
 	}
@@ -26,10 +26,10 @@ public class Empleado {
 	}
 
 	// método nuevoClase
-	
+
 	public static Empleado nuevoClase() {
 		Empleado empleado = new Empleado();
-		
+
 		Scanner teclado = new Scanner(System.in);
 
 		System.out.println("id: ");
@@ -41,32 +41,32 @@ public class Empleado {
 		String nombreEmpl = " ";
 		nombreEmpl = teclado.nextLine();
 		empleado.setNombre(nombreEmpl);
-		
+
 		System.out.println("Apellidos: ");
 		String apellidos = " ";
 		apellidos = teclado.nextLine();
 		empleado.setApellido(apellidos);
-		
+
 		System.out.println("Direccion: ");
 		String direccion = " ";
 		direccion = teclado.nextLine();
 		empleado.setDireccion(direccion);
-		
+
 		System.out.println("Teléfono: ");
 		String telefono = " ";
 		telefono = teclado.nextLine();
 		empleado.setTelefono(telefono);
-		
+
 		System.out.println("Nif: ");
 		String nif = " ";
 		nif = teclado.nextLine();
 		empleado.setNif(nif);
-		
+
 		System.out.println(empleado.toString());
-		
+
 		return empleado;
 	}
-	
+
 	// getters and setters
 
 	public long getIdEmpleado() {
