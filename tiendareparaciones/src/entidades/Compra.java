@@ -3,24 +3,26 @@ package entidades;
 
 public class Compra {
 
-	private long idCompra = 0;
+	private long idCompra;
 	// idEquipo es el identificador del elemento compra
 	// valor entero > 0
 	// y valor por defecto 0
-	private char metodoDePago = 'A';
+	private char metodoDePago = null;
 	// metodoDePago expresa la modalidad de dicho pago
-	// se expresa en caracteres
-	protected double precioTotal = 0;
+	// se expresa en caracteres// se puede introducir "e" para efectivo y "t" para tarjeta
+	protected double precioTotal;
 	// indica el computo total del precio de equipo
 	// expresado en numero reales con simbolos de puntuacion
+	
+	long numeroIdCompra;
 	
 	public Compra() {
 		
 	}
 
 	private Compra(long idCompra, char metodoDePago, double precioTotal) {
-		long idCompra = 0;
-		numCompra++;
+		numeroIdCompra++
+		this.idCompra = numeroIdCompra;
 		this.metodoDePago = ;
 		this.precioTotal = 0;
 		
@@ -38,33 +40,24 @@ public class Compra {
 
 
 		System.out.println("Introduce los siguientes datos para registrar una nueva Compra:" + "\n");
-		String compraCl = "";
-		/* para validar el nombre sea correcto, declarado en la clase Validador */
-		boolean nombreValido = false;
-		do {
-			System.out.println("Compra: (secuencia en numeros)");
-			compraCl = teclado.nextLine();
-			nombreValido = Validador.validarNombre(nombreCl);
-		} while (!compraValida);
-		ret.setCompra(compraCl);
 
-		char metodoDePago = "A";
-		boolean nifValido = false;
+		char metodoDePago;
+		boolean metodoDePagoValido = false;
 		do {
 			System.out.println("metodo de pago: (efectivo o tarjeta)");
-			metodoDePago = teclado.nextLine();
-			metodoDePagoValido = Validador.validarNif(nifCl);
-		} while (!metodoValido);
-		ret.setPago(metodoDePago);
+			metodoDePago = teclado.nextChar();
+			metodoDePagoValido = Validador.validarMetodoDePago(metodoDePago);
+		} while (!metodoDePagoValido);
+		ret.setMetodoDePago(metodoDePago);
 
-		double precioTotalCl = null;
-		boolean precioTotalClValido = false;
+		double precioTotal;
+		boolean precioTotalValido = false;
 		do {
-			System.out.println("precio total: secuencia de numeros con puntos y comas");
-			precioTotalCl = teclado.nextLine();
-			precioTotalClValido = Validador.validarDir(precioTotalCl);
-		} while (!precioTotalClValido);
-		ret.setPrecioTotaln(PrecioTotalCl);
+			System.out.println("precio total: secuencia de numeros con puntos");
+			precioTotal = teclado.nextLine();
+			precioTotalValido = Validador.validarPrecioTotal(precioTotal);
+		} while (!precioTotalValido);
+		ret.setPrecioTotaln(PrecioTotal);
 
 	}
 
