@@ -1,4 +1,4 @@
-//hace Martintinitin
+//hace Martintin
 package entidades;
 
 public class Equipo {
