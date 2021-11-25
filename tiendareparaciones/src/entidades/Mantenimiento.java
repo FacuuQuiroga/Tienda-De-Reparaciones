@@ -1,4 +1,6 @@
-/*Facu*/
+/**
+* @author Facu
+*/
 package entidades;
 
 import java.util.Scanner;

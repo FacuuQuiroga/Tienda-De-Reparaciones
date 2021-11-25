@@ -1,4 +1,6 @@
-/*Facu*/
+/**
+* @author Facu
+*/
 package entidades;
 
 import java.time.LocalDate;
@@ -47,7 +49,7 @@ public class Servicio {
 		this.idServicio = numServicio;
 		this.precioTotal = precioTotal;
 	}
-	
+
 	/* Para heredar a Envio */
 	public Servicio(Envio servEnvio) {
 		/* autocalculo del id */
