@@ -120,14 +120,4 @@ public class Validador {
 	public static boolean validarMetodoDePago(char metodoPago)
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
