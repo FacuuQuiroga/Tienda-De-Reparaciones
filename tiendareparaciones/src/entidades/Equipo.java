@@ -1,6 +1,8 @@
 //hace Martintin
 package entidades;
 
+import Utils.Validador;
+
 public class Equipo {
 
 	private long idEquipo = 0;
@@ -39,7 +41,7 @@ public class Equipo {
 		equipo.setidEquipo(idEquipo);
 
 		System.out.println("precio: ");
-		double precio = " 0 ";
+		double precio = null;
 		precio = teclado.nextLine();
 		precio.setPrecio(calculoPrecio);
 

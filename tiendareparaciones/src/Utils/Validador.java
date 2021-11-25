@@ -97,6 +97,10 @@ public class Validador {
 		if (metodoPago == t)
 			return false;
 		return true;
+		/*
+		 * 1. Condicion: pago en efectivo o tarajeta(un caracter unicamente, E o T)
+		 * 
+		 */
 	}
 
 	// marto
@@ -105,5 +109,25 @@ public class Validador {
 			return false;
 
 		return true;
+		
+		/*
+		 * 1. Condicion: secuencia numerica expresado con puntos y comas
+		 * 2. no se permiten caracteres especiales
+		 */
+		
 	}
+	
+	public static boolean validarMetodoDePago(char metodoPago)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

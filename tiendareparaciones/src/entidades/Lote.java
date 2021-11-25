@@ -18,7 +18,7 @@ public class Lote {
 		
 	}
 	
-	public Lote(long idLote, double descuento, double precioTotal) {
+	public Lote (long idLote, double descuento, double precioTotal) {
 		super(idLote, descuento, precioTotal);
 		this.idLote = idLote;
 		this.descuento = descuento;
@@ -34,7 +34,7 @@ public class Lote {
 			System.out.println("id: ");
 			long idLote = 0;
 			idLote = teclado.nextLong();
-			equipo.setidLote(idEmpl);
+			equipo.setidLote(idLote);
 
 			System.out.println("precio: descuento ");
 			double descuento = " 0 ";
