@@ -3,10 +3,9 @@ __*ACTIVIDAD 1 PROGRAMACION/ENTORNOS DE DESARROLLO*__
 
 __Autores:__ <br />
 > * Martín <br />							
-> * Moises <br />							
 > * Facundo	<br />							
 > * Nicolás	<br />							
-> * Ville <br />		
+> * Naiara <br />		
   
 ## Requisitos funcionales del sistema:	<br />
 
