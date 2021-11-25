@@ -1,7 +1,9 @@
 package principal;
 
+import java.sql.Date;
 import java.util.Scanner;
 
+import Utils.Utilidades;
 import entidades.Cliente;
 import entidades.Mantenimiento;
 import entidades.Reparacion;
@@ -18,6 +20,9 @@ public class Principal {
 		int menu = 0;
 		/* para validar la opcion introducida */
 		boolean menuValido = false;
+		boolean menuValidoCliente = false;
+		boolean menuValidoEquipos = false;
+		boolean menuValidoServicios = false;
 
 		do {
 			mostrarMenuPrincipal();
@@ -30,30 +35,47 @@ public class Principal {
 			menuValido = (menu < 1 || menu > 5 ? false : true);
 
 			if (!menuValido) {
-				System.out.println("Opcion Incorrecta");
+				System.out.println("Opcion no valida, porfavor intenta una de las opciones disponibles.");
 			}
 
 			switch (menu) {
 			case 1:
-				/* Registro del cliente */
-				Cliente facu = Cliente.nuevoCliente();
-				System.out.println(facu);
+				/* Gestion del cliente */
+				do {
+					menuClientes();
+					menu = teclado.nextInt();
+					menuValidoCliente = (menu < 1 || menu > 5 ? false : true);
+					if (!menuValidoCliente) {
+						System.out.println("Opcion no valida, porfavor intenta una de las opciones disponibles.");
+
+					}
+
+					switch (menu) {
+					case 1:
+						/* Ver Clientes */
+						break;
+					case 2:
+						/* nuevo Cliente */
+						Cliente cliente = Cliente.nuevoCliente();
+						System.out.println(cliente);
+						break;
+					case 3:
+						/* buscar Clientes */
+
+						break;
+					}
+
+				} while (!menuValidoCliente);
+
+				break;
+			case 2:
+				/* Gestion de Equipos */
+				menuEquipos();
+				
 				break;
 			case 3:
-				/* Registro de nuevo Servicio */
-				System.out.println("Que tipo de servicio es?");
-				System.out.println("1-Compra");
-				System.out.println("2-Mantenimiento");
-				int auxServ = teclado.nextInt();
-				if (auxServ == 1) {
-					System.out.println("registrar una compra( a implementar)");
-				} else {
-					Servicio facuM = Mantenimiento.nuevoServicio();
-					System.out.println(facuM);
-				}
-				break;
-			case 4:
-				System.out.println("registrar nueva reparacion ( a implementar)");
+				/* Gestion de Servicios */
+				menuServicios();
 				break;
 			}
 
@@ -63,10 +85,34 @@ public class Principal {
 	public static void mostrarMenuPrincipal() {
 
 		System.out.println("Que desea hacer?" + "\n");
-		System.out.println("1- Registrar cliente");
-		System.out.println("2- Para ver Servicio");
-		System.out.println("3- Registrar Servicio");
-		System.out.println("4- Registrar nueva reparacion");
+		System.out.println("1- Gestion del Clientes");
+		System.out.println("2- Gestion de Servicios");
+		System.out.println("3- Gestion de Equipos");
 		System.out.println("5- Salir");
+	}
+
+	public static void menuClientes() {
+
+		System.out.println("Que desea hacer?" + "\n");
+		System.out.println("1- Ver Cliente/s");
+		System.out.println("2- Nuevo Cliente");
+		System.out.println("3- Buscar Cliente");
+		System.out.println("4- Atras");
+	}
+
+	public static void menuEquipos() {
+		System.out.println("Que desea hacer?" + "\n");
+		System.out.println("1- Ver Equipo/s");
+		System.out.println("2- Nuevo Equipo");
+		System.out.println("3- Buscar Equipo/s");
+		System.out.println("4- Atras");
+	}
+
+	public static void menuServicios() {
+		System.out.println("Que desea hacer?" + "\n");
+		System.out.println("1- Nueva Compra");
+		System.out.println("2- Nueva Reparacion");
+		System.out.println("3- Nuevo Envio");
+		System.out.println("4- Atras");
 	}
 }
