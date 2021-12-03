@@ -21,18 +21,18 @@ public class Validador {
 	public static boolean validarNombre(String nombre) {
 		boolean checkStatusNombre = false;
 		if (nombre != null) {
-			/* 1. Condición: que la letra inicial sea mayúscula */
+			/* 1. Condiciï¿½n: que la letra inicial sea mayï¿½scula */
 			boolean letraMayuscula = Character.isUpperCase(nombre.charAt(0));
 
-			/* 2. Condición: que el tamaño sea >= 3 y <= 25 */
+			/* 2. Condiciï¿½n: que el tamaï¿½o sea >= 3 y <= 25 */
 			int largoNombre = nombre.length();
-			boolean tamañoValido = (largoNombre >= 3 && largoNombre <= 25);
+			boolean tamaï¿½oValido = (largoNombre >= 3 && largoNombre <= 25);
 
-			/* 3.Condición: que contenga al menos un espacio */
+			/* 3.Condiciï¿½n: que contenga al menos un espacio */
 			boolean tieneEspacio = nombre.contains(" ");
 
 			/* Verificamos que las tres condiciones son verdaderas */
-			checkStatusNombre = ((letraMayuscula == true) && (letraMayuscula && tamañoValido && tieneEspacio));
+			checkStatusNombre = ((letraMayuscula == true) && (letraMayuscula && tamaï¿½oValido && tieneEspacio));
 		}
 		return checkStatusNombre;
 	}
@@ -44,10 +44,10 @@ public class Validador {
 			 * 1. condicion: que el largo del nif sea de 9 caracteres (8 numeros + 1 letra)
 			 * y mas de 1
 			 */
-			int tamañoString = nif.length();
-			boolean tamañoValido = (tamañoString >= 1 && tamañoString <= 9);
-			/* verificamos que tamañoValido del nif es de 9 */
-			checkStatusNif = tamañoValido == true;
+			int tamaï¿½oString = nif.length();
+			boolean tamaï¿½oValido = (tamaï¿½oString >= 1 && tamaï¿½oString <= 9);
+			/* verificamos que tamaï¿½oValido del nif es de 9 */
+			checkStatusNif = tamaï¿½oValido == true;
 		}
 		return checkStatusNif;
 	}
@@ -120,4 +120,15 @@ public class Validador {
 	public static boolean validarMetodoDePago(char metodoPago)
 	
 	
+}
+
+	public static boolean validardireccion(String direccionE1) {
+		
+		return false;
+	}
+
+	public static boolean validartelefono(String telefonoE1) {
+		
+		return false;
+	}
 }
