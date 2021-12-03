@@ -1,7 +1,8 @@
-//hace villlllllle
+//Naiara
 package entidades;
 
 import java.time.LocalDate;
+
 import java.util.Scanner;
 
 public class BajaEmpleado {
@@ -19,8 +20,15 @@ public class BajaEmpleado {
 		this.fechaFin = fechaFin;
 		this.motivoBaja = motivoBaja;
 	}
-
-	// método nuevoClase
+	
+	/* Para relacion 1-N con Servicio */
+	public Empleado nuevoEmpleado() {
+		Empleado ret = new Empleado();
+		e.setBajaEmpleado(this);
+		e = Empleado.nuevoEmpleado();
+		return ret;
+	}
+	// metodo nuevoClase
 
 	public static BajaEmpleado nuevoClase() {
 		BajaEmpleado baja = new BajaEmpleado();
