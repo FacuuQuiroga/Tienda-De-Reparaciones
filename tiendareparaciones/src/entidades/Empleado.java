@@ -1,73 +1,102 @@
 //Facu: ville termino las relaciones de esta clase, yo la empece 
+//Naiara: corrige y termina la clase
 package entidades;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import Utils.Validador;
 
 public class Empleado {
+	// id es el identificador único de cada elemento Usuario.
+	// es un valor entero > 0
+	// tiene un valor por defecto de 0
+	protected long idEmpleado;
+	protected String nombre;
+	protected String apellidos;
+	protected String direccion;
+	protected String telefono;
+	protected String nif;
+	protected String[] bajas = null; // coleccion de elementos
 
-	private long idEmpleado;
-	private String nombre;
-	private String apellido;
-	private String direccion;
-	private String telefono;
-	private String nif;
-	private String[] bajas; // colecci�n de elementos
+	// Para calcular el id del Usuario
+	long numEmpleado = 0;
 
+	// Constructores
 	public Empleado() {
+		numEmpleado++;
+		this.idEmpleado = numEmpleado;
 	}
 
-	public Empleado(long idEmpleado, String nombre, String apellido, String direccion, String telefono, String nif) {
+	// Para emplear con la clase de Datos
+	public Empleado(long idEmpleado, String nombre, String apellidos, String direccion, String telefono, String nif) {
+		numEmpleado++;
 		this.idEmpleado = idEmpleado;
 		this.nombre = nombre;
-		this.apellido = apellido;
+		this.apellidos = apellidos;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.nif = nif;
 	}
 
-	// m�todo nuevoClase
-
-	public static Empleado nuevoClase() {
-		Empleado empleado = new Empleado();
-
+	// Para registrar un nuevo Empleado
+	public static Empleado newEmpleado() {
+		Empleado ret = new Empleado();
 		Scanner teclado = new Scanner(System.in);
+		System.out.println("Introduzca el nombre del empleado para crear el registro:" + "\n");
+		String nomE1 = "";
+		nomE1 = teclado.nextLine();
+		System.out.println(nomE1);
 
-		System.out.println("id: ");
-		long idEmpl = 0;
-		idEmpl = teclado.nextLong();
-		empleado.setIdEmpleado(idEmpl);
+		System.out.println("Introduzca los apellidos del empleado para crear el registro:" + "\n");
+		String apellE1 = "";
+		apellE1 = teclado.nextLine();
+		System.out.println(apellE1);
+		return ret;
 
-		System.out.println("Nombre: ");
-		String nombreEmpl = " ";
-		nombreEmpl = teclado.nextLine();
-		empleado.setNombre(nombreEmpl);
+		// Para validar el nombre del empleado insertado
+		boolean nombreValido1 = false;
+		do {
+			System.out.println(
+					"Nombre del Empleado: (La primera letra debe ir en mayúscula. También debe separar el nombres de los apellidos con un espacio.)");
+			nomE1 = teclado.nextLine();
+			nombreValido1 = Validador.validarNombre(nomE1);
+		} while (!nombreValido1);
+		ret.setNombre(nomE1);
 
-		System.out.println("Apellidos: ");
-		String apellidos = " ";
-		apellidos = teclado.nextLine();
-		empleado.setApellido(apellidos);
+		// Para validar la dirección del empleado
+		String direccionE1 = "";
+		// boolean direccionValida = false;
+		boolean direccionValido;
+		do {
+			System.out.println("Dirección del Empleado: (No puede repetirse. La dirección ha de ser única.)");
+			direccionE1 = teclado.nextLine();
+			direccionValido = Validador.validardireccion(direccionE1);
+		} while (!direccionValido);
+		ret.setNif(direccionE1);
 
-		System.out.println("Direccion: ");
-		String direccion = " ";
-		direccion = teclado.nextLine();
-		empleado.setDireccion(direccion);
+		// Para validar el teléfono del empleado
+		String telefonoE1 = "";
+		// boolean telefonoValida = false;
+		boolean telefonoValido;
+		do {
+			System.out.println(
+					"Número de teléfono del Empleado: (No puede repetirse. El número de teléfono ha de ser único.)");
+			telefonoE1 = teclado.nextLine();
+			telefonoValido = Validador.validartelefono(telefonoE1);
+		} while (!telefonoValido);
+		ret.setNif(telefonoE1);
 
-		System.out.println("Tel�fono: ");
-		String telefono = " ";
-		telefono = teclado.nextLine();
-		empleado.setTelefono(telefono);
-
-		System.out.println("Nif: ");
-		String nif = " ";
-		nif = teclado.nextLine();
-		empleado.setNif(nif);
-
-		System.out.println(empleado.toString());
-
-		return empleado;
+		// Para validar el nif del empleado
+		String nifEl = "";
+		boolean nifValido = false;
+		do {
+			System.out.println("NIF del Usuario: (debe estar formado por 8 números y 1 letra al final del mismo.)");
+			nifEl = teclado.nextLine();
+			nifValido = Validador.validarNif(nifEl);
+		} while (!nifValido);
+		ret.setNif(nifEl);
+		return ret;
 	}
-
-	// getters and setters
 
 	public long getIdEmpleado() {
 		return idEmpleado;
@@ -85,12 +114,12 @@ public class Empleado {
 		this.nombre = nombre;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getApellidos() {
+		return apellidos;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 	public String getDireccion() {
@@ -125,12 +154,18 @@ public class Empleado {
 		this.bajas = bajas;
 	}
 
-	// to string
+	public long getNumEmpleado() {
+		return numEmpleado;
+	}
+
+	public void setNumEmpleado(long numEmpleado) {
+		this.numEmpleado = numEmpleado;
+	}
 
 	@Override
 	public String toString() {
-		return " El empleado con id [idEmpleado=" + idEmpleado + ",es: Nombre=" + nombre + "y de apellido" + apellido
-				+ ",con direccion en:" + direccion + ",su telefono es:" + telefono + "y su nif es:" + nif + "]";
+		return "Empleado [idEmpleado=" + idEmpleado + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion="
+				+ direccion + ", telefono=" + telefono + ", nif=" + nif + ", bajas=" + Arrays.toString(bajas)
+				+ ", numEmpleado=" + numEmpleado + "]";
 	}
-
 }
