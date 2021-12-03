@@ -118,25 +118,38 @@ public class Validador {
 		 */
 
 	}
-	//MARTON
+
+	// MARTON
 	public static boolean validarModelo(String modelo) {
 		boolean checkStatusNombre = false;
-		// Condición: que el tamaño sea >= 1 y <= 04
+		// Condiciï¿½n: que el tamaï¿½o sea >= 1 y <= 04
 		if (modelo != null) {
 			int largoNombre = modelo.length();
-			boolean tamañoValido = (largoNombre >= 1 && largoNombre <= 40);
+			boolean tamaï¿½oValido = (largoNombre >= 1 && largoNombre <= 40);
 		}
 		return true;
 
 	}
 
+	//Naiara
 	public static boolean validardireccion(String direccionE1) {
+		// 1.Condicion: que tenga mas de 1 caracter e igual o menos de 40
+		if (direccionE1.length() < 5)
+			return false;
+		if (direccionE1.length() > 40)
+			return false;
+		return true;
 
-		return false;
 	}
 
+	//Naiara
 	public static boolean validartelefono(String telefonoE1) {
 
-		return false;
+//		  1.Condicion: el telefono tiene que tener minimo 9 numeros con caracteristica,
+//		  un numero extranjero puede tener mas de 9 numeros, por eso no se pone un
+//		 limite maximo.
+		if (telefonoE1.length() > 9)
+			return false;
+		return true;
 	}
 }
