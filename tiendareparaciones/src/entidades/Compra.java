@@ -1,6 +1,8 @@
 //hace martins
 package entidades;
 
+import java.util.Scanner;
+
 import Utils.Validador;
 
 public class Compra {
@@ -46,7 +48,7 @@ public class Compra {
 		boolean metodoDePagoValido = false;
 		do {
 			System.out.println("metodo de pago: (efectivo o tarjeta)");
-			metodoDePago = teclado.nextChar();
+			metodoDePago = teclado.next().charAt(0);/// No se si esta bien implementado y unicamente lee un char
 			metodoDePagoValido = Validador.validarMetodoDePago(metodoDePago);
 		} while (!metodoDePagoValido);
 		ret.setMetodoDePago(metodoDePago);
@@ -55,11 +57,12 @@ public class Compra {
 		boolean precioTotalValido = false;
 		do {
 			System.out.println("precio total: secuencia de numeros con puntos");
-			precioTotal = teclado.nextLine();
-			precioTotalValido = Validador.validarPrecioTotal(precioTotal);
+			precioTotal = teclado.nextDouble();
+			precioTotalValido = Validador.validarPrecio(precioTotal);
 		} while (!precioTotalValido);
 		ret.setPrecioTotal(precioTotal);
 
+		return ret;
 	}
 
 	//// Getters , setters and to string

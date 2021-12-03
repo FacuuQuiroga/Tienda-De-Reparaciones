@@ -90,11 +90,13 @@ public class Validador {
 		return true;
 	}
 
-	// marto//revisar error variable
+	// marto
 	public static boolean validarMetodoDePago(char metodoPago) {
-		if (metodoPago == e)
+		char efectivo = 'e';
+		char tarjeta = 't';
+		if (metodoPago != efectivo)
 			return false;
-		if (metodoPago == t)
+		if (metodoPago != tarjeta)
 			return false;
 		return true;
 		/*
@@ -104,31 +106,37 @@ public class Validador {
 	}
 
 	// marto
-	public static boolean validarPrecioTotal(double precioTotal) {
+	public static boolean validarPrecio(double precioTotal) {
 		if (precioTotal > 0)
 			return false;
 
 		return true;
-		
+
 		/*
-		 * 1. Condicion: secuencia numerica expresado con puntos y comas
-		 * 2. no se permiten caracteres especiales
+		 * 1. Condicion: secuencia numerica expresado con puntos y comas 2. no se
+		 * permiten caracteres especiales
 		 */
-		
+
 	}
-	
-	public static boolean validarMetodoDePago(char metodoPago)
-	
-	
-}
+	//MARTON
+	public static boolean validarModelo(String modelo) {
+		boolean checkStatusNombre = false;
+		// Condición: que el tamaño sea >= 1 y <= 04
+		if (modelo != null) {
+			int largoNombre = modelo.length();
+			boolean tamañoValido = (largoNombre >= 1 && largoNombre <= 40);
+		}
+		return true;
+
+	}
 
 	public static boolean validardireccion(String direccionE1) {
-		
+
 		return false;
 	}
 
 	public static boolean validartelefono(String telefonoE1) {
-		
+
 		return false;
 	}
 }

@@ -1,6 +1,8 @@
 //hace Martintin
 package entidades;
 
+import java.util.Scanner;
+
 import Utils.Validador;
 
 public class Equipo {
@@ -28,31 +30,36 @@ public class Equipo {
 		this.idEquipo = numeroIdEquipo;
 		this.precio = precio;
 		this.modelo = modelo;
-
+		
 	}
 
 	public static Equipo nuevoEquipo() {
 		Equipo ret = new Equipo();
 		Scanner teclado = new Scanner(System.in);
 
-		System.out.println("id: ");
-		long idEquipo = 0;
-		idEmpl = teclado.nextLong();
-		equipo.setidEquipo(idEquipo);
+		double precio;
+		boolean precioValido = false;
+		do {
+			System.out.println("precio: ");
+			precio = teclado.nextDouble();
+			ret.setPrecio(precio);
+			precioValido = Validador.validarPrecio(precio);
 
-		System.out.println("precio: ");
-		double precio = null;
-		precio = teclado.nextLine();
-		precio.setPrecio(calculoPrecio);
+		} while (!precioValido);
+		ret.setPrecio(precio);
 
-		System.out.println("nombre de modelo: ");
-		String modelo = " ";
-		modelo = teclado.nextLine();
-		modelo.setModelo(modelo);
+		String modelo;
+		boolean modeloValido = false;
+		do {
+			System.out.println("modelo: ");
+			modelo = teclado.nextLine();
+			ret.setModelo(modelo);
+			precioValido = Validador.validarModelo(modelo);
 
-		System.out.println(Equipo.toString());
+		} while (!modeloValido);
+		ret.setPrecio(precio);
 
-		return Equipo;
+		return ret;
 	}
 
 ////Getters , setters and to string

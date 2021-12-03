@@ -1,6 +1,8 @@
 //hace martins
 package entidades;
 
+import java.util.Scanner;
+
 public class Lote {
 
 	private long idLote = 0;
@@ -13,48 +15,39 @@ public class Lote {
 	protected double precioTotal = 0;
 	// indica el computo total del calcula entre descuento y precio de equipo
 	// expresado en numero reales con simbolos de puntuacion
+	private double precioEquipo;
 
 	public Lote() {
-		
+
 	}
-	
-	public Lote (long idLote, double descuento, double precioTotal) {
-		super(idLote, descuento, precioTotal);
+
+	public Lote(long idLote, double descuento, double precioTotal) {
 		this.idLote = idLote;
 		this.descuento = descuento;
 		this.precioTotal = precioTotal;
-		
-	//Nueva Clase
-		
-		public static Lote nuevoClase() {
-			lote Loteo = new lote();
+		this.precioEquipo = precioEquipo;
+	}
+	// Nueva Clase
 
-			Scanner teclado = new Scanner(System.in);
+	public static Lote nuevoClase() {
+		Lote Lote = new Lote();
+		Scanner teclado = new Scanner(System.in);
 
-			System.out.println("id: ");
-			long idLote = 0;
-			idLote = teclado.nextLong();
-			equipo.setidLote(idLote);
+		System.out.println("precio: descuento ");
+		double descuento = '0';
+		descuento = teclado.nextDouble();
+		Lote.setDescuento(descuento);
 
-			System.out.println("precio: descuento ");
-			double descuento = " 0 ";
-			descuento = teclado.nextLine();
-			precio.setDescuento(calculoDescuento);
+		System.out.println("precioTotal: precio total: secuencia de numeros con puntos y comas");
+		double precioTotal = 0;
+		precioTotal = teclado.nextDouble();
+		Lote.setPrecioTotal(precioTotal);
 
-			System.out.println("precioTotal: precio total: secuencia de numeros con puntos y comas");
-			double precioTotal = " 0 ";
-			precioTotal = teclado.nextLine();
-			precioTotal.setprecioTotal(Total);
+		return Lote;
 
-			System.out.println(Equipo.toString());
+	}
 
-			return Equipo;
-		
-		
-		
-		
-		
-	////Getters , setters and to string
+	//// Getters , setters and to string
 	public long getIdLote() {
 		return idLote;
 	}
