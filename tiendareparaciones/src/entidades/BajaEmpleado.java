@@ -30,29 +30,23 @@ public class BajaEmpleado {
 	}
 	// metodo nuevoClase
 
-	public static BajaEmpleado nuevoClase() {
-		BajaEmpleado baja = new BajaEmpleado();
+	public static BajaEmpleado newBajaEmpleado() {
+		BajaEmpleado ret = new BajaEmpleado();
 
 		Scanner teclado = new Scanner(System.in);
+//		long id = 0;
+//		id = teclado.nextLong();
+//		baja.setIdBaja(id);
 
-		System.out.println("id: ");
-		long id = 0;
-		id = teclado.nextLong();
-		baja.setIdBaja(id);
-
-		System.out.println("Fecha fin: ");
-		LocalDate fechaFin = null;
-		fechaFin = LocalDate.of(teclado.nextInt(), teclado.nextInt(), teclado.nextInt());
-		baja.setFechaFin(fechaFin);
-
+//		LocalDate fechaFin = null;
+//		fechaFin = LocalDate.of(teclado.nextInt(), teclado.nextInt(), teclado.nextInt());
+//		ret.setFechaToday(fechaFin);
+		
 		System.out.println("Motivo baja: ");
 		String motivo;
 		motivo = teclado.nextLine();
 		baja.setMotivoBaja(motivo);
-
-		System.out.println(baja.toString());
-
-		return baja;
+		return ret;
 	}
 
 	// getters y setters
