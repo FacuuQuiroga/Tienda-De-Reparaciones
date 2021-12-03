@@ -1,4 +1,4 @@
-//hace ville
+//Naiara
 package entidades;
 
 import java.util.Scanner;
@@ -20,27 +20,22 @@ public class EmpleadoSustituto extends Empleado {
 		this.baja = baja;
 	}
 
-	// método nuevoClase
+	// MÃ©todo nuevoEmpladoSustituto
 
-	public static EmpleadoSustituto nuevoClase() {
-
-		EmpleadoSustituto empleadoSus = new EmpleadoSustituto();
-
+	public static EmpleadoSustituto newEmpleadoSus() {
+		EmpleadoSustituto ret = new EmpleadoSustituto();
 		Scanner teclado = new Scanner(System.in);
-
 		System.out.println("edad: ");
 		String edad = "0";
 		edad = teclado.nextLine();
-		empleadoSus.setEdad(edad);
+		ret.setEdad(edad);
 
 		System.out.println("colectivo: ");
 		boolean colectivo = false;
 		colectivo = teclado.nextBoolean();
-		empleadoSus.setColectivo(colectivo);
+		ret.setColectivo(colectivo);
 
-		System.out.println(empleadoSus.toString());
-
-		return empleadoSus;
+		return ret;
 	}
 
 	// getters y setters
