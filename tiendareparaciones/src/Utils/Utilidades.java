@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Utilidades {
@@ -15,10 +16,10 @@ public class Utilidades {
 	 * introducidos no producen una fecha correcta, avisa al usuario y le pide que
 	 * los introduzca de nuevo. Si no lo consigue, devolvera null
 	 *
-	 * @return una fecha de la clase java.sql.Date o null si hay error
+	 * @return una fecha de la clase LocalDate o null si hay error
 	 */
-	public static java.sql.Date leerFecha() {
-		Date ret = null;
+	public static LocalDate leerFecha() {
+		LocalDate ret = null;
 		int dia, mes, anio;
 		boolean correcto = false;
 		Scanner in;
@@ -34,7 +35,7 @@ public class Utilidades {
 			anio = in.nextInt();
 
 			try {
-				ret = Date.valueOf(LocalDate.of(anio, mes, dia));
+				ret = LocalDate.of(anio, mes, dia);
 				correcto = true;
 			} catch (Exception e) {
 				System.out.println("Fecha introducida incorrecta.");
