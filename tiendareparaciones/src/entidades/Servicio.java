@@ -57,7 +57,7 @@ public class Servicio {
 		this.idServicio = numServicio;
 	}
 
-	public static Servicio nuevoServicio() {
+	public static Servicio nuevoServicioCompra() {
 		/* instancia del teclado */
 		Scanner teclado = new Scanner(System.in);
 		/* nueva instancia de Servicio */
@@ -87,6 +87,36 @@ public class Servicio {
 		return ret;
 	}
 
+	public static Servicio nuevoServicioReparacion() {
+		/* instancia del teclado */
+		Scanner teclado = new Scanner(System.in);
+		/* nueva instancia de Servicio */
+		Servicio ret = new Servicio();
+
+		System.out.println("Notas: ");
+		String notasServ = " ";
+		notasServ = teclado.nextLine();
+		ret.setNotas(notasServ);
+
+		/*
+		 * hay que introducir el precio del servicio ya que por ejemplo un mantenimiento
+		 * no se puede calcular el precio.
+		 */
+		System.out.println("Precio Total: ");
+		double precioTotal = 0.0;
+		precioTotal = teclado.nextDouble();
+		ret.setPrecioTotal(precioTotal);
+		/*
+		 * hay que esperar a que luis explique como se inicializa, ahora mismo devuelve
+		 * null con o sin esta linea
+		 */
+//		LocalDate fechaToday = null;
+//		fechaToday = Utilidades.Fechas();
+//		ret.setFechaToday(fechaToday);
+
+		return ret;
+	}
+	
 	/* Getters, setters y to string */
 	public long getIdServicios() {
 		return idServicio;
