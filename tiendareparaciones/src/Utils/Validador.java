@@ -9,6 +9,12 @@ package Utils;
  */
 public class Validador {
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 * @author Facu
+	 */
 	public static boolean validarId(long id) {
 		/* id tiene q ser mayor que 0 */
 		if (id > 0) {
@@ -22,6 +28,7 @@ public class Validador {
 	 * 
 	 * @param nombre
 	 * @return
+	 * @author Facu
 	 */
 	public static boolean validarNombre(String nombre) {
 		boolean checkStatusNombre = false;
@@ -46,6 +53,7 @@ public class Validador {
 	 * 
 	 * @param nif
 	 * @return
+	 * @author Facu
 	 */
 	public static boolean validarNif(String nif) {
 		boolean checkStatusNif = false;
@@ -66,6 +74,7 @@ public class Validador {
 	 * 
 	 * @param direccion
 	 * @return
+	 * @author Facu
 	 */
 	public static boolean validarDir(String direccion) {
 		/* 1.Condicion: que tenga mas de 1 caracter y igual o menos de 40 */
@@ -80,6 +89,7 @@ public class Validador {
 	 * 
 	 * @param telefono
 	 * @return
+	 * @author Facu
 	 */
 	public static boolean validarTel(String telefono) {
 		/*
@@ -96,6 +106,7 @@ public class Validador {
 	 * 
 	 * @param tarjeta
 	 * @return
+	 * @author Facu
 	 */
 	public static boolean validarTarjeta(String tarjeta) {
 		/* 1.Condicion: contara con 16 caracteres obligatoriamente */
@@ -142,11 +153,6 @@ public class Validador {
 	 * @author Martin
 	 */
 
-	/**
-	 * 
-	 * @param precioTotal
-	 * @return
-	 */
 	public static boolean validarPrecio(double precioTotal) {
 		if (precioTotal > 0)
 			return false;
@@ -167,11 +173,11 @@ public class Validador {
 	 * @author Martin
 	 */
 	public static boolean validarModelo(String modelo) {
-		boolean checkStatusNombre = false;
-		// Condicion: que el tamanio sea >= 1 y <= 04
+		boolean tamValido = false;
+		// Condicion: que el tamanio sea >= 1 y <= 40
 		if (modelo != null) {
 			int largoNombre = modelo.length();
-			boolean tamaValido = (largoNombre >= 1 && largoNombre <= 40);
+			tamValido = (largoNombre >= 1 && largoNombre <= 40);
 		}
 		return true;
 
