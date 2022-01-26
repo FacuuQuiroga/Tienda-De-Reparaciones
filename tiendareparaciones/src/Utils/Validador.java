@@ -1,6 +1,8 @@
 
 package Utils;
 
+import java.util.Scanner;
+
 /*
  * Clase Validador:
  * Para validar las variables del cliente y empleado, interesa que sea publico y
@@ -189,15 +191,25 @@ public class Validador {
 	 * @return
 	 * @author Naiara
 	 */
+	
 	public static boolean validardireccion(String direccionE1) {
-		// 1.Condicion: que tenga mas de 1 caracter e igual o menos de 40
-		if (direccionE1.length() < 5)
-			return false;
-		if (direccionE1.length() > 40)
-			return false;
-		return true;
-
+		Scanner in = new Scanner(System.in);
+		String cadena ="";
+		while (!cadena.isEmpty()) {
+			System.out.println("Introduzca la cadena a comprobar (Cadena vacia = FIN):");
+			cadena = in.nextLine();
+			if(validardireccion(cadena))
+				System.out.println("La cadena SOLO contiene letras\n");
+			else
+				System.out.println ("La cadena tiene caracteres que NO son letras\n");
+		}
+		System.out.println("\n\t\tFIN DE PROGRAMA");
+		in.close();
+		return false;
 	}
+ 
+
+
 
 	/**
 	 * 
@@ -205,13 +217,18 @@ public class Validador {
 	 * @return
 	 * @author Naiara
 	 */
-	public static boolean validartelefono(String telefonoE1) {
+//	  1.Condición: no debe de tener mas de 9 numeros
+//	  2.Condicion: el telefono debe estar formado unicamente por numeros
 
-//		  1.Condicion: el telefono tiene que tener minimo 9 numeros con caracteristica,
-//		  un numero extranjero puede tener mas de 9 numeros, por eso no se pone un
-//		 limite maximo.
-		if (telefonoE1.length() > 9)
+
+	public static boolean validadortelefono(String telefonoE1) {
+		boolean ret = false;
+
+		if (telefonoE1.length() != 9)
 			return false;
-		return true;
+		if (telefonoE1.trim().chars().allMatch(Character::isDigit))
+			return false;
+
+		return ret;
 	}
 }
