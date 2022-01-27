@@ -1,3 +1,6 @@
+/**
+ * @author facu
+ */
 //hace Martintin
 package entidades;
 
@@ -7,57 +10,45 @@ import Utils.Validador;
 
 public class Equipo {
 
-	private long idEquipo = 0;
-	// idEquipo es el identificador del elemento equipo
-	// valor entero > 0
-	// y valor por defecto 0
-	private double precio = 0;
-	// precio expresado en numeros reales
-	private String modelo = "Sin modelo disponible";
+	private long idEquipo;
+
+	private double precio;
 	// modelo es la expresion que identifica el modelo de equipo
-	// expresado en cadenas de caracteres
-	
-	long numeroIdEquipo;
-	
+	// expresado en cadenas de caractere
+	private String modelo = "Sin modelo disponible";
+
+	/* Constructores */
 	public Equipo() {
-		
 	}
-	
-	
-	
+
 	public Equipo(long idEquipo, double precio, String modelo) {
-		numeroIdEquipo++;
-		this.idEquipo = numeroIdEquipo;
+		this.idEquipo = idEquipo;
 		this.precio = precio;
 		this.modelo = modelo;
-		
 	}
 
 	public static Equipo nuevoEquipo() {
-		Equipo ret = new Equipo();
 		Scanner teclado = new Scanner(System.in);
-
-		double precio;
-		boolean precioValido = false;
-		do {
-			System.out.println("precio: ");
-			precio = teclado.nextDouble();
-			ret.setPrecio(precio);
-			precioValido = Validador.validarPrecio(precio);
-
-		} while (!precioValido);
-		ret.setPrecio(precio);
-
+		Equipo ret = null;
+		long id = 0;
+		double precio = 0;
 		String modelo;
 		boolean modeloValido = false;
+		boolean precioValido = false;
+
 		do {
 			System.out.println("modelo: ");
 			modelo = teclado.nextLine();
-			ret.setModelo(modelo);
 			precioValido = Validador.validarModelo(modelo);
-
 		} while (!modeloValido);
-		ret.setPrecio(precio);
+
+		do {
+			System.out.println("precio: ");
+			precio = teclado.nextDouble();
+			precioValido = Validador.validarPrecio(precio);
+		} while (!precioValido);
+
+		ret = new Equipo(id, precio, modelo);
 
 		return ret;
 	}
@@ -92,5 +83,4 @@ public class Equipo {
 	public String toString() {
 		return "Equipo [idEquipo=" + idEquipo + ", precio=" + precio + ", modelo=" + modelo + "]";
 	}
-
 }
