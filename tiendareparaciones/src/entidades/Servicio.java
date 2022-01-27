@@ -14,54 +14,78 @@ public class Servicio {
 	private LocalDate fecha;
 	protected double precioTotal;
 	/* Para relacion 1-N con Cliente */
-	private Cliente cliente;
-
-	/* Para el autocalculo del id */
-	long numServicio = 0;
+	protected Cliente idCliente;
+	protected Mantenimiento m = null;
+	protected Compra c = null;
+	protected Envio e = null;
 
 	/* constructores */
 	public Servicio() {
-		numServicio++;
-		this.idServicio = numServicio;
+		super();
 	}
 
-	public Servicio(long idServicio, String notas, LocalDate fecha, double precioTotal) {
-		/* autocalculo del id */
-		numServicio++;
+	public Servicio(long idServicio, Cliente idCl, String notas, LocalDate fecha, double precioTotal) {
 		this.notas = notas;
 		this.fecha = fecha;
 		this.precioTotal = precioTotal;
-		this.idServicio = numServicio;
+		this.idServicio = idServicio;
+		this.idCliente = idCl;
 	}
 
-	/* Para heredar a mantenimiento */
-	public Servicio(Mantenimiento servMantenimiento) {
-		/* autocalculo del id */
-		numServicio++;
-		this.idServicio = numServicio;
+	/* Para mantenimiento */
+	public Servicio(long idServicio, Cliente idCl, String notas, LocalDate fecha, double precioTota,
+			Mantenimiento mant) {
+		this.notas = notas;
+		this.fecha = fecha;
 		this.precioTotal = precioTotal;
+		this.idServicio = idServicio;
+		this.m = mant;
+		this.idCliente = idCl;
+
 	}
 
-	/* Para heredar a Compra */
-	public Servicio(Compra servCompra) {
-		/* autocalculo del id */
-		numServicio++;
-		this.idServicio = numServicio;
+	/* Para Compra */
+	public Servicio(long idServicio, Cliente idCl, String notas, LocalDate fecha, double precioTota, Compra compra) {
+		this.notas = notas;
+		this.fecha = fecha;
 		this.precioTotal = precioTotal;
+		this.idServicio = idServicio;
+		this.c = compra;
+		this.idCliente = idCl;
+
 	}
 
-	/* Para heredar a Envio */
-	public Servicio(Envio servEnvio) {
-		/* autocalculo del id */
-		numServicio++;
-		this.idServicio = numServicio;
+	/* Para Envio */
+	public Servicio(long idServicio, Cliente idCl, String notas, LocalDate fecha, double precioTota, Envio envio) {
+		this.notas = notas;
+		this.fecha = fecha;
+		this.precioTotal = precioTotal;
+		this.idServicio = idServicio;
+		this.e = envio;
+		this.idCliente = idCl;
+
 	}
 
-	public static Servicio nuevoServicioCompra() {
+	public static Servicio nuevoServicio(String s) {
 		/* instancia del teclado */
 		Scanner teclado = new Scanner(System.in);
+
+		// preguntar al usuario si quiere usar un cliente ya registrado o crear uno
+		// nuevo y guardar el id del Cliente en la variable idCliente en servicios.
+
 		/* nueva instancia de Servicio */
 		Servicio ret = new Servicio();
+
+		// comprobamos si el servicio es una compra o un mantenimiento.
+		if (s == "c") {
+			Compra c = new Compra();
+			c = Compra.nuevaCompra();
+		} else if (s == "m") {
+			Mantenimiento m = new Mantenimiento();
+			m = Mantenimiento.nuevoMantenimiento();
+		}
+
+		System.out.println("Desea agregar notas?: ");
 
 		System.out.println("Notas: ");
 		String notasServ = " ";
@@ -87,43 +111,13 @@ public class Servicio {
 		return ret;
 	}
 
-	public static Servicio nuevoServicioReparacion() {
-		/* instancia del teclado */
-		Scanner teclado = new Scanner(System.in);
-		/* nueva instancia de Servicio */
-		Servicio ret = new Servicio();
-
-		System.out.println("Notas: ");
-		String notasServ = " ";
-		notasServ = teclado.nextLine();
-		ret.setNotas(notasServ);
-
-		/*
-		 * hay que introducir el precio del servicio ya que por ejemplo un mantenimiento
-		 * no se puede calcular el precio.
-		 */
-		System.out.println("Precio Total: ");
-		double precioTotal = 0.0;
-		precioTotal = teclado.nextDouble();
-		ret.setPrecioTotal(precioTotal);
-		/*
-		 * hay que esperar a que luis explique como se inicializa, ahora mismo devuelve
-		 * null con o sin esta linea
-		 */
-//		LocalDate fechaToday = null;
-//		fechaToday = Utilidades.Fechas();
-//		ret.setFechaToday(fechaToday);
-
-		return ret;
-	}
-	
 	/* Getters, setters y to string */
-	public long getIdServicios() {
+	public long getIdServicio() {
 		return idServicio;
 	}
 
-	public void setIdServicios(long idServ) {
-		this.idServicio = idServ;
+	public void setIdServicio(long idServicio) {
+		this.idServicio = idServicio;
 	}
 
 	public String getNotas() {
@@ -134,19 +128,11 @@ public class Servicio {
 		this.notas = notas;
 	}
 
-	public long getIdServicio() {
-		return idServicio;
-	}
-
-	public void setIdServicio(long idServicio) {
-		this.idServicio = idServicio;
-	}
-
-	public LocalDate getFechaToday() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFechaToday(LocalDate fechaToday) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
@@ -158,34 +144,42 @@ public class Servicio {
 		this.precioTotal = precioTotal;
 	}
 
-	public LocalDate getFecha() {
-		return fecha;
+	public Cliente getIdCliente() {
+		return idCliente;
 	}
 
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
+	public void setIdCliente(Cliente idCliente) {
+		this.idCliente = idCliente;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public Mantenimiento getM() {
+		return m;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setM(Mantenimiento m) {
+		this.m = m;
 	}
 
-	public long getNumServicio() {
-		return numServicio;
+	public Compra getC() {
+		return c;
 	}
 
-	public void setNumServicio(long numServicio) {
-		this.numServicio = numServicio;
+	public void setC(Compra c) {
+		this.c = c;
+	}
+
+	public Envio getE() {
+		return e;
+	}
+
+	public void setE(Envio e) {
+		this.e = e;
 	}
 
 	@Override
 	public String toString() {
 		return "Servicio [idServicio=" + idServicio + ", notas=" + notas + ", fecha=" + fecha + ", precioTotal="
-				+ precioTotal + "]";
+				+ precioTotal + ", idCliente=" + idCliente + ", m=" + m + ", c=" + c + ", e=" + e + "]";
 	}
 
 }
