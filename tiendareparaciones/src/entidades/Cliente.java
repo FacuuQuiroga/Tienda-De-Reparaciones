@@ -9,7 +9,7 @@ import Utils.Validador;
 public class Cliente {
 
 	/* id de cliente, sirve para identificarlo, se autocalcula. */
-	private long idCliente = 0;
+	private long idCliente;
 	/*
 	 * nombre representa el nombre de el nuevo cliente, no acepta numeros ni
 	 * caracteres especiales, max 25 caracteres.
@@ -25,18 +25,11 @@ public class Cliente {
 	private String numeroTarjeta;
 	private String cuentaCorriente;
 
-	/* Para el autocalculo del id */
-	long numPersona = 0;
-
 	/* Constructores */
-	// por defecto
-	private Cliente() {
-		/* para autocalculo del idCliente */
-		numPersona++;
-		this.idCliente = numPersona;
+	public Cliente() {
 	}
 
-	// Para heredar cliente con servicio
+	// Para servicio
 	public Cliente(String numeroTarjeta, String cuentaCorriente) {
 		this.numeroTarjeta = numeroTarjeta;
 		this.cuentaCorriente = cuentaCorriente;
@@ -44,24 +37,20 @@ public class Cliente {
 
 	// Para utilizar con la clase Datos
 	public Cliente(String nombre, String nif, String direccion, String telefono) {
-		numPersona++;
-		this.idCliente = numPersona;
+		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.nif = nif;
 		this.direccion = direccion;
 		this.telefono = telefono;
 	}
 
-	/* Para relacion 1-N con Servicio */
-	public Servicio nuevoServicio() {
-		Servicio s = new Servicio();
-		s.setCliente(this);
-		s = Servicio.nuevoServicio();
-		return s;
+	/**
+	 * 
+	 * @return Objeto del tipo cliente completo sin los datos de tarjeta ni cuenta
+	 *         corriente
+	 * @author Facu
+	 */
 
-	}
-
-	// Para registrar un nuevo Cliente
 	public static Cliente nuevoCliente() {
 		/* instancia para el teclado */
 		Cliente ret = new Cliente();
@@ -127,6 +116,10 @@ public class Cliente {
 		return ret;
 	}
 
+	public String dataClientes() {
+		return "" + this.idCliente + "|" + this.nombre + "|" + this.telefono;// agregar todos.
+	}
+
 	/* Getters , setters y to string */
 	public long getIdCliente() {
 		return idCliente;
@@ -190,14 +183,6 @@ public class Cliente {
 
 	public void setCuentaCorriente(String cuentaCorriente) {
 		this.cuentaCorriente = cuentaCorriente;
-	}
-
-	public long getNumPersona() {
-		return numPersona;
-	}
-
-	public void setNumPersona(long numPersona) {
-		this.numPersona = numPersona;
 	}
 
 	@Override
