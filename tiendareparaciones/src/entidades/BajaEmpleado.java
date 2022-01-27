@@ -22,32 +22,32 @@ public class BajaEmpleado {
 	}
 	
 	/* Para relacion 1-N con Servicio */
-	public Empleado nuevoEmpleado() {
+	public Empleado newEmpleado() {
 		Empleado ret = new Empleado();
-		e.setBajaEmpleado(this);
-		e = Empleado.nuevoEmpleado();
+//		e.setBajaEmpleado(this);
+		ret = Empleado.newEmpleado();
 		return ret;
 	}
 	// metodo nuevoClase
 
 	public static BajaEmpleado newBajaEmpleado() {
 		BajaEmpleado ret = new BajaEmpleado();
-
 		Scanner teclado = new Scanner(System.in);
-//		long id = 0;
-//		id = teclado.nextLong();
-//		baja.setIdBaja(id);
+		long id = 0;
+		id = teclado.nextLong();
+		ret.setIdBaja(id);
 
-//		LocalDate fechaFin = null;
-//		fechaFin = LocalDate.of(teclado.nextInt(), teclado.nextInt(), teclado.nextInt());
-//		ret.setFechaToday(fechaFin);
+		LocalDate fechaFin = null;
+		fechaFin = LocalDate.of(teclado.nextInt(), teclado.nextInt(), teclado.nextInt());
+		ret.setFechaFin(fechaFin);
 		
 		System.out.println("Motivo baja: ");
 		String motivo;
 		motivo = teclado.nextLine();
-		baja.setMotivoBaja(motivo);
+		ret.setMotivoBaja(motivo);
 		return ret;
 	}
+	
 
 	// getters y setters
 

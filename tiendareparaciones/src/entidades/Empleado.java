@@ -82,7 +82,7 @@ public class Empleado {
 			System.out.println(
 					"Número de teléfono del Empleado: (No puede repetirse. El número de teléfono ha de ser único.)");
 			telefonoE1 = teclado.nextLine();
-			telefonoValido = Validador.validartelefono(telefonoE1);
+			telefonoValido = Validador.validadortelefono(telefonoE1);
 		} while (!telefonoValido);
 		ret.setNif(telefonoE1);
 
