@@ -4,6 +4,9 @@
 package entidades;
 
 import java.util.Scanner;
+
+import Utils.Utilidades;
+
 import java.util.ArrayList;
 
 public class Mantenimiento extends Servicio {
@@ -17,28 +20,17 @@ public class Mantenimiento extends Servicio {
 	private ArrayList<Reparacion> reparacion = new ArrayList<Reparacion>();
 
 	/* constructores */
-	// por defecto con super para que herede
 	public Mantenimiento() {
 		super();
 	}
 
-	public ArrayList<Reparacion> getReparacion() {
-		return reparacion;
-	}
-
-	public void setReparacion(ArrayList<Reparacion> reparacion) {
-		this.reparacion = reparacion;
-	}
-
-	// para herencia de Servicio
-	public Mantenimiento(Mantenimiento servMantenimiento, double horasTrabajadas) {
-		super(servMantenimiento);
-		this.horasTrabajadas = horasTrabajadas;
-	}
-
-	// para heredar a Reparacion
 	public Mantenimiento(double horasTrabajadas) {
 		this.horasTrabajadas = horasTrabajadas;
+	}
+
+	public Mantenimiento(double ht, ArrayList reparaciones) {
+		this.horasTrabajadas = ht;
+		this.reparacion = reparaciones;
 	}
 
 	public static Mantenimiento nuevoMantenimiento() {
@@ -50,7 +42,18 @@ public class Mantenimiento extends Servicio {
 		System.out.println("Cuantas horas duro el mantenimiento?");
 		double horasServ = 0.0;
 		horasServ = teclado.nextDouble();
-		ret.setHorasTrabajadas(horasServ);
+
+		System.out.println("El mantenimieto tiene reparaciones?");
+		boolean tieneRep = false;
+		tieneRep = Utilidades.leerBoolean();
+		if (tieneRep) {
+			// ArrayList<Reparacion> rep = Reparacion.nuevaReparacion(); NO SE COMO TRABAJAR
+			// CON LOS ARRAYLIST TODAVIA
+			ret.setHorasTrabajadas(horasServ);
+			// ret.setReparacion(rep);
+		} else {
+			ret.setHorasTrabajadas(horasServ);
+		}
 
 		return ret;
 	}
@@ -62,6 +65,14 @@ public class Mantenimiento extends Servicio {
 
 	public void setHorasTrabajadas(double horasTrabajadas) {
 		this.horasTrabajadas = horasTrabajadas;
+	}
+
+	public ArrayList<Reparacion> getReparacion() {
+		return reparacion;
+	}
+
+	public void setReparacion(ArrayList<Reparacion> reparacion) {
+		this.reparacion = reparacion;
 	}
 
 	@Override
