@@ -1,11 +1,11 @@
 package Utils;
 
 import entidades.Cliente;
-import entidades.Reparacion;
+Aimport entidades.Reparacion;
 
-/*Almacenará diferentes arrays de datos válidos para ser manejados desde una función
-principal. Cada clase dispondrá de un array propio con varios elementos válidos de esa clase, y que
-será static y final. 
+/*Almacenarï¿½ diferentes arrays de datos vï¿½lidos para ser manejados desde una funciï¿½n
+principal. Cada clase dispondrï¿½ de un array propio con varios elementos vï¿½lidos de esa clase, y que
+serï¿½ static y final. 
 */
 public class Datos {
 	/*
@@ -22,14 +22,25 @@ public class Datos {
 	public static final int numClientes = CLIENTES.length;
 	
 	/*
-	 * public Reparacion(double horasTrabajadas)
+	 * public Reparacion(long id, double horasTrabajadas)
 	 * Facu.
 	 */
 	
 	public static final Reparacion REPARACIONES[] = {
-			new Reparacion(2.27),
-			new Reparacion(3.40),
-			new Reparacion(1.04),
-			new Reparacion(5.30)};
+			new Reparacion(000000000001, "2.27"),
+			new Reparacion(000000000002, "3.40"), 
+			new Reparacion(000000000003, "1.04"),
+			new Reparacion(000000000004, "5.30") };
 	public static final int numReparaciones = CLIENTES.length;
+	
+	/**
+	 * public Equipo(long idEquipo, double precio, String modelo)
+	 * Facu.
+	 */
+	public static final Equipo EQUIPOS[] = { 
+			new Equipo(0000001, 12.23, "cosas missticas"),
+			new Equipo(0000002, 360.99,"Ipad-o Pro"),
+			new Equipo(0000003, 1000.99, "MacBookoto Pro 10.5"),
+			new Equipo(0000004, 599.99,"Xbot Serie T")};
+	public static final int numEquipos = EQUIPOS.length;
 }
