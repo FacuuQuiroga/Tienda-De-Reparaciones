@@ -3,6 +3,8 @@ package principal;
 import java.util.Scanner;
 import Utils.Utilidades;
 import entidades.Cliente;
+import entidades.Envio;
+import entidades.Equipo;
 import entidades.Servicio;
 
 public class Principal {
@@ -14,7 +16,7 @@ public class Principal {
 		boolean menuValido = false;
 		int menu = -1;
 		int subMenu = -1;
-		mostrarMenuPrincipal();
+		Utils.Menu.mostrarMenuPrincipal();
 
 		do {
 			menu = teclado.nextInt();
@@ -22,17 +24,17 @@ public class Principal {
 			switch (menu) {
 			case 1:
 				menuClientes();
-				mostrarMenuPrincipal();
+				Utils.Menu.mostrarMenuPrincipal();
 				break;
 
 			case 2:
 				menuServicios();
-				mostrarMenuPrincipal();
+				Utils.Menu.mostrarMenuPrincipal();
 				break;
 
 			case 3:
 				menuEquipos();
-				mostrarMenuPrincipal();
+				Utils.Menu.mostrarMenuPrincipal();
 				break;
 
 			case 0:
@@ -40,7 +42,7 @@ public class Principal {
 
 			default:
 				System.out.println("Opcion Invalida, intente de nuevo");
-				mostrarMenuPrincipal();
+				Utils.Menu.mostrarMenuPrincipal();
 				break;
 			}
 		} while (!menuValido);
@@ -54,7 +56,7 @@ public class Principal {
 		boolean subMenuValidoClientes = false;
 
 		do {
-			mostrarMenuClientes();
+			Utils.Menu.mostrarMenuClientes();
 			subMenuClientes = teclado.nextInt();
 
 			switch (subMenuClientes) {
@@ -76,6 +78,8 @@ public class Principal {
 				break;
 			case 3:
 				System.out.println("buscar Clientes");
+				// buscar clientes
+				// Utils.Buscador.buscarClientes;
 				break;
 			case 0:
 				subMenuValidoClientes = true;
@@ -91,25 +95,34 @@ public class Principal {
 		Scanner teclado = new Scanner(System.in);
 		int subMenuEquipos = -1;
 		boolean subMenuValidoEquipos = false;
-		mostrarMenuEquipos();
+		Utils.Menu.mostrarMenuEquipos();
 		subMenuEquipos = teclado.nextInt();
 
 		do {
 			switch (subMenuEquipos) {
 			case 1:
-				System.out.println("ver equipos");
+				Equipo[] equiposDb = Utils.Datos.EQUIPOS;
+				System.out.println("Hay " + Utils.Datos.numClientes + " Equipos en el sistema.");
+
+				for (Equipo e : equiposDb)
+					System.out.println("Nombre: " + e.getModelo() + ". Identificador del equipo: " + e.getIdEquipo()
+							+ "Precio del equipo: " + e.getPrecio());
 				break;
 			case 2:
-				System.out.println("nuevo equipo");
+				System.out.println("Nuevo equipo");
+				Equipo e = new Equipo();
+				e = Equipo.nuevoEquipo();
+				System.out.println(e);
 				break;
 			case 3:
-				System.out.println("buscar equipos");
+				System.out.println("Buscar equipos");
+				// Utils.Buscador.buscarEquipos;
 				break;
 			case 0:
 				subMenuValidoEquipos = true;
 			default:
 				System.out.println("Opcion Invalida, intente de nuevo");
-
+				break;
 			}
 
 		} while (!subMenuValidoEquipos);
@@ -119,7 +132,7 @@ public class Principal {
 		Scanner teclado = new Scanner(System.in);
 		int subMenuServicios = -1;
 		boolean subMenuValidoServicios = false;
-		mostrarMenuServicios();
+		Utils.Menu.mostrarMenuServicios();
 		subMenuServicios = teclado.nextInt();
 
 		// primero hay que seleccionar al cliente para hacer la llamada al constructor
@@ -129,56 +142,28 @@ public class Principal {
 			switch (subMenuServicios) {
 			case 1:
 				/* Nueva Compra */
-				Servicio servicioCompra = Servicio.nuevoServicioCompra();
+				String c = "c";
+				Servicio servicioCompra = Servicio.nuevoServicio(c);
 				break;
 			case 2:
 
 				/* Nueva Reparacion */
-				Servicio servicioReparacion = Servicio.nuevoServicioReparacion();
+				String m = "m";
+				Servicio servicioReparacion = Servicio.nuevoServicio(m);
 				break;
 
 			case 3:
 				System.out.println("nuevo Envio");
+				Envio en = new Envio();
+				en = Envio.nuevoEnvio();
 				break;
 			case 0:
 				subMenuValidoServicios = true;
 			default:
 				System.out.println("Opcion Invalida, intente de nuevo");
+				break;
 			}
 		} while (!subMenuValidoServicios);
 	}
 
-	public static void mostrarMenuPrincipal() {
-
-		System.out.println("Que desea hacer?" + "\n");
-		System.out.println("1- Gestion del Clientes");
-		System.out.println("2- Gestion de Servicios");
-		System.out.println("3- Gestion de Equipos");
-		System.out.println("5- Salir");
-	}
-
-	public static void mostrarMenuClientes() {
-
-		System.out.println("Que desea hacer?" + "\n");
-		System.out.println("1- Ver Cliente/s");
-		System.out.println("2- Nuevo Cliente");
-		System.out.println("3- Buscar Cliente");
-		System.out.println("4- Atras");
-	}
-
-	public static void mostrarMenuEquipos() {
-		System.out.println("Que desea hacer?" + "\n");
-		System.out.println("1- Ver Equipo/s");
-		System.out.println("2- Nuevo Equipo");
-		System.out.println("3- Buscar Equipo/s");
-		System.out.println("4- Atras");
-	}
-
-	public static void mostrarMenuServicios() {
-		System.out.println("Que desea hacer?" + "\n");
-		System.out.println("1- Nueva Compra");
-		System.out.println("2- Nueva Reparacion");
-		System.out.println("3- Nuevo Envio");
-		System.out.println("4- Atras");
-	}
 }
