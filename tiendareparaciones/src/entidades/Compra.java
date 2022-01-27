@@ -1,8 +1,12 @@
+/**
+ * @author Facu
+ */
 //hace martins
 package entidades;
 
 import java.util.Scanner;
 
+import Utils.Utilidades;
 import Utils.Validador;
 
 public class Compra {
@@ -19,50 +23,78 @@ public class Compra {
 	// indica el computo total del precio de equipo
 	// expresado en numero reales con simbolos de puntuacion
 
-	long numeroIdCompra;
+	protected Equipo e;
+	protected Lote l;
 
+	/* Constructores */
 	public Compra() {
-
+		super();
 	}
 
 	private Compra(long idCompra, char metodoDePago, double precioTotal) {
-		numeroIdCompra++;
-		this.idCompra = numeroIdCompra;
+		this.idCompra = idCompra;
 		this.metodoDePago = metodoDePago;
 		this.precioTotal = precioTotal;
-
 	}
 
-	// Para registrar una nueva Compra
+	private Compra(long idCompra, char metodoDePago, double precioTotal, Equipo e, Lote l) {
+		this.idCompra = idCompra;
+		this.metodoDePago = metodoDePago;
+		this.precioTotal = precioTotal;
+		this.e = e;
+		this.l = l;
+	}
+
+	private Compra(long idCompra, char metodoDePago, double precioTotal, Lote l) {
+		this.idCompra = idCompra;
+		this.metodoDePago = metodoDePago;
+		this.precioTotal = precioTotal;
+		this.l = l;
+	}
+
+	private Compra(long idCompra, char metodoDePago, double precioTotal, Equipo e) {
+		this.idCompra = idCompra;
+		this.metodoDePago = metodoDePago;
+		this.precioTotal = precioTotal;
+		this.e = e;
+	}
+
+	/**
+	 * Pregunta al usurio el tipo de pago(e o t), crea una lista(array) con los id
+	 * de los equipos o los lotes de la compra y calcula el precio total solo desde
+	 * los precios de los equipos y aplica los descuentos de los lotes.
+	 * 
+	 * @return Devuelve un objeto del tipo compra que contiene un array de los
+	 *         equipos y lotes
+	 * @author Facu
+	 */
 	public static Compra nuevaCompra() {
 		/* instancia para el teclado */
 		Compra ret = new Compra();
-		Scanner teclado = new Scanner(System.in);// revisar Scanner error
+		Scanner teclado = new Scanner(System.in);
 
-//		boolean idCompraValido = false;
-//		long idValidado = idCompra;
+		System.out.println("Introduce los siguientes datos para registrar una nueva Compra \n");
+		boolean tipoPago = false;
 
-		System.out.println("Introduce los siguientes datos para registrar una nueva Compra:" + "\n");
+		System.out.println("Metodo de pago: (e para efectivo, t para tarjeta)");
+		tipoPago = Utilidades.leerPago();
 
-		char metodoDePago;
-		boolean metodoDePagoValido = false;
-		do {
-			System.out.println("metodo de pago: (efectivo o tarjeta)");
-			metodoDePago = teclado.next().charAt(0);/// No se si esta bien implementado y unicamente lee un char
-			metodoDePagoValido = Validador.validarMetodoDePago(metodoDePago);
-		} while (!metodoDePagoValido);
-		ret.setMetodoDePago(metodoDePago);
+		// aca tiene q crearse el array y llamar a una funcion que sea capaz de devolver
+		// objetos del tipo equipo o lote para que los
+		// guarde en el array recien creado
 
-		double precioTotal;
-		boolean precioTotalValido = false;
-		do {
-			System.out.println("precio total: secuencia de numeros con puntos");
-			precioTotal = teclado.nextDouble();
-			precioTotalValido = Validador.validarPrecio(precioTotal);
-		} while (!precioTotalValido);
-		ret.setPrecioTotal(precioTotal);
+		// obtinee los precio de los equipos y los suma en una variable llamada
+		// precioTotal
+
+		// se obtiene el modelo del equipo del lote para obtener el precio y
+		// multiplicarlo por la cantidad del lote y se guarda
+		// en una variable llamada precioTotalLote, y se realiza el descuento que tiene
+		// el lote al precio total del lote.
+
+		// por ultimo se suma precioTotal con precioTotalLote.
 
 		return ret;
+
 	}
 
 	//// Getters , setters and to string
