@@ -1,7 +1,8 @@
 package Utils;
 
 import entidades.Cliente;
-Aimport entidades.Reparacion;
+import entidades.Equipo;
+import entidades.Reparacion;
 
 /*Almacenar� diferentes arrays de datos v�lidos para ser manejados desde una funci�n
 principal. Cada clase dispondr� de un array propio con varios elementos v�lidos de esa clase, y que
