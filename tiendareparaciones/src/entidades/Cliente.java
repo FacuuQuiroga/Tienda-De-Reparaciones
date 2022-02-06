@@ -14,7 +14,7 @@ public class Cliente {
 	 * nombre representa el nombre de el nuevo cliente, no acepta numeros ni
 	 * caracteres especiales, max 25 caracteres.
 	 */
-	private String nombre = "Sin nombre";
+	private String nombre;
 	/*
 	 * nif del cliente, no puede repetirse entre clientes, podria ser clave
 	 * secundaria, es obligatorio
@@ -36,12 +36,31 @@ public class Cliente {
 	}
 
 	// Para utilizar con la clase Datos
-	public Cliente(String nombre, String nif, String direccion, String telefono) {
+	public Cliente(long idCliente, String nombre, String nif, String direccion, String telefono) {
 		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.nif = nif;
 		this.direccion = direccion;
 		this.telefono = telefono;
+	}
+
+	public Cliente(String nombre, String nif, String direccion, String telefono) {
+		this.nombre = nombre;
+		this.nif = nif;
+		this.direccion = direccion;
+		this.telefono = telefono;
+	}
+
+	/**
+	 * orden: id+nombre+nif+direccion+telefono
+	 * 
+	 * @return
+	 * @author Facu
+	 */
+	public String data() {
+		String ret = "";
+		ret = this.idCliente + "|" + this.nombre + "|" + this.nif + "|" + "|" + this.direccion + "|" + this.telefono;
+		return ret;
 	}
 
 	/**
@@ -50,7 +69,6 @@ public class Cliente {
 	 *         corriente
 	 * @author Facu
 	 */
-
 	public static Cliente nuevoCliente() {
 		/* instancia para el teclado */
 		Cliente ret = new Cliente();
@@ -112,7 +130,7 @@ public class Cliente {
 			cuentaCorrienteValida = Validador.ValidarCuentaCorriente(cuentaCorrienteCl);
 		} while (!cuentaCorrienteValida);
 		ret.setCuentacorriente(cuentaCorrienteCl);
-
+		teclado.close();
 		return ret;
 	}
 
