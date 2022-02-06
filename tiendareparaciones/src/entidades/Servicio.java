@@ -12,12 +12,9 @@ public class Servicio {
 	protected long idServicio;
 	private String notas;
 	private LocalDate fecha;
-	protected double precioTotal;
+	protected double precioTotal; // HAY Q BORRARLO; LEER LOS REQUISITOS
 	/* Para relacion 1-N con Cliente */
 	protected Cliente idCliente;
-	protected Mantenimiento m = null;
-	protected Compra c = null;
-	protected Envio e = null;
 
 	/* constructores */
 	public Servicio() {
@@ -30,40 +27,6 @@ public class Servicio {
 		this.precioTotal = precioTotal;
 		this.idServicio = idServicio;
 		this.idCliente = idCl;
-	}
-
-	/* Para mantenimiento */
-	public Servicio(long idServicio, Cliente idCl, String notas, LocalDate fecha, double precioTota,
-			Mantenimiento mant) {
-		this.notas = notas;
-		this.fecha = fecha;
-		this.precioTotal = precioTotal;
-		this.idServicio = idServicio;
-		this.m = mant;
-		this.idCliente = idCl;
-
-	}
-
-	/* Para Compra */
-	public Servicio(long idServicio, Cliente idCl, String notas, LocalDate fecha, double precioTota, Compra compra) {
-		this.notas = notas;
-		this.fecha = fecha;
-		this.precioTotal = precioTotal;
-		this.idServicio = idServicio;
-		this.c = compra;
-		this.idCliente = idCl;
-
-	}
-
-	/* Para Envio */
-	public Servicio(long idServicio, Cliente idCl, String notas, LocalDate fecha, double precioTota, Envio envio) {
-		this.notas = notas;
-		this.fecha = fecha;
-		this.precioTotal = precioTotal;
-		this.idServicio = idServicio;
-		this.e = envio;
-		this.idCliente = idCl;
-
 	}
 
 	public static Servicio nuevoServicio(String s) {
@@ -107,7 +70,7 @@ public class Servicio {
 //		LocalDate fechaToday = null;
 //		fechaToday = Utilidades.Fechas();
 //		ret.setFechaToday(fechaToday);
-
+		teclado.close();
 		return ret;
 	}
 
@@ -152,34 +115,10 @@ public class Servicio {
 		this.idCliente = idCliente;
 	}
 
-	public Mantenimiento getM() {
-		return m;
-	}
-
-	public void setM(Mantenimiento m) {
-		this.m = m;
-	}
-
-	public Compra getC() {
-		return c;
-	}
-
-	public void setC(Compra c) {
-		this.c = c;
-	}
-
-	public Envio getE() {
-		return e;
-	}
-
-	public void setE(Envio e) {
-		this.e = e;
-	}
-
 	@Override
 	public String toString() {
 		return "Servicio [idServicio=" + idServicio + ", notas=" + notas + ", fecha=" + fecha + ", precioTotal="
-				+ precioTotal + ", idCliente=" + idCliente + ", m=" + m + ", c=" + c + ", e=" + e + "]";
+				+ precioTotal + ", idCliente=" + idCliente + "]";
 	}
 
 }
