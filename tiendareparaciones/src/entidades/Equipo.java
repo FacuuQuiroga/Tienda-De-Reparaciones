@@ -6,7 +6,7 @@ package entidades;
 
 import java.util.Scanner;
 
-import Utils.Validador;
+import utils.Validador;
 
 public class Equipo {
 

@@ -7,8 +7,7 @@ package entidades;
 
 import java.util.Scanner;
 
-import Utils.Utilidades;
-import Utils.Validador;
+import utils.Utilidades;
 
 public class Compra extends Servicio{
 

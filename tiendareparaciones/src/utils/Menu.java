@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 public class Menu {
 	public static void mostrarMenuPrincipal() {

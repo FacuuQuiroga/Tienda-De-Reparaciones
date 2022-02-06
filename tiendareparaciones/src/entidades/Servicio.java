@@ -6,7 +6,7 @@ package entidades;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import Utils.Utilidades;
+import utils.Utilidades;
 
 public class Servicio {
 	protected long idServicio;

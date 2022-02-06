@@ -1,11 +1,12 @@
 package principal;
 
 import java.util.Scanner;
-import Utils.Utilidades;
+
 import entidades.Cliente;
 import entidades.Envio;
 import entidades.Equipo;
 import entidades.Servicio;
+import utils.Utilidades;
 
 public class Principal {
 
@@ -17,7 +18,7 @@ public class Principal {
 		int menu = -1;
 
 		do {
-			Utils.Menu.mostrarMenuPrincipal();
+			utils.Menu.mostrarMenuPrincipal();
 			menu = teclado.nextInt();
 
 			menuValido = (menu < 0 || menu > 4 ? false : true);
@@ -61,7 +62,7 @@ public class Principal {
 		int subMenuClientes = -1;
 		boolean subMenuValidoClientes = false;
 		do {
-			Utils.Menu.mostrarMenuClientes();
+			utils.Menu.mostrarMenuClientes();
 			subMenuClientes = teclado.nextInt();
 
 			subMenuValidoClientes = (subMenuClientes < 0 || subMenuClientes > 3 ? false : true);
@@ -74,10 +75,10 @@ public class Principal {
 				/* Ver Clientes */
 				// imprimimos cuantos hay en la clase Datos.
 
-				Cliente[] clientesDb = Utils.Datos.CLIENTES;
+				Cliente[] clientesDb = utils.Datos.CLIENTES;
 				System.out.println(
 						"-------------------------------------------------------------------------------------");
-				System.out.println("Hay " + Utils.Datos.numClientes + " clientes en el sistema.");
+				System.out.println("Hay " + utils.Datos.numClientes + " clientes en el sistema.");
 				System.out.println(
 						"-------------------------------------------------------------------------------------");
 				// for para imprimir cada cliente
@@ -112,7 +113,7 @@ public class Principal {
 		boolean subMenuValidoEquipos = false;
 
 		do {
-			Utils.Menu.mostrarMenuEquipos();
+			utils.Menu.mostrarMenuEquipos();
 			subMenuEquipos = teclado.nextInt();
 
 			// Validador de opcion
@@ -123,10 +124,10 @@ public class Principal {
 
 			switch (subMenuEquipos) {
 			case 1:
-				Equipo[] equiposDb = Utils.Datos.EQUIPOS;
+				Equipo[] equiposDb = utils.Datos.EQUIPOS;
 				System.out.println(
 						"-------------------------------------------------------------------------------------");
-				System.out.println("Hay " + Utils.Datos.numClientes + " Equipos en el sistema.");
+				System.out.println("Hay " + utils.Datos.numClientes + " Equipos en el sistema.");
 				System.out.println(
 						"-------------------------------------------------------------------------------------");
 				for (Equipo e : equiposDb)
@@ -162,7 +163,7 @@ public class Principal {
 		// que tiene cliente llamado nuevoServicio
 
 		do {
-			Utils.Menu.mostrarMenuServicios();
+			utils.Menu.mostrarMenuServicios();
 			subMenuServicios = teclado.nextInt();
 
 			// Validador de opcion
@@ -202,7 +203,7 @@ public class Principal {
 		boolean subMenuValTarea = false;
 
 		do {
-			Utils.Menu.mostrarTarea4();
+			utils.Menu.mostrarTarea4();
 			subMenuTarea = teclado.nextInt();
 
 			// Validador de opcion

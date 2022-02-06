@@ -5,7 +5,7 @@ package entidades;
 
 import java.util.Scanner;
 
-import Utils.Utilidades;
+import utils.Utilidades;
 
 import java.util.ArrayList;
 

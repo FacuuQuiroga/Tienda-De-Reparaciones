@@ -1,5 +1,5 @@
 
-package Utils;
+package utils;
 
 import java.util.Scanner;
 

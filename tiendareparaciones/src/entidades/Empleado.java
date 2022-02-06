@@ -4,7 +4,8 @@ package entidades;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import Utils.Validador;
+
+import utils.Validador;
 
 public class Empleado {
 	// id es el identificador único de cada elemento Usuario.

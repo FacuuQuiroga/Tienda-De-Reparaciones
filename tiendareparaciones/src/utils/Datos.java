@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 import entidades.Cliente;
 import entidades.Equipo;
