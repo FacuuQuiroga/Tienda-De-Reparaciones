@@ -1,4 +1,5 @@
 /**
+ /**
  * @author Facu
  */
 //hace martins
@@ -9,7 +10,7 @@ import java.util.Scanner;
 import Utils.Utilidades;
 import Utils.Validador;
 
-public class Compra {
+public class Compra extends Servicio{
 
 	private long idCompra;
 	// idEquipo es el identificador del elemento compra
@@ -23,6 +24,8 @@ public class Compra {
 	// indica el computo total del precio de equipo
 	// expresado en numero reales con simbolos de puntuacion
 
+	protected Servicio s;
+	
 	protected Equipo e;
 	protected Lote l;
 
@@ -31,32 +34,39 @@ public class Compra {
 		super();
 	}
 
-	private Compra(long idCompra, char metodoDePago, double precioTotal) {
+	private Compra(Servicio s ,long idCompra, char metodoDePago, double precioTotal) {
 		this.idCompra = idCompra;
 		this.metodoDePago = metodoDePago;
 		this.precioTotal = precioTotal;
+		this.s= s;
 	}
-
-	private Compra(long idCompra, char metodoDePago, double precioTotal, Equipo e, Lote l) {
+//Equipo y lote
+	private Compra(Servicio s,long idCompra, char metodoDePago, double precioTotal, Equipo e, Lote l) {
 		this.idCompra = idCompra;
 		this.metodoDePago = metodoDePago;
 		this.precioTotal = precioTotal;
 		this.e = e;
 		this.l = l;
-	}
+		this.s= s;
 
-	private Compra(long idCompra, char metodoDePago, double precioTotal, Lote l) {
+	}
+//solo lote
+	private Compra(Servicio s,long idCompra, char metodoDePago, double precioTotal, Lote l) {
 		this.idCompra = idCompra;
 		this.metodoDePago = metodoDePago;
 		this.precioTotal = precioTotal;
 		this.l = l;
-	}
+		this.s= s;
 
-	private Compra(long idCompra, char metodoDePago, double precioTotal, Equipo e) {
+	}
+//solo Equipo
+	private Compra(Servicio s,long idCompra, char metodoDePago, double precioTotal, Equipo e) {
 		this.idCompra = idCompra;
 		this.metodoDePago = metodoDePago;
 		this.precioTotal = precioTotal;
 		this.e = e;
+		this.s= s;
+
 	}
 
 	/**
