@@ -2,7 +2,6 @@
 __*ACTIVIDAD 1 PROGRAMACION/ENTORNOS DE DESARROLLO*__
 
 __Autores:__ <br />
-> * Martín <br />							
 > * Facundo	<br />							
 > * Nicolás	<br />							
 > * Naiara <br />		
