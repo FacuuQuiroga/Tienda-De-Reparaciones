@@ -5,8 +5,6 @@ package entidades;
 
 import java.util.Scanner;
 
-import Utils.Datos;
-
 public class Reparacion extends Mantenimiento {
 	private long idReparacion;
 	private String duraciontotal;
