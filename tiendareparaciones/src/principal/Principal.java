@@ -15,35 +15,41 @@ public class Principal {
 
 		boolean menuValido = false;
 		int menu = -1;
-		int subMenu = -1;
-		Utils.Menu.mostrarMenuPrincipal();
 
 		do {
+			Utils.Menu.mostrarMenuPrincipal();
 			menu = teclado.nextInt();
+
+			menuValido = (menu < 0 || menu > 4 ? false : true);
+			if (!menuValido) {
+				System.out.println("Opcion invalida, intente de nuevo empanao");
+			}
 
 			switch (menu) {
 			case 1:
 				menuClientes();
-				Utils.Menu.mostrarMenuPrincipal();
-				break;
+				menuValido = false;
 
+				break;
 			case 2:
 				menuServicios();
-				Utils.Menu.mostrarMenuPrincipal();
-				break;
+				menuValido = false;
 
+				break;
 			case 3:
 				menuEquipos();
-				Utils.Menu.mostrarMenuPrincipal();
+				menuValido = false;
+
+				break;
+			case 4:
+				menuTarea4();
+				menuValido = false;
 				break;
 
 			case 0:
 				menuValido = true;
-
-			default:
-				System.out.println("Opcion Invalida, intente de nuevo");
-				Utils.Menu.mostrarMenuPrincipal();
 				break;
+
 			}
 		} while (!menuValido);
 		System.out.println("Guardando datos y cerrando el programa, Taluego.");
@@ -54,21 +60,31 @@ public class Principal {
 		Scanner teclado = new Scanner(System.in);
 		int subMenuClientes = -1;
 		boolean subMenuValidoClientes = false;
-
 		do {
 			Utils.Menu.mostrarMenuClientes();
 			subMenuClientes = teclado.nextInt();
+
+			subMenuValidoClientes = (subMenuClientes < 0 || subMenuClientes > 3 ? false : true);
+			if (!subMenuValidoClientes) {
+				System.out.println("introduce una opcion valida");
+			}
 
 			switch (subMenuClientes) {
 			case 1:
 				/* Ver Clientes */
 				// imprimimos cuantos hay en la clase Datos.
-				Cliente[] clientesDb = Utils.Datos.CLIENTES;
 
+				Cliente[] clientesDb = Utils.Datos.CLIENTES;
+				System.out.println(
+						"-------------------------------------------------------------------------------------");
 				System.out.println("Hay " + Utils.Datos.numClientes + " clientes en el sistema.");
+				System.out.println(
+						"-------------------------------------------------------------------------------------");
 				// for para imprimir cada cliente
 				for (Cliente i : clientesDb)
-					System.out.println("Nombre: " + i.getNombre() + ". Identificador del cliente: " + i.getIdCliente());
+					System.out.println("ID: " + i.getIdCliente() + " Nombre: " + i.getNombre() + " NIF:" + i.getNif());
+				System.out.println(
+						"-------------------------------------------------------------------------------------");
 				break;
 			case 2:
 				System.out.println("nuevo Clientes");
@@ -83,9 +99,8 @@ public class Principal {
 				break;
 			case 0:
 				subMenuValidoClientes = true;
-			default:
-				System.out.println("Opcion Invalida, intente de nuevo");
-
+				System.out.println("Volviendo...\n");
+				return;
 			}
 		} while (!subMenuValidoClientes);
 
@@ -95,18 +110,30 @@ public class Principal {
 		Scanner teclado = new Scanner(System.in);
 		int subMenuEquipos = -1;
 		boolean subMenuValidoEquipos = false;
-		Utils.Menu.mostrarMenuEquipos();
-		subMenuEquipos = teclado.nextInt();
 
 		do {
+			Utils.Menu.mostrarMenuEquipos();
+			subMenuEquipos = teclado.nextInt();
+
+			// Validador de opcion
+			subMenuValidoEquipos = (subMenuEquipos < 0 || subMenuEquipos > 3 ? false : true);
+			if (!subMenuValidoEquipos) {
+				System.out.println("introduce una opcion valida");
+			}
+
 			switch (subMenuEquipos) {
 			case 1:
 				Equipo[] equiposDb = Utils.Datos.EQUIPOS;
+				System.out.println(
+						"-------------------------------------------------------------------------------------");
 				System.out.println("Hay " + Utils.Datos.numClientes + " Equipos en el sistema.");
-
+				System.out.println(
+						"-------------------------------------------------------------------------------------");
 				for (Equipo e : equiposDb)
-					System.out.println("Nombre: " + e.getModelo() + ". Identificador del equipo: " + e.getIdEquipo()
-							+ "Precio del equipo: " + e.getPrecio());
+					System.out.println("ID: " + e.getIdEquipo() + " Nombre: " + e.getModelo() + " Precio del equipo: "
+							+ e.getPrecio() + "€");
+				System.out.println(
+						"-------------------------------------------------------------------------------------");
 				break;
 			case 2:
 				System.out.println("Nuevo equipo");
@@ -120,11 +147,9 @@ public class Principal {
 				break;
 			case 0:
 				subMenuValidoEquipos = true;
-			default:
-				System.out.println("Opcion Invalida, intente de nuevo");
-				break;
+				System.out.println("Volviendo...");
+				return;
 			}
-
 		} while (!subMenuValidoEquipos);
 	}
 
@@ -132,13 +157,20 @@ public class Principal {
 		Scanner teclado = new Scanner(System.in);
 		int subMenuServicios = -1;
 		boolean subMenuValidoServicios = false;
-		Utils.Menu.mostrarMenuServicios();
-		subMenuServicios = teclado.nextInt();
 
 		// primero hay que seleccionar al cliente para hacer la llamada al constructor
 		// que tiene cliente llamado nuevoServicio
 
 		do {
+			Utils.Menu.mostrarMenuServicios();
+			subMenuServicios = teclado.nextInt();
+
+			// Validador de opcion
+			subMenuValidoServicios = (subMenuServicios < 0 || subMenuServicios > 3 ? false : true);
+			if (!subMenuValidoServicios) {
+				System.out.println("introduce una opcion valida");
+			}
+
 			switch (subMenuServicios) {
 			case 1:
 				/* Nueva Compra */
@@ -146,12 +178,10 @@ public class Principal {
 				Servicio servicioCompra = Servicio.nuevoServicio(c);
 				break;
 			case 2:
-
 				/* Nueva Reparacion */
 				String m = "m";
 				Servicio servicioReparacion = Servicio.nuevoServicio(m);
 				break;
-
 			case 3:
 				System.out.println("nuevo Envio");
 				Envio en = new Envio();
@@ -159,11 +189,61 @@ public class Principal {
 				break;
 			case 0:
 				subMenuValidoServicios = true;
-			default:
-				System.out.println("Opcion Invalida, intente de nuevo");
-				break;
+				System.out.println("Volviendo...");
+				return;
 			}
 		} while (!subMenuValidoServicios);
+
 	}
 
+	private static void menuTarea4() {
+		Scanner teclado = new Scanner(System.in);
+		int subMenuTarea = -1;
+		boolean subMenuValTarea = false;
+
+		do {
+			Utils.Menu.mostrarTarea4();
+			subMenuTarea = teclado.nextInt();
+
+			// Validador de opcion
+			subMenuValTarea = (subMenuTarea < 0 || subMenuTarea > 7 ? false : true);
+			if (!subMenuValTarea) {
+				System.out.println("introduce una opcion valida");
+			}
+
+			switch (subMenuTarea) {
+			case 1:
+				// Exportar un objeto de esa clase (todos sus datos imprescindibles para una
+				// carga ligera) hacia un fichero de texto (con el formato/orden marcado en el
+				// método data()).
+				break;
+			case 2:
+				// Exportar una colección de objetos de esa clase hacia un fichero de texto.
+				break;
+			case 3:
+				// Exportar un objeto de esa clase hacia un fichero binario
+				break;
+			case 4:
+				// Exportar una colección de objetos de esa clase hacia un fichero binario.
+				break;
+			case 5:
+				// Importar una colección de objetos de esa clase desde un fichero de texto.
+				break;
+			case 6:
+				// Importar una colección de objetos de esa clase desde un fichero binario
+				break;
+			case 7:
+//				Buscar un elemento de esa clase por su id en un fichero de texto que dispone de una colección de
+//				elementos organizados línea a línea acordemente al formato/orden del método data(). En el caso
+//				de que sí se encuentre el id se creará un nuevo objeto completo y, mediante la forma de carga ligera,
+//				se cargaran los datos sobre el objeto y se devolverá éste al final de la función. En el caso de no
+//				encontrar el id en el fichero, el objeto devuelto será nulo
+				break;
+			case 0:
+				subMenuValTarea = false;
+				System.out.println("Volviendo...");
+				return;
+			}
+		} while (!subMenuValTarea);
+	}
 }
