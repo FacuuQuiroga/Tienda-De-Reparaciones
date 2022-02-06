@@ -86,17 +86,20 @@ public class Principal {
 					System.out.println("ID: " + i.getIdCliente() + " Nombre: " + i.getNombre() + " NIF:" + i.getNif());
 				System.out.println(
 						"-------------------------------------------------------------------------------------");
+				subMenuValidoClientes = false;
 				break;
 			case 2:
 				System.out.println("nuevo Clientes");
 				Cliente c = new Cliente();
 				c = Cliente.nuevoCliente();
 				System.out.println(c);
+				subMenuValidoClientes = false;
 				break;
 			case 3:
 				System.out.println("buscar Clientes");
 				// buscar clientes
 				// Utils.Buscador.buscarClientes;
+				subMenuValidoClientes = false;
 				break;
 			case 0:
 				subMenuValidoClientes = true;
@@ -135,16 +138,19 @@ public class Principal {
 							+ e.getPrecio() + "€");
 				System.out.println(
 						"-------------------------------------------------------------------------------------");
+				subMenuValidoEquipos = false;
 				break;
 			case 2:
 				System.out.println("Nuevo equipo");
 				Equipo e = new Equipo();
 				e = Equipo.nuevoEquipo();
 				System.out.println(e);
+				subMenuValidoEquipos = false;
 				break;
 			case 3:
 				System.out.println("Buscar equipos");
 				// Utils.Buscador.buscarEquipos;
+				subMenuValidoEquipos = false;
 				break;
 			case 0:
 				subMenuValidoEquipos = true;
@@ -177,16 +183,19 @@ public class Principal {
 				/* Nueva Compra */
 				String c = "c";
 				Servicio servicioCompra = Servicio.nuevoServicio(c);
+				subMenuValidoServicios = false;
 				break;
 			case 2:
 				/* Nueva Reparacion */
 				String m = "m";
 				Servicio servicioReparacion = Servicio.nuevoServicio(m);
+				subMenuValidoServicios = false;
 				break;
 			case 3:
 				System.out.println("nuevo Envio");
 				Envio en = new Envio();
 				en = Envio.nuevoEnvio();
+				subMenuValidoServicios = false;
 				break;
 			case 0:
 				subMenuValidoServicios = true;
@@ -217,21 +226,27 @@ public class Principal {
 				// Exportar un objeto de esa clase (todos sus datos imprescindibles para una
 				// carga ligera) hacia un fichero de texto (con el formato/orden marcado en el
 				// método data()).
+				subMenuValTarea = false;
 				break;
 			case 2:
 				// Exportar una colección de objetos de esa clase hacia un fichero de texto.
+				subMenuValTarea = false;
 				break;
 			case 3:
 				// Exportar un objeto de esa clase hacia un fichero binario
+				subMenuValTarea = false;
 				break;
 			case 4:
 				// Exportar una colección de objetos de esa clase hacia un fichero binario.
+				subMenuValTarea = false;
 				break;
 			case 5:
 				// Importar una colección de objetos de esa clase desde un fichero de texto.
+				subMenuValTarea = false;
 				break;
 			case 6:
 				// Importar una colección de objetos de esa clase desde un fichero binario
+				subMenuValTarea = false;
 				break;
 			case 7:
 //				Buscar un elemento de esa clase por su id en un fichero de texto que dispone de una colección de
@@ -239,9 +254,10 @@ public class Principal {
 //				de que sí se encuentre el id se creará un nuevo objeto completo y, mediante la forma de carga ligera,
 //				se cargaran los datos sobre el objeto y se devolverá éste al final de la función. En el caso de no
 //				encontrar el id en el fichero, el objeto devuelto será nulo
+				subMenuValTarea = false;
 				break;
 			case 0:
-				subMenuValTarea = false;
+				subMenuValTarea = true;
 				System.out.println("Volviendo...");
 				return;
 			}
