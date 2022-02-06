@@ -17,20 +17,24 @@ public class Mantenimiento extends Servicio {
 	 */
 	private double horasTrabajadas;
 	/* para relacion de Mantenimiento y Reparacion */
-	private ArrayList<Reparacion> reparacion = new ArrayList<Reparacion>();
+	private ArrayList<Reparacion> idReparaciones = new ArrayList<Reparacion>();
+	protected Servicio s;
 
 	/* constructores */
 	public Mantenimiento() {
 		super();
 	}
 
-	public Mantenimiento(double horasTrabajadas) {
+	public Mantenimiento(Servicio s, double horasTrabajadas) {
 		this.horasTrabajadas = horasTrabajadas;
+		this.s = s;
 	}
 
-	public Mantenimiento(double ht, ArrayList reparaciones) {
+	public Mantenimiento(Servicio s, double ht, ArrayList<Reparacion> reparaciones) {
 		this.horasTrabajadas = ht;
-		this.reparacion = reparaciones;
+		this.idReparaciones = reparaciones;
+		this.s = s;
+
 	}
 
 	public static Mantenimiento nuevoMantenimiento() {
@@ -50,11 +54,11 @@ public class Mantenimiento extends Servicio {
 			// ArrayList<Reparacion> rep = Reparacion.nuevaReparacion(); NO SE COMO TRABAJAR
 			// CON LOS ARRAYLIST TODAVIA
 			ret.setHorasTrabajadas(horasServ);
-			// ret.setReparacion(rep);
+			// ret.setReparacion(rep);f
 		} else {
 			ret.setHorasTrabajadas(horasServ);
 		}
-
+		teclado.close();
 		return ret;
 	}
 
@@ -68,11 +72,11 @@ public class Mantenimiento extends Servicio {
 	}
 
 	public ArrayList<Reparacion> getReparacion() {
-		return reparacion;
+		return idReparaciones;
 	}
 
 	public void setReparacion(ArrayList<Reparacion> reparacion) {
-		this.reparacion = reparacion;
+		this.idReparaciones = reparacion;
 	}
 
 	@Override
