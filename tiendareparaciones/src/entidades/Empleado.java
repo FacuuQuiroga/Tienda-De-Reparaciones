@@ -4,7 +4,6 @@ package entidades;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
 import utils.Validador;
 
 public class Empleado {
@@ -43,6 +42,8 @@ public class Empleado {
 	public static Empleado newEmpleado() {
 		Empleado ret = new Empleado();
 		Scanner teclado = new Scanner(System.in);
+		String nomE1 = "";
+		/*
 		System.out.println("Introduzca el nombre del empleado para crear el registro:" + "\n");
 		String nomE1 = "";
 		nomE1 = teclado.nextLine();
@@ -51,9 +52,9 @@ public class Empleado {
 		System.out.println("Introduzca los apellidos del empleado para crear el registro:" + "\n");
 		String apellE1 = "";
 		apellE1 = teclado.nextLine();
-		System.out.println(apellE1);
+		System.out.println+(apellE1);
 		return ret;
-
+		 */	
 		// Para validar el nombre del empleado insertado
 		boolean nombreValido1 = false;
 		do {
@@ -96,6 +97,7 @@ public class Empleado {
 			nifValido = Validador.validarNif(nifEl);
 		} while (!nifValido);
 		ret.setNif(nifEl);
+		teclado.close();
 		return ret;
 	}
 
