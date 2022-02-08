@@ -1,7 +1,10 @@
 //hace martins
+//Naiara
 package entidades;
 
 import java.util.Scanner;
+
+import utils.Validador;
 
 public class Lote {
 
@@ -21,7 +24,7 @@ public class Lote {
 
 	}
 
-	public Lote(long idLote, double descuento, double precioTotal) {
+	public Lote(long idLote, double descuento, double precioTotal, double precioEquipo) {
 		this.idLote = idLote;
 		this.descuento = descuento;
 		this.precioTotal = precioTotal;
@@ -29,7 +32,7 @@ public class Lote {
 	}
 	// Nueva Clase
 
-	public static Lote nuevoClase() {
+	public static Lote newLote() {
 		Lote Lote = new Lote();
 		Scanner teclado = new Scanner(System.in);
 
@@ -42,12 +45,20 @@ public class Lote {
 		double precioTotal = 0;
 		precioTotal = teclado.nextDouble();
 		Lote.setPrecioTotal(precioTotal);
+		
+		boolean descuentoValido=false;
+		do {
+			System.out.println("Descuento a aplicar");
+			descuento=teclado.nextInt();
+			descuentoValido=Validador.validarDescuento(descuento,precioTotal);
+		}
+		while(!descuentoValido);
 
 		return Lote;
 
 	}
 
-	//// Getters , setters and to string
+	// Getters , setters and to string
 	public long getIdLote() {
 		return idLote;
 	}
