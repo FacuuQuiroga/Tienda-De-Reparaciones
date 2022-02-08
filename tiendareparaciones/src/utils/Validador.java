@@ -184,6 +184,21 @@ public class Validador {
 		return true;
 
 	}
+	
+	/**
+	 * 
+	 * @param descuento
+	 * @return
+	 * @author Naiara
+	 */
+	public static boolean validarDescuento(double descuento, double precioTotal) {
+
+		if (descuento >= 0 && descuento <= precioTotal)
+			return true;
+		else
+			return false;
+
+	}
 
 	/**
 	 * 
