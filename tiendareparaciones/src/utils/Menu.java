@@ -51,7 +51,7 @@ public class Menu {
 		System.out.println("\nMENU TAREA4");
 		System.out.println("-------------------------------------------------------------------------------------");
 		System.out.println("Que desea hacer?" + "\n");
-		System.out.println("1- Exportar un objeto de esa clase  hacia	un fichero de texto");
+		System.out.println("1- Exportar un objeto de esa clase hacia un fichero de texto");
 		System.out.println("2- Exportar una colección de objetos de esa clase hacia un fichero de texto");
 		System.out.println("3-Exportar un objeto de esa clase hacia un fichero binario. ");
 		System.out.println("4- Exportar una colección de objetos de esa clase hacia un fichero binario.");
