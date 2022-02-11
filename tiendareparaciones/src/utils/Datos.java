@@ -1,6 +1,9 @@
 package utils;
 
+import java.time.LocalDate;
+
 import entidades.Cliente;
+import entidades.Empleado;
 import entidades.Equipo;
 import entidades.Reparacion;
 
@@ -44,4 +47,20 @@ public class Datos {
 			new Equipo(0000003, 1000.99, "MacBookoto Pro 10.5"),
 			new Equipo(0000004, 599.99,"Xbot Serie T")};
 	public static final int numEquipos = EQUIPOS.length;
+	
+	/*
+	 * public Empleado (long idEmpleado, String nombre, String apellidos, String direccion, String telefono, String nif)
+	 * Naiara
+	 */
+	public static final Empleado EMPLEADOS[] = {
+			new Empleado(00001,"Pedro", "Garcia Perez", "Gijon", "624550212", "35216844P"),
+			new Empleado(00002,"Alba", "Lopez Fernandez", "Gijon", "604755298", "24209830A"),
+			new Empleado(00003,"Sara", "Alvarez Garcia", "Gijon", "687164711", "39439855S"),
+			new Empleado(00004,"Manuel", "Perez Cuevas", "Gijon", "654775478", "22579632M")};
+	public static final int numEmpleados = EMPLEADOS.length;
+	
+	/*
+	 * public BajaEmpleado(long idBaja, LocalDate fechaFin, String motivoBaja)
+	 * Naiara
+	 */
 }
