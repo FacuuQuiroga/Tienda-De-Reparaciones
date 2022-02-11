@@ -39,7 +39,7 @@ public class Equipo {
 		do {
 			System.out.println("modelo: ");
 			modelo = teclado.nextLine();
-			precioValido = Validador.validarModelo(modelo);
+			modeloValido = Validador.validarModelo(modelo);
 		} while (!modeloValido);
 
 		do {
@@ -49,7 +49,17 @@ public class Equipo {
 		} while (!precioValido);
 
 		ret = new Equipo(id, precio, modelo);
+		teclado.close();
+		return ret;
+	}
 
+	/**
+	 * @return orden: id + modelo + precio
+	 * @author Facu
+	 */
+	public String data() {
+		String ret = "";
+		ret = this.idEquipo + "|" + this.modelo + "|" + this.precio;
 		return ret;
 	}
 

@@ -1,4 +1,3 @@
-/**
  /**
  * @author Facu
  */
@@ -103,7 +102,16 @@ public class Compra extends Servicio{
 		// por ultimo se suma precioTotal con precioTotalLote.
 
 		return ret;
-
+	}
+	
+	/**
+	 * @return Orden: idCompra + id Cliente + metodoDePago + Precio Total
+	 * @author Facu
+	 */
+	public String data() {
+		String ret = "";
+		ret = this.idCompra + "|" + this.idCliente + "|" + this.metodoDePago + "|" + this.precioTotal + "|" ;
+		return ret;
 	}
 
 	//// Getters , setters and to string

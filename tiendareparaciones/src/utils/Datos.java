@@ -15,11 +15,11 @@ public class Datos {
 	 */
 	
 	public static final Cliente CLIENTES[] = { 
-			new Cliente("Luis", "43256743G", "Gijon", "942779900"),
-			new Cliente("Ana", "12345678T", "Madrid", "912331188"),
-			new Cliente("Bruno", "84738925N", "Barcelona", "932432245"),
-			new Cliente("Carla", "57390576B", "Santander", "975073211"),
-			new Cliente("Ramona", "71263894K", "Valencia", "942779900") };
+			new Cliente(00001,"Luis", "43256743G", "Gijon", "942779900"),
+			new Cliente(00002,"Ana", "12345678T", "Madrid", "912331188"),
+			new Cliente(00003,"Bruno", "84738925N", "Barcelona", "932432245"),
+			new Cliente(00004,"Carla", "57390576B", "Santander", "975073211"),
+			new Cliente(00005,"Ramona", "71263894K", "Valencia", "942779900") };
 	public static final int numClientes = CLIENTES.length;
 	
 	/*

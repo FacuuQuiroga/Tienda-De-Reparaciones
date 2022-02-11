@@ -62,6 +62,16 @@ public class Mantenimiento extends Servicio {
 		return ret;
 	}
 
+	/**
+	 * @return orden: id Servicio + id Clietne + horas trabajadas + precio total
+	 * @author Facu
+	 */
+	public String data() {
+		String ret = "";
+		ret = this.idServicio + "|" + this.idCliente + "|" + this.horasTrabajadas + "|" + this.precioTotal;
+		return ret;
+	}
+
 	/* Getters and setters */
 	public double getHorasTrabajadas() {
 		return horasTrabajadas;

@@ -34,6 +34,16 @@ public class Reparacion extends Mantenimiento {
 		return ret;
 	}
 
+	/**
+	 * @return orden: id reparacion + duracion total
+	 * @author Facu
+	 */
+	public String data() {
+		String ret = "";
+		ret = this.idReparacion + "|" + this.duraciontotal;
+		return ret;
+	}
+
 //	/* Funcion que devuelve el mantenimiento a que pertenece la reparacion */
 //	public Mantenimiento idReparacion() {
 //		for (Mantenimiento m : Datos.REPARACIONES) {

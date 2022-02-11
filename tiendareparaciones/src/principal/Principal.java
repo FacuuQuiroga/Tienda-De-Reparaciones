@@ -1,12 +1,22 @@
 package principal;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
-
 import entidades.Cliente;
 import entidades.Envio;
 import entidades.Equipo;
 import entidades.Servicio;
-import utils.Utilidades;
+import utils.Datos;
 
 public class Principal {
 
@@ -135,7 +145,7 @@ public class Principal {
 						"-------------------------------------------------------------------------------------");
 				for (Equipo e : equiposDb)
 					System.out.println("ID: " + e.getIdEquipo() + " Nombre: " + e.getModelo() + " Precio del equipo: "
-							+ e.getPrecio() + "€");
+							+ e.getPrecio() + "â‚¬");
 				System.out.println(
 						"-------------------------------------------------------------------------------------");
 				subMenuValidoEquipos = false;
@@ -225,35 +235,194 @@ public class Principal {
 			case 1:
 				// Exportar un objeto de esa clase (todos sus datos imprescindibles para una
 				// carga ligera) hacia un fichero de texto (con el formato/orden marcado en el
-				// método data()).
+				// mÃ©todo data()).
 				subMenuValTarea = false;
 				break;
 			case 2:
-				// Exportar una colección de objetos de esa clase hacia un fichero de texto.
+				// Exportar una colecciÃ³n de objetos de esa clase hacia un fichero de texto.
+				System.out.println("Guardando datos en ClientesChar.txt...");
+
+				File fOut = new File("ClienteChar.txt");
+				FileWriter fw = null;
+				BufferedWriter bw = null;
+
+				try {
+					fw = new FileWriter(fOut);
+					bw = new BufferedWriter(fw);
+					for (int i = 0; i < Datos.numClientes; i++) {
+						Cliente c = new Cliente();
+						c = Datos.CLIENTES[i];
+						bw.write(c.data() + "\n");
+					}
+
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} finally {
+					try {
+						if (bw != null)
+							bw.close();
+						if (fw != null)
+							fw.close();
+
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 				subMenuValTarea = false;
 				break;
 			case 3:
 				// Exportar un objeto de esa clase hacia un fichero binario
+				System.out.println("Guardando datos en clientesbyte.dat...");
+				File f;
+				FileOutputStream fos = null;
+				ObjectOutputStream oos = null;
+
+				try {
+
+					f = new File("clienteByte.dat"); // creo el archivo
+					fos = new FileOutputStream(f); // se lo paso a fos para escribir
+					oos = new ObjectOutputStream(fos);// se lo paso a oos para que pueda escribir
+
+					// oos.writeObject(new Cliente(00006, "facu", "58427904S", "calle rio pilonia",
+					// "634164170"));
+					oos.writeObject(Datos.CLIENTES[1]);
+
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (oos != null)
+							oos.close();
+						if (fos != null)
+							fos.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
 				subMenuValTarea = false;
 				break;
 			case 4:
-				// Exportar una colección de objetos de esa clase hacia un fichero binario.
+				// Exportar una colecciÃ³n de objetos de esa clase hacia un fichero binario.
+				// facu
+				System.out.println("Guardando datos en clientesbyte.dat...");
+				File f4;
+				FileOutputStream fos4 = null;
+				ObjectOutputStream oos4 = null;
+
+				try {
+
+					f4 = new File("clienteByte.dat"); // creo el archivo
+					fos4 = new FileOutputStream(f4); // se lo paso a fos para escribir
+					oos4 = new ObjectOutputStream(fos4);// se lo paso a oos para que pueda escribir
+					// oos.writeObject(new Cliente(00006, "facu", "58427904S", "calle rio pilonia",
+					// "634164170"));
+					// oos.writeObject(new Cliente(00001, "Luis", "43256743G", "Gijon",
+					// "942779900"));
+					for (int i = 0; i < Datos.numClientes; i++) {
+						Cliente c = new Cliente();
+						c = Datos.CLIENTES[i];
+						oos4.writeObject(c);
+					}
+					// cargo un cliente mas para pruebas
+					oos4.writeObject(new Cliente(00006, "facu", "58427904S", "calle rio pilonia", "634164170"));
+
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (oos4 != null)
+							oos4.close();
+						if (fos4 != null)
+							fos4.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 				subMenuValTarea = false;
 				break;
 			case 5:
-				// Importar una colección de objetos de esa clase desde un fichero de texto.
+				// Importar una colecciÃ³n de objetos de esa clase desde un fichero de texto.
+				System.out.println("Cargando datos de ClienteChar.txt...");
+				File fIn = new File("ClienteChar.txt");
+				FileReader fr = null;
+				BufferedReader br = null;
+
+				try {
+					fr = new FileReader(fIn);
+					br = new BufferedReader(fr);
+					String c;
+
+					for (int i = 0; i < 6; i++) {
+						c = (String) br.readLine();
+						System.out.println(c);
+					}
+
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (br != null)
+							br.close();
+						if (fr != null)
+							fr.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
 				subMenuValTarea = false;
 				break;
 			case 6:
-				// Importar una colección de objetos de esa clase desde un fichero binario
+				// Importar una colecciÃ³n de objetos de esa clase desde un fichero binario
+				// facu
+				System.out.println("Cargando datos de clienteByte.dat...");
+				File ci;
+				FileInputStream fis = null;
+				ObjectInputStream ois = null;
+				try {
+					ci = new File("clienteByte.dat");
+					fis = new FileInputStream(ci);
+					ois = new ObjectInputStream(fis);
+
+					for (int i = 0; i < 6; i++) { // puedo usar Datos.numClientes para el limite pero no contaria el
+													// nuevo cliente.
+						Cliente c = (Cliente) ois.readObject();
+						System.out.println(c.data());
+					}
+//					Cliente c = (Cliente) ois.readObject();
+//					System.out.println(c.data());
+
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (ois != null)
+							ois.close();
+						if (fis != null)
+							fis.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 				subMenuValTarea = false;
 				break;
 			case 7:
-//				Buscar un elemento de esa clase por su id en un fichero de texto que dispone de una colección de
-//				elementos organizados línea a línea acordemente al formato/orden del método data(). En el caso
-//				de que sí se encuentre el id se creará un nuevo objeto completo y, mediante la forma de carga ligera,
-//				se cargaran los datos sobre el objeto y se devolverá éste al final de la función. En el caso de no
-//				encontrar el id en el fichero, el objeto devuelto será nulo
+//				Buscar un elemento de esa clase por su id en un fichero de texto que dispone de una colecciÃ³n de
+//				elementos organizados lÃ­nea a lÃ­nea acordemente al formato/orden del mÃ©todo data(). En el caso
+//				de que sÃ­ se encuentre el id se crearÃ¡ un nuevo objeto completo y, mediante la forma de carga ligera,
+//				se cargaran los datos sobre el objeto y se devolverÃ¡ Ã©ste al final de la funciÃ³n. En el caso de no
+//				encontrar el id en el fichero, el objeto devuelto serÃ¡ nulo
 				subMenuValTarea = false;
 				break;
 			case 0:
@@ -262,5 +431,6 @@ public class Principal {
 				return;
 			}
 		} while (!subMenuValTarea);
+		teclado.close();
 	}
 }

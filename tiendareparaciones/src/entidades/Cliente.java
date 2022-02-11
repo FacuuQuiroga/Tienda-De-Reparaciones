@@ -3,12 +3,14 @@
 */
 package entidades;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import utils.Validador;
 
-public class Cliente {
+public class Cliente implements Serializable {
 
+	private static final long serialVersionUID = 726468236049300212L;
 	/* id de cliente, sirve para identificarlo, se autocalcula. */
 	private long idCliente;
 	/*
@@ -53,20 +55,17 @@ public class Cliente {
 	}
 
 	/**
-	 * orden: id+nombre+nif+direccion+telefono
-	 * 
-	 * @return
+	 * @return orden: id+nombre+nif+direccion+telefono
 	 * @author Facu
 	 */
 	public String data() {
 		String ret = "";
-		ret = this.idCliente + "|" + this.nombre + "|" + this.nif + "|" + "|" + this.direccion + "|" + this.telefono;
+		ret = this.idCliente + "|" + this.nombre + "|" + this.nif + "|" + this.direccion + "|" + this.telefono;
 		return ret;
 	}
 
 	/**
-	 * 
-	 * @return Objeto del tipo cliente completo sin los datos de tarjeta ni cuenta
+	 * @return Objeto del tipo cliente completo preguntando si desea el usuario guardar  los datos de tarjeta o cuenta
 	 *         corriente
 	 * @author Facu
 	 */
@@ -108,35 +107,37 @@ public class Cliente {
 		String telCl = null;
 		boolean telClValido = false;
 		do {
-			System.out.println("telefono del cliente: (maximo 9 numeros: xxx xx xx xx");
+			System.out.println("telefono del cliente: (maximo 9 numeros: xxx xx xx xx)");
 			telCl = teclado.nextLine();
 			telClValido = Validador.validarTel(telCl);
 		} while (!telClValido);
 		ret.setTelefono(telCl);
 
-		String numTarjCl = null;
-		boolean numTarjValido = false;
-		do {
-			System.out.println("Numero de tarjeta del cliente: (16 caracteres incluido el codigo del pais)");
-			numTarjCl = teclado.nextLine();
-			numTarjValido = Validador.validarTarjeta(numTarjCl);
-		} while (!numTarjValido);
-		ret.setNumeroTarjeta(numTarjCl);
+		System.out.println("Desea agregar ahora la cuenta o tarjeta del cliente?");
+		boolean tarjetaCuenta = utils.Utilidades.leerBoolean();
 
-		String cuentaCorrienteCl = null;
-		boolean cuentaCorrienteValida = false;
-		do {
-			System.out.println("Numero de cuenta del cliente: ");
-			cuentaCorrienteCl = teclado.nextLine();
-			cuentaCorrienteValida = Validador.ValidarCuentaCorriente(cuentaCorrienteCl);
-		} while (!cuentaCorrienteValida);
-		ret.setCuentacorriente(cuentaCorrienteCl);
+		if (tarjetaCuenta) {
+			String numTarjCl = null;
+			boolean numTarjValido = false;
+			do {
+				System.out.println("Numero de tarjeta del cliente: (16 caracteres incluido el codigo del pais)");
+				numTarjCl = teclado.nextLine();
+				numTarjValido = Validador.validarTarjeta(numTarjCl);
+			} while (!numTarjValido);
+			ret.setNumeroTarjeta(numTarjCl);
+
+			String cuentaCorrienteCl = null;
+			boolean cuentaCorrienteValida = false;
+			do {
+				System.out.println("Numero de cuenta del cliente: ");
+				cuentaCorrienteCl = teclado.nextLine();
+				cuentaCorrienteValida = Validador.ValidarCuentaCorriente(cuentaCorrienteCl);
+			} while (!cuentaCorrienteValida);
+			ret.setCuentacorriente(cuentaCorrienteCl);
+		}
+
 		teclado.close();
 		return ret;
-	}
-
-	public String dataClientes() {
-		return "" + this.idCliente + "|" + this.nombre + "|" + this.telefono;// agregar todos.
 	}
 
 	/* Getters , setters y to string */

@@ -6,8 +6,6 @@ package entidades;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import utils.Utilidades;
-
 public class Servicio {
 	protected long idServicio;
 	private String notas;
@@ -71,6 +69,16 @@ public class Servicio {
 //		fechaToday = Utilidades.Fechas();
 //		ret.setFechaToday(fechaToday);
 		teclado.close();
+		return ret;
+	}
+
+	/**
+	 * @return orden: id Servicio + id Cliente + notas + fecha + Precio Total
+	 * @author Facu
+	 */
+	public String data() {
+		String ret = "";
+		ret = this.idServicio + "|" + this.idCliente + "|" + this.notas + "|" + this.fecha + "|" + this.precioTotal;
 		return ret;
 	}
 
