@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
+
+import entidades.BajaEmpleado;
 import entidades.Cliente;
 import entidades.Envio;
 import entidades.Equipo;
@@ -236,6 +238,7 @@ public class Principal {
 				// Exportar un objeto de esa clase (todos sus datos imprescindibles para una
 				// carga ligera) hacia un fichero de texto (con el formato/orden marcado en el
 				// método data()).
+				BajaEmpleado.exportarBajaEmpleadotexto();//Exportacion de la clase BajaEmpleado (fichero de texto)
 				subMenuValTarea = false;
 				break;
 			case 2:
@@ -272,6 +275,9 @@ public class Principal {
 				break;
 			case 3:
 				// Exportar un objeto de esa clase hacia un fichero binario
+
+				BajaEmpleado.exportarBajaEmpleado(); // Exportacion de la clase BajaEmpleado (fichero binario)
+
 				System.out.println("Guardando datos en clientesbyte.dat...");
 				File f;
 				FileOutputStream fos = null;

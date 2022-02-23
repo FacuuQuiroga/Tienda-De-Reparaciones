@@ -1,4 +1,5 @@
 //hace martins
+
 //Naiara
 package entidades;
 
@@ -19,6 +20,12 @@ public class Lote {
 	// indica el computo total del calcula entre descuento y precio de equipo
 	// expresado en numero reales con simbolos de puntuacion
 	private double precioEquipo;
+
+	/**
+	 *  Carga ligera: Implementar en esta clase la relación (1-N) que tiene con la clase Compra
+	 */
+	
+	 private long idCompra; //(clave foránea)
 
 	public Lote() {
 
@@ -45,14 +52,13 @@ public class Lote {
 		double precioTotal = 0;
 		precioTotal = teclado.nextDouble();
 		Lote.setPrecioTotal(precioTotal);
-		
-		boolean descuentoValido=false;
+
+		boolean descuentoValido = false;
 		do {
 			System.out.println("Descuento a aplicar");
-			descuento=teclado.nextInt();
-			descuentoValido=Validador.validarDescuento(descuento,precioTotal);
-		}
-		while(!descuentoValido);
+			descuento = teclado.nextInt();
+			descuentoValido = Validador.validarDescuento(descuento, precioTotal);
+		} while (!descuentoValido);
 
 		return Lote;
 

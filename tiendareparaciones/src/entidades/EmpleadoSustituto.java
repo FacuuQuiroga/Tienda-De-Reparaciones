@@ -9,12 +9,26 @@ public class EmpleadoSustituto extends Empleado {
 	private boolean colectivo;
 	private BajaEmpleado baja; // carga de un objeto completo
 
+	/**
+	 * Carga ligera: Implementar en esta clase la relación (1-1) que tiene con la
+	 * clase Empleado
+	 */
+
+	private long idEmpleado; // (clave foránea)
+
+	// private Empleado e;
 	public EmpleadoSustituto() {
 	}
 
 	public EmpleadoSustituto(long idEmpleado, String nombre, String apellido, String direccion, String telefono,
-			String nif, String edad, boolean colectivo, BajaEmpleado baja) { 
+			String nif, String edad, boolean colectivo, BajaEmpleado baja) {
 		super(idEmpleado, nombre, apellido, direccion, telefono, nif);
+		this.edad = edad;
+		this.colectivo = colectivo;
+		this.baja = baja;
+	}
+
+	public EmpleadoSustituto(String edad, boolean colectivo, BajaEmpleado baja) {
 		this.edad = edad;
 		this.colectivo = colectivo;
 		this.baja = baja;
@@ -64,11 +78,19 @@ public class EmpleadoSustituto extends Empleado {
 		this.baja = baja;
 	}
 
+	public long getIdEmpleado() {
+		return idEmpleado;
+	}
+
+	public void setIdEmpleado(long idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
 	// toString
 
 	@Override
 	public String toString() {
-		return "EmpleadoSustituto [edad=" + edad + ", colectivo=" + colectivo + ", baja=" + baja + "]";
+		return "EmpleadoSustituto [edad=" + edad + ", colectivo=" + colectivo + ", baja=" + baja + ", idEmpleado="
+				+ idEmpleado + "]";
 	}
 
 }
