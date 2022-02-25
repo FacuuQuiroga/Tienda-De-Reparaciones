@@ -11,6 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import entidades.BajaEmpleado;
@@ -218,6 +221,7 @@ public class Principal {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	private static void menuTarea4() {
 		Scanner teclado = new Scanner(System.in);
 		int subMenuTarea = -1;
@@ -238,7 +242,32 @@ public class Principal {
 				// Exportar un objeto de esa clase (todos sus datos imprescindibles para una
 				// carga ligera) hacia un fichero de texto (con el formato/orden marcado en el
 				// método data()).
-				BajaEmpleado.exportarBajaEmpleadotexto();//Exportacion de la clase BajaEmpleado (fichero de texto)
+				System.out.println("Guardando datos en BajaEmpleadotexto.txt...");
+
+				File fOut1 = new File("BajaEmpleadotexto.txt");
+				FileWriter fw1 = null;
+				BufferedWriter bw1 = null;
+				try {
+					fw1 = new FileWriter(fOut1);
+					bw1 = new BufferedWriter(fw1);
+					for (int i = 0; i < Datos.numBajasEmpleados; i++) {
+						BajaEmpleado be = new BajaEmpleado();
+						be = Datos.BAJAEMPLEADOS[i];
+						bw1.write(be.data() + "\n");
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (bw1 != null)
+							bw1.close();
+						if (fw1 != null)
+							fw1.close();
+
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 				subMenuValTarea = false;
 				break;
 			case 2:
@@ -248,50 +277,96 @@ public class Principal {
 				File fOut = new File("ClienteChar.txt");
 				FileWriter fw = null;
 				BufferedWriter bw = null;
-
-				try {
-					fw = new FileWriter(fOut);
-					bw = new BufferedWriter(fw);
-					for (int i = 0; i < Datos.numClientes; i++) {
-						Cliente c = new Cliente();
-						c = Datos.CLIENTES[i];
-						bw.write(c.data() + "\n");
-					}
-
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				} finally {
-					try {
-						if (bw != null)
-							bw.close();
-						if (fw != null)
-							fw.close();
-
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+				ArrayList<BajaEmpleado> arrayList1 = new ArrayList<BajaEmpleado>();
+				System.out.println("Datos que vamos a escribir en el fichero:");
+				for (int i = 0; i < 5; i++) {
+					BajaEmpleado newBajaEmpleado = new BajaEmpleado(i, null, "MotivoBaja" + i, i);// long idBaja,LocalDate, fechaFin, String motivoBaja, long idEmpleado
+					arrayList1.add(newBajaEmpleado);
+					System.out.println("arrayList1[" + i + "]" + arrayList1.get(i));
 				}
+				try {
+					System.out.println("Guardando ArrayList en el fichero bajaempleados.dat...");
+					try {
+						fw = new FileWriter(fOut);
+						bw = new BufferedWriter(fw);
+						for (int i = 0; i < Datos.numClientes; i++) {
+							Cliente c = new Cliente();
+							c = Datos.CLIENTES[i];
+							bw.write(c.data() + "\n");
+						}
+
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					} finally {
+						try {
+							if (bw != null)
+								bw.close();
+							if (fw != null)
+								fw.close();
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+					ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
+							new FileOutputStream("bajaempleados.dat"));
+					escribiendoFichero.writeObject(arrayList1);
+					escribiendoFichero.close();
+					System.out.println("Leyendo ArrayList del fichero bajaempleados.dat...");
+					ObjectInputStream leyendoFichero = new ObjectInputStream(new FileInputStream("bajaempleados.dat"));
+					leyendoFichero.readObject();
+					leyendoFichero.close();
+					System.out.println("Datos del fichero leídos.");
+
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+
+				} catch (ClassNotFoundException e) {
+
+					e.printStackTrace();
+				}
+
 				subMenuValTarea = false;
 				break;
 			case 3:
 				// Exportar un objeto de esa clase hacia un fichero binario
-
-				BajaEmpleado.exportarBajaEmpleado(); // Exportacion de la clase BajaEmpleado (fichero binario)
-
 				System.out.println("Guardando datos en clientesbyte.dat...");
 				File f;
 				FileOutputStream fos = null;
 				ObjectOutputStream oos = null;
 
 				try {
+					try {
 
-					f = new File("clienteByte.dat"); // creo el archivo
-					fos = new FileOutputStream(f); // se lo paso a fos para escribir
-					oos = new ObjectOutputStream(fos);// se lo paso a oos para que pueda escribir
+						f = new File("clienteByte.dat"); // creo el archivo
+						fos = new FileOutputStream(f); // se lo paso a fos para escribir
+						oos = new ObjectOutputStream(fos);// se lo paso a oos para que pueda escribir
 
-					// oos.writeObject(new Cliente(00006, "facu", "58427904S", "calle rio pilonia",
-					// "634164170"));
-					oos.writeObject(Datos.CLIENTES[1]);
+						// oos.writeObject(new Cliente(00006, "facu", "58427904S", "calle rio pilonia",
+						// "634164170"));
+						oos.writeObject(Datos.CLIENTES[1]);
+
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					} finally {
+						try {
+							if (oos != null)
+								oos.close();
+							if (fos != null)
+								fos.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+
+					}
+
+					f = new File("BajaEmpleadoByte.dat");
+					fos = new FileOutputStream(f);
+					oos = new ObjectOutputStream(fos);
+
+					oos.writeObject(Datos.BAJAEMPLEADOS[1]);
 
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
@@ -306,6 +381,7 @@ public class Principal {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
+
 				}
 
 				subMenuValTarea = false;
@@ -317,7 +393,7 @@ public class Principal {
 				File f4;
 				FileOutputStream fos4 = null;
 				ObjectOutputStream oos4 = null;
-
+			try {
 				try {
 
 					f4 = new File("clienteByte.dat"); // creo el archivo
@@ -349,6 +425,31 @@ public class Principal {
 						e.printStackTrace();
 					}
 				}
+				f4 = new File("bajaempleado.dat");
+				fos4 = new FileOutputStream(f4);
+				oos4 = new ObjectOutputStream(fos4);
+				for (int i=0; i < Datos.numBajasEmpleados; i++ ) {
+					BajaEmpleado be = new BajaEmpleado();
+					be = Datos.BAJAEMPLEADOS[i];
+					oos4.writeObject(be);
+				}
+				//long idBaja, LocalDate fechaFin, String motivoBaja
+				oos4.writeObject(new BajaEmpleado(00001, LocalDate.parse("08/02/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), null));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (oos4 != null)
+						oos4.close();
+					if (fos4 != null)
+						fos4.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
 				subMenuValTarea = false;
 				break;
 			case 5:
