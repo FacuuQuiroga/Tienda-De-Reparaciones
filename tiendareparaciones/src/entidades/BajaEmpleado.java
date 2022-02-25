@@ -2,7 +2,7 @@
 package entidades;
 
 import java.io.BufferedReader;
-
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import utils.Datos;
@@ -252,5 +253,30 @@ public class BajaEmpleado implements Serializable {
 			System.out.println("Se ha producido una Exception" + e.getMessage());
 		}
 	}
+	
+//	public static void crearArchivo (ArrayList lista) {
+//		FileWriter flwriter = null;
+//		try {
+//			flwriter = new FileWriter ("bajaempleadolista.txt");
+//			BufferedWriter bfwriter = new BufferedWriter(flwriter);
+//			for (BajaEmpleado bajaempleado: lista) {
+//				bfwriter.write(bajaempleado.getIdBaja() + "," + bajaempleado.getFechaInicio() + "," + bajaempleado.getFechaFin() + "," + bajaempleado.getMotivoBaja() + "," + bajaempleado.getIdEmpleado() + "\n");
+//			
+//			}
+//			bfwriter.close();
+//			System.out.println("Archivo creado");
+//		}catch (IOException e) {
+//			e.printStackTrace();
+//			
+//		}finally {
+//			if (flwriter !=null) {
+//				try {
+//					flwriter.close();
+//				}catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//	}
 
 }
