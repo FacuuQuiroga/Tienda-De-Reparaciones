@@ -7,12 +7,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.time.LocalDate;
-
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import utils.Datos;
@@ -30,7 +32,14 @@ public class BajaEmpleado implements Serializable {
 
 	private long idEmpleado; // (clave foránea)
 
+	public BajaEmpleado(long idBaja, LocalDate fechaFin, String motivoBaja) {
+		this.idBaja = idBaja;
+		this.fechaFin = fechaFin;
+		this.motivoBaja = motivoBaja;
+	}
+
 	public BajaEmpleado() {
+
 	}
 
 //	public BajaEmpleado(long idBaja) {
@@ -123,6 +132,10 @@ public class BajaEmpleado implements Serializable {
 				+ ", motivoBaja=" + motivoBaja + ", idEmpleado=" + idEmpleado + "]";
 	}
 
+	// Para exportar un fichero binario
+	// Habría que poner dentro del main (en la clase principal) lo siguiente:
+	// BajaEmpleado.exportarBajaEmpleado();
+	// Hay más formas de exportar un fichero binario (mirar clase principal)
 	public static void exportarBajaEmpleado() {
 		String path = "Baja.dat";
 		BajaEmpleado nuevabaja = new BajaEmpleado();
@@ -162,6 +175,7 @@ public class BajaEmpleado implements Serializable {
 
 	}
 
+//Para exportar un fichero de texto
 	public static void exportarBajaEmpleadotexto() {
 		BajaEmpleado nuevabaja = new BajaEmpleado();
 		ObjectOutputStream oos = null;
@@ -188,6 +202,52 @@ public class BajaEmpleado implements Serializable {
 
 		} catch (Exception e) {
 
+			System.out.println("Se ha producido una Exception" + e.getMessage());
+		}
+	}
+
+	/***
+	 * Método data()
+	 * @return
+	 */
+	public String data() {
+		String ret = "";
+		ret = this.idBaja + "|" + this.fechaInicio + "|" + this.fechaFin + "|" + this.motivoBaja + "|"
+				+ this.idEmpleado;
+		return ret;
+	}
+
+	/***
+	 * Función que exporta los datos de cada una de las bajaempleados de una
+	 * colección que se le pasa como parámetro, a través del método data() anterior.
+	 * 
+	 * @param bajaempleado la coleccion de bajaempleado a exportar
+	 */
+	private static void exportar(BajaEmpleado[] bajaempleado) {
+		String path = "bajaempleado.txt";
+		File fichero = new File(path);
+		FileWriter escritor = null;
+		PrintWriter buffer = null;
+		try {
+			try {
+				escritor = new FileWriter(fichero, false);
+				buffer = new PrintWriter(escritor);
+				for (BajaEmpleado be : bajaempleado) {
+					buffer.println(be.data());
+				}
+			} finally {
+				if (buffer != null) {
+					buffer.close();
+				}
+				if (escritor != null) {
+					escritor.close();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Se ha producido una FileNotFoundException" + e.getMessage());
+		} catch (IOException e) {
+			System.out.println("Se ha producido una IOException" + e.getMessage());
+		} catch (Exception e) {
 			System.out.println("Se ha producido una Exception" + e.getMessage());
 		}
 	}
