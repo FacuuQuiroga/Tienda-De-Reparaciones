@@ -60,28 +60,32 @@ public class Datos {
 	 * Naiara
 	 */
 	public static final BajaEmpleado BAJAEMPLEADOS[] = {
-			new BajaEmpleado(00001, LocalDate.parse("08/02/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente laboral"),
-			new BajaEmpleado(00002, LocalDate.parse("02/02/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente laboral"),
-			new BajaEmpleado(00003, LocalDate.parse("12/01/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente laboral"),
-			new BajaEmpleado(00004, LocalDate.parse("08/01/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente Laboral"),
-			new BajaEmpleado(00005, LocalDate.parse("22/01/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente Laboral") };
+			new BajaEmpleado(00001, LocalDate.parse("08/02/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+					"Accidente laboral"),
+			new BajaEmpleado(00002, LocalDate.parse("02/02/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+					"Accidente laboral"),
+			new BajaEmpleado(00003, LocalDate.parse("12/01/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+					"Accidente laboral"),
+			new BajaEmpleado(00004, LocalDate.parse("08/01/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+					"Accidente Laboral"),
+			new BajaEmpleado(00005, LocalDate.parse("22/01/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+					"Accidente Laboral") };
 	public static final int numBajasEmpleados = BAJAEMPLEADOS.length;
 
 	/*
 	 * public EmpleadoSustituto(long idEmpleado, String nombre, String apellido,
 	 * String direccion, String telefono, String nif, String edad, boolean
-	 * colectivo, BajaEmpleado baja) 
-	 * super(idEmpleado, nombre, apellido, direccion, telefono, nif)
-	 * Naiara
+	 * colectivo, BajaEmpleado baja) super(idEmpleado, nombre, apellido, direccion,
+	 * telefono, nif)
+	 *  Naiara
 	 */
-//	public static final EmpleadoSustituto EMPLEADOSUSTITUTO[]= {
-//		new Empleado(00001, "Pedro", "Garcia Perez", "Gijon", "624550212", "35216844P", "32", true, BajaEmpleado),
+//	public static final int EmpleadoSustituto EMPLEADOSUSTITUTO[]= {
+//		new EmpleadoSustituto(00001, "Pedro", "Garcia Perez", "Gijon", "624550212", "35216844P", "32", true, entidades.BajaEmpleado),
 //	}
 
 	/*
 	 * public Lote(long idLote, double descuento, double precioTotal, double
-	 * precioEquipo) 
-	 * Naiara
+	 * precioEquipo) Naiara
 	 */
 
 }
