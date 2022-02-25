@@ -1,6 +1,7 @@
 package utils;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import entidades.BajaEmpleado;
 import entidades.Cliente;
@@ -59,11 +60,11 @@ public class Datos {
 	 * Naiara
 	 */
 	public static final BajaEmpleado BAJAEMPLEADOS[] = {
-			new BajaEmpleado(00001, LocalDate.parse("12-02-2022"), "Accidente laboral"),
-			new BajaEmpleado(00002, LocalDate.parse("02-01-2022"), "Accidente laboral"),
-			new BajaEmpleado(00003, LocalDate.parse("25-01-2022"), "Accidente laboral"),
-			new BajaEmpleado(00004, LocalDate.parse("01-02-2022"), "Accidente Laboral"),
-			new BajaEmpleado(00005, LocalDate.parse("30-01-2022"), "Accidente Laboral") };
+			new BajaEmpleado(00001, LocalDate.parse("08/02/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente laboral"),
+			new BajaEmpleado(00002, LocalDate.parse("02/02/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente laboral"),
+			new BajaEmpleado(00003, LocalDate.parse("12/01/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente laboral"),
+			new BajaEmpleado(00004, LocalDate.parse("08/01/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente Laboral"),
+			new BajaEmpleado(00005, LocalDate.parse("22/01/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")), "Accidente Laboral") };
 	public static final int numBajasEmpleados = BAJAEMPLEADOS.length;
 
 	/*
