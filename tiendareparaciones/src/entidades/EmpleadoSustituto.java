@@ -28,10 +28,11 @@ public class EmpleadoSustituto extends Empleado {
 		this.baja = baja;
 	}
 
-	public EmpleadoSustituto(String edad, boolean colectivo, BajaEmpleado baja) {
+	public EmpleadoSustituto(String edad, boolean colectivo, BajaEmpleado baja, long idEmpleado) {
 		this.edad = edad;
 		this.colectivo = colectivo;
 		this.baja = baja;
+		this.idEmpleado = idEmpleado;
 	}
 
 	// Método nuevoEmpladoSustituto
