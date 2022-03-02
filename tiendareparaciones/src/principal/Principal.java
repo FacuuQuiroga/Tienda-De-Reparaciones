@@ -278,15 +278,30 @@ public class Principal {
 				FileWriter fw = null;
 				BufferedWriter bw = null;
 				ArrayList<BajaEmpleado> arrayList1 = new ArrayList<BajaEmpleado>();
+				
+				BajaEmpleado baja2=new BajaEmpleado(1,LocalDate.parse("08/02/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")),"tobllo",2);
+			
+				
+				arrayList1.add(baja2);
+				BajaEmpleado baja3=new BajaEmpleado(1,LocalDate.parse("08/02/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy")),"dedo",2);
+				
+				arrayList1.add(baja3);
+				
+				for(BajaEmpleado b:arrayList1 )
+				 {
+					
+					System.out.println( b.getMotivoBaja());
+					
+				 }
 				System.out.println("Datos que vamos a escribir en el fichero:");
 				for (int i = 0; i < 5; i++) {
-					BajaEmpleado newBajaEmpleado = new BajaEmpleado(i, null, "MotivoBaja" + i, i);// long idBaja,LocalDate, fechaFin, String motivoBaja, long idEmpleado
-					arrayList1.add(newBajaEmpleado);
+					//BajaEmpleado newBajaEmpleado = new BajaEmpleado(i, null, "MotivoBaja" + i, i);// long idBaja,LocalDate, fechaFin, String motivoBaja, long idEmpleado
+					arrayList1.add(new BajaEmpleado(i, null, "MotivoBaja" + i, i));
 					System.out.println("arrayList1[" + i + "]" + arrayList1.get(i));
 				}
 				try {
-					System.out.println("Guardando ArrayList en el fichero bajaempleados.dat...");
-					try {
+					System.out.println("Guardando ArrayList en el fichero bajaempleados....");
+					
 						fw = new FileWriter(fOut);
 						bw = new BufferedWriter(fw);
 						for (int i = 0; i < Datos.numClientes; i++) {
@@ -294,37 +309,63 @@ public class Principal {
 							c = Datos.CLIENTES[i];
 							bw.write(c.data() + "\n");
 						}
+						
+						File fOutb = new File("bajaempleados.txt");
+						FileWriter fwb = new FileWriter(fOutb);
+						BufferedWriter bwb = new BufferedWriter(fwb);
+						
+						for(BajaEmpleado b:arrayList1 )
+						 {
+							
+							bwb.write( b.data());
+							bwb.newLine();
+						
+							
+							
+							
+						 }
+						if (bwb != null)
+							bwb.close();
+						if (fwb != null)
+							fwb.close();
+						
+						
+						
+						
+						
+						/*
+						ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
+						new FileOutputStream("bajaempleados.txt"));
+						escribiendoFichero.writeObject(arrayList1);
+						escribiendoFichero.close();
+						System.out.println("Leyendo ArrayList del fichero bajaempleados.dat...");
+						ObjectInputStream leyendoFichero = new ObjectInputStream(new FileInputStream("bajaempleados.dat"));
+						leyendoFichero.readObject();
+						leyendoFichero.close();
+						System.out.println("Datos del fichero leídos.");
+*/
 
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					} finally {
-						try {
-							if (bw != null)
-								bw.close();
-							if (fw != null)
-								fw.close();
-
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-					ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
-							new FileOutputStream("bajaempleados.dat"));
-					escribiendoFichero.writeObject(arrayList1);
-					escribiendoFichero.close();
-					System.out.println("Leyendo ArrayList del fichero bajaempleados.dat...");
-					ObjectInputStream leyendoFichero = new ObjectInputStream(new FileInputStream("bajaempleados.dat"));
-					leyendoFichero.readObject();
-					leyendoFichero.close();
-					System.out.println("Datos del fichero leídos.");
-
+				
+				 
+					
 				} catch (IOException e) {
 					System.out.println(e.getMessage());
-
-				} catch (ClassNotFoundException e) {
-
 					e.printStackTrace();
+
 				}
+				finally {
+					try {
+					if (bw != null)
+						bw.close();
+					if (fw != null)
+						fw.close();
+					}catch(Exception e)
+					{
+						System.out.println(e.getMessage());
+						e.printStackTrace();
+
+					}
+			}
 
 				subMenuValTarea = false;
 				break;
@@ -458,7 +499,9 @@ public class Principal {
 				File fIn = new File("ClienteChar.txt");
 				FileReader fr = null;
 				BufferedReader br = null;
-
+				
+				
+			
 				try {
 					fr = new FileReader(fIn);
 					br = new BufferedReader(fr);
@@ -467,6 +510,26 @@ public class Principal {
 					for (int i = 0; i < 6; i++) {
 						c = (String) br.readLine();
 						System.out.println(c);
+					}
+					
+					
+					System.out.println("Cargando datos de bajaempleados.txt...");
+					File fInb = new File("bajaempleados.txt");
+					FileReader frb = new FileReader(fInb);
+					BufferedReader brb = new BufferedReader(frb);
+					ArrayList<BajaEmpleado> arrayList2 = new ArrayList<BajaEmpleado>();
+					
+					String linea;
+					while ((linea = brb.readLine()) != null) {
+						//nuevabaja.setIdBaja(Integer.parseInt(linea));
+						String [] args= linea.split("\\|");
+					
+						arrayList2.add(new BajaEmpleado(Integer.parseInt(args[0]), LocalDate.parse(args[2]),  args[3], Integer.parseInt(args[4])));
+
+					}
+					
+					for(BajaEmpleado baja: arrayList2) {
+						System.out.println(baja.data());
 					}
 
 				} catch (FileNotFoundException e1) {
