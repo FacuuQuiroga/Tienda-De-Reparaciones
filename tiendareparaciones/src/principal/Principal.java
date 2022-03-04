@@ -499,12 +499,18 @@ public class Principal {
 				File fIn = new File("ClienteChar.txt");
 				FileReader fr = null;
 				BufferedReader br = null;
-				
+				File fInb = new File("bajaempleados.txt");
+				FileReader frb = null; 
+				BufferedReader brb = null; 
 				
 			
 				try {
 					fr = new FileReader(fIn);
 					br = new BufferedReader(fr);
+					
+					
+					frb = new FileReader(fInb);
+					brb = new BufferedReader(frb);
 					String c;
 
 					for (int i = 0; i < 6; i++) {
@@ -512,11 +518,11 @@ public class Principal {
 						System.out.println(c);
 					}
 					
+				
+					
 					
 					System.out.println("Cargando datos de bajaempleados.txt...");
-					File fInb = new File("bajaempleados.txt");
-					FileReader frb = new FileReader(fInb);
-					BufferedReader brb = new BufferedReader(frb);
+					
 					ArrayList<BajaEmpleado> arrayList2 = new ArrayList<BajaEmpleado>();
 					
 					String linea;
@@ -542,6 +548,10 @@ public class Principal {
 							br.close();
 						if (fr != null)
 							fr.close();
+						if (brb != null)
+							brb.close();
+						if (frb != null)
+							frb.close();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -593,6 +603,37 @@ public class Principal {
 //				de que sí se encuentre el id se creará un nuevo objeto completo y, mediante la forma de carga ligera,
 //				se cargaran los datos sobre el objeto y se devolverá éste al final de la función. En el caso de no
 //				encontrar el id en el fichero, el objeto devuelto será nulo
+				
+				int id;
+				System.out.println("Dime el id de la Bajaempleado:");
+				Scanner in = new Scanner (System.in);
+				id = in.nextInt();
+				try {
+				File fInc = new File("bajaempleados.txt");
+				FileReader frc = new FileReader(fInc);
+				BufferedReader brc = new BufferedReader(frc);
+	
+				BajaEmpleado Bajaempleado = null;
+				String linea;
+				while ((linea = brc.readLine()) != null) {
+					//nuevabaja.setIdBaja(Integer.parseInt(linea));
+					String [] args= linea.split("\\|");
+					if (id == Integer.parseInt(args[0]))
+					{
+						Bajaempleado=new BajaEmpleado(Integer.parseInt(args[0]), LocalDate.parse(args[2]),  args[3], Integer.parseInt(args[4]));
+						System.out.println("Mostrar Bajaempleado:" + Bajaempleado.data());
+						
+						break;
+					}
+				
+					
+
+				}
+				
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
 				subMenuValTarea = false;
 				break;
 			case 0:
